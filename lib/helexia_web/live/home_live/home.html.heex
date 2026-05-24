@@ -1,0 +1,501 @@
+<Layouts.header />
+
+<main class="bg-white">
+  
+<!-- HERO / WHITE SECTION -->
+  <section class="relative overflow-hidden bg-white px-6 pb-28 pt-24">
+    <div class="absolute -right-32 top-10 h-[520px] w-[520px] rounded-full bg-sky-200/50 blur-3xl">
+    </div>
+    <div class="absolute right-80 top-56 h-80 w-80 rounded-full bg-blue-300/20 blur-3xl"></div>
+
+    <div class="relative mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-2">
+      <!-- LEFT CONTENT -->
+      <div class="max-w-2xl">
+        <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white/80 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-700 shadow-lg backdrop-blur-xl">
+          <span class="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.9)]">
+          </span>
+          AI-powered healthcare ecosystem
+        </div>
+
+        <h1 class="text-5xl font-black leading-[1.02] tracking-tight text-slate-950 md:text-6xl">
+          Smart health for
+          <span class="bg-gradient-to-r from-blue-900 via-sky-600 to-cyan-400 bg-clip-text text-transparent">
+            everyone
+          </span>
+          — anywhere, anytime.
+        </h1>
+
+        <p class="mt-6 max-w-xl text-lg leading-8 text-slate-600">
+          HELEXIA+ is a digital health platform built to make healthcare easier to reach,
+          quicker to respond, and better for everyone.
+        </p>
+
+        <p class="mt-4 max-w-xl text-base leading-7 text-slate-500">
+          From rural pharmacies to public hospitals, HELEXIA+ connects patients,
+          providers, records, payments, and AI-powered care tools into one resilient
+          healthcare ecosystem.
+        </p>
+
+        <div class="mt-6 flex flex-wrap gap-3">
+          <div class="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm">
+            Remote Access
+          </div>
+          <div class="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm">
+            AI Assistance
+          </div>
+          <div class="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm">
+            Smart Care
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-wrap gap-4">
+          <button class="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-blue-900 to-sky-500 px-6 py-4 font-bold text-white shadow-[0_12px_40px_rgba(14,116,255,0.28)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_50px_rgba(14,116,255,0.35)]">
+            <span class="relative flex items-center gap-2">
+              Get Started <span class="transition group-hover:translate-x-1">→</span>
+            </span>
+          </button>
+
+          <button class="rounded-2xl border border-slate-200 bg-white px-6 py-4 font-bold text-slate-800 shadow-lg transition hover:border-sky-300 hover:bg-sky-50">
+            Register
+          </button>
+        </div>
+      </div>
+      
+<!-- RIGHT CARD -->
+      <div class="relative">
+        <div class="rounded-[2rem] border border-blue-100 bg-white/85 p-5 shadow-2xl shadow-blue-900/10 backdrop-blur-xl">
+          <div class="rounded-[1.5rem] bg-gradient-to-br from-white via-blue-50 to-sky-50 p-6">
+            <div class="mb-6 flex items-center justify-between">
+              <div>
+                <p class="text-sm font-black text-slate-950">HELEXIA+ Dashboard</p>
+                <p class="text-xs text-slate-500">Pilot command center</p>
+              </div>
+              <div class="grid size-10 place-items-center rounded-full bg-blue-100 text-blue-700">
+                +
+              </div>
+            </div>
+
+            <div class="grid gap-4 md:grid-cols-4">
+              <%= for {label, value} <- [{"Patients", "1,248"}, {"Appointments", "328"}, {"AI Insights", "86"}, {"Facilities", "31"}] do %>
+                <div class="rounded-2xl border border-blue-100 bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
+                  <p class="text-xs text-slate-500">{label}</p>
+                  <p class="mt-2 text-2xl font-black text-slate-950">{value}</p>
+                  <p class="mt-2 text-xs font-bold text-emerald-600">+12% this week</p>
+                </div>
+              <% end %>
+            </div>
+
+            <div class="mt-5 grid gap-4 md:grid-cols-2">
+              <div class="rounded-2xl border border-blue-100 bg-white p-5 shadow-sm">
+                <p class="text-sm font-black text-slate-950">AI Risk Prediction</p>
+                <div class="mt-6 grid place-items-center">
+                  <div class="grid size-32 place-items-center rounded-full border-[12px] border-blue-700 text-3xl font-black text-blue-900">
+                    78%
+                  </div>
+                </div>
+              </div>
+
+              <div class="rounded-2xl border border-blue-100 bg-white p-5 shadow-sm">
+                <p class="text-sm font-black text-slate-950">Recent Activity</p>
+                <div class="mt-4 space-y-4 text-sm text-slate-600">
+                  <p>● New patient registered</p>
+                  <p>● Lab result received</p>
+                  <p>● Prescription generated</p>
+                  <p>● Payment received</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="absolute -bottom-8 -right-4 hidden rounded-[2rem] border border-blue-100 bg-white/90 p-4 shadow-2xl backdrop-blur-xl md:block">
+          <div class="h-72 w-36 rounded-[1.5rem] bg-gradient-to-b from-white to-blue-50 p-3">
+            <p class="text-xs font-black text-blue-700">HELEXIA AI</p>
+            <div class="mt-5 rounded-2xl bg-white p-3 text-[10px] shadow-sm">
+              How can I help you today?
+            </div>
+            <div class="ml-auto mt-3 rounded-2xl bg-blue-800 p-3 text-[10px] text-white">
+              Show high risk patients
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+<!-- LIGHT TO DARK TRANSITION -->
+  <div class="relative h-44 overflow-hidden bg-white">
+    <div class="absolute inset-0 bg-gradient-to-b from-white via-slate-100 to-[#081a2f]"></div>
+    <div class="absolute left-1/2 top-8 h-44 w-[42rem] -translate-x-1/2 rounded-full bg-sky-400/20 blur-3xl">
+    </div>
+    <div class="absolute inset-0 opacity-[0.04] [background-image:linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] [background-size:42px_42px]">
+    </div>
+  </div>
+  
+<!-- PILOT / MAP SECTION -->
+  <section
+    id="pilot"
+    class="relative overflow-hidden bg-gradient-to-b from-[#081a2f] to-[#061427] py-28"
+  >
+    <div class="absolute left-0 top-0 h-[520px] w-[520px] rounded-full bg-sky-500/10 blur-3xl">
+    </div>
+    <div class="absolute bottom-0 right-0 h-[520px] w-[520px] rounded-full bg-blue-500/10 blur-3xl">
+    </div>
+
+    <div class="relative mx-auto max-w-[1600px] px-6">
+      <div class="mx-auto max-w-3xl text-center">
+        <span class="inline-flex items-center gap-2 rounded-full border border-sky-300/20 bg-sky-300/10 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-sky-200 backdrop-blur-xl">
+          <span class="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_14px_rgba(52,211,153,0.9)]">
+          </span>
+          Pilot Location
+        </span>
+
+        <h2 class="mt-5 text-4xl font-black tracking-tight text-white md:text-5xl">
+          Launching HELEXIA+ from Likoni, Mombasa
+        </h2>
+
+        <p class="mt-5 text-base leading-7 text-slate-300/75">
+          Our pilot begins in Likoni, connecting clinics, pharmacies, labs, hospitals,
+          and patient access points into one practical healthcare network built for
+          real-world conditions.
+        </p>
+      </div>
+
+      <div class="mt-14 grid gap-8 lg:grid-cols-3">
+        <div class="lg:col-span-2">
+          <div class="overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/[0.03] shadow-2xl shadow-black/20 backdrop-blur-2xl">
+            <div class="flex items-center justify-between border-b border-white/10 px-6 py-5">
+              <div>
+                <h3 class="text-lg font-black text-white">HELEXIA+ Coverage Map</h3>
+                <p class="text-sm text-slate-300/65">
+                  Pilot healthcare intelligence hub
+                </p>
+              </div>
+
+              <span class="rounded-full border border-sky-300/20 bg-sky-300/10 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-sky-200">
+                Mombasa
+              </span>
+            </div>
+
+            <div
+              id="helexia-map"
+              phx-update="ignore"
+              phx-hook="helexia_map_hook"
+              data-locations={Jason.encode!(@locations)}
+              class="h-[620px] w-full rounded-b-[2.5rem] overflow-hidden"
+            >
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-5">
+          <div class="rounded-[2rem] border border-sky-300/15 bg-sky-300/10 p-6 shadow-xl backdrop-blur-2xl transition hover:-translate-y-1 hover:bg-sky-300/[0.14]">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="text-xl font-black text-white">Likoni, Mombasa</h3>
+                <p class="mt-3 text-sm leading-6 text-slate-300/75">
+                  The first HELEXIA+ pilot location focused on practical healthcare workflows,
+                  patient access, and connected facility operations.
+                </p>
+              </div>
+
+              <span class="rounded-full border border-emerald-300/20 bg-emerald-300/10 px-3 py-1 text-xs font-black text-emerald-200">
+                Active
+              </span>
+            </div>
+
+            <div class="mt-6 flex flex-wrap items-center gap-3">
+              <button
+                type="button"
+                onclick="updateHelexiaMap(-4.1006, 39.6619, 'Likoni Pilot Hub')"
+                class="rounded-xl bg-sky-300 px-4 py-2.5 text-sm font-black text-[#061427]"
+              >
+                View on Map
+              </button>
+
+              <a
+                href="https://www.google.com/maps?q=Likoni,Mombasa,Kenya"
+                target="_blank"
+                class="text-sm font-bold text-sky-200 transition hover:text-white"
+              >
+                Get Directions →
+              </a>
+            </div>
+          </div>
+
+          <div class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 shadow-xl backdrop-blur-2xl">
+            <h4 class="text-sm font-black uppercase tracking-[0.22em] text-sky-200">
+              Pilot Intelligence
+            </h4>
+
+            <div class="mt-5 grid gap-3">
+              <div class="rounded-2xl border border-white/10 bg-white/[0.05] p-4">
+                <p class="text-xs text-slate-400">Deployment Zone</p>
+                <p class="mt-1 font-black text-white">Likoni Sub-County</p>
+              </div>
+
+              <div class="rounded-2xl border border-white/10 bg-white/[0.05] p-4">
+                <p class="text-xs text-slate-400">Healthcare Network</p>
+                <p class="mt-1 font-black text-white">Clinics · Labs · Pharmacies</p>
+              </div>
+
+              <div class="rounded-2xl border border-white/10 bg-white/[0.05] p-4">
+                <p class="text-xs text-slate-400">Expansion Status</p>
+                <p class="mt-1 font-black text-emerald-200">Ready to Scale</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-[2rem] border border-emerald-300/15 bg-emerald-300/10 p-6 text-white shadow-xl backdrop-blur-2xl">
+            <h4 class="text-sm font-black uppercase tracking-[0.22em] text-emerald-200">
+              Expansion Ready
+            </h4>
+            <p class="mt-3 text-sm leading-6 text-slate-300/75">
+              This map can later scale across Mombasa County and other regions by adding
+              more facility coordinates and coverage zones.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+<!-- DARK TO LIGHT TRANSITION -->
+  <div class="relative h-44 overflow-hidden bg-[#061427]">
+    <div class="absolute inset-0 bg-gradient-to-b from-[#061427] via-slate-100 to-white"></div>
+    <div class="absolute left-1/2 bottom-8 h-44 w-[42rem] -translate-x-1/2 rounded-full bg-sky-400/20 blur-3xl">
+    </div>
+  </div>
+  
+<!-- PATIENTS / WHITE SECTION -->
+  <section id="patients" class="relative overflow-hidden bg-white px-6 py-24">
+    <div class="absolute -left-32 top-32 h-[420px] w-[420px] rounded-full bg-blue-100 blur-3xl">
+    </div>
+
+    <div class="relative mx-auto max-w-[1500px]">
+      <div class="mx-auto max-w-2xl text-center">
+        <div class="mx-auto w-fit rounded-full border border-blue-100 bg-blue-50 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-blue-700">
+          The Ecosystem: OUr Tools for Change
+        </div>
+
+        <h2 class="mt-5 text-4xl font-black tracking-tight text-slate-950 md:text-5xl">
+          Everything patients need, in one place
+        </h2>
+
+        <p class="mt-4 text-slate-600 mb-5">
+          Built to scale with Africa's diverse landscape from underserved rural clinics to world-class urban hospitals — HELEXIA ➕ is designed for reach, resilience, and real-world impact.
+        </p>
+      </div>
+
+      <div class="flex w-max animate-[helexia-scroll_16s_linear_infinite] gap-12 hover:[animation-play-state:paused]">
+        <article
+          :for={{title, icon, body, image} <- @patient_modules}
+          class="group w-[320px] shrink-0 overflow-hidden rounded-[2rem] border border-blue-100 bg-white shadow-xl shadow-blue-900/5 transition duration-300 hover:-translate-y-2 hover:shadow-2xl"
+        >
+          <div class="relative h-52 overflow-hidden bg-slate-100">
+            <img
+              src={image}
+              alt={title}
+              class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+            />
+
+            <div class="absolute inset-0 bg-gradient-to-t from-[#061427]/75 via-[#061427]/15 to-transparent">
+            </div>
+
+            <div class="absolute bottom-4 left-4 grid size-14 place-items-center rounded-2xl bg-white/90 shadow-xl backdrop-blur-xl">
+              
+<!-- patient.svg -->
+              <svg
+                :if={icon == "user-circle"}
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 64 64"
+                fill="none"
+                class="size-10"
+              >
+                <rect width="64" height="64" rx="18" fill="#E0F2FE" />
+                <circle cx="32" cy="24" r="10" fill="#0284C7" />
+                <path d="M18 50c2-8 10-12 14-12s12 4 14 12" fill="#0EA5E9" />
+              </svg>
+              
+<!-- pharmacy.svg -->
+              <svg
+                :if={icon == "beaker"}
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 64 64"
+                fill="none"
+                class="size-10"
+              >
+                <rect width="64" height="64" rx="18" fill="#DBEAFE" />
+                <rect x="18" y="16" width="28" height="32" rx="8" fill="#2563EB" />
+                <path
+                  d="M32 22v20M22 32h20"
+                  stroke="white"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                />
+              </svg>
+              
+<!-- lab.svg -->
+              <svg
+                :if={icon == "clipboard-document-check"}
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 64 64"
+                fill="none"
+                class="size-10"
+              >
+                <rect width="64" height="64" rx="18" fill="#E0F2FE" />
+                <path
+                  d="M26 14h12v8l10 20a8 8 0 0 1-7 12H23a8 8 0 0 1-7-12l10-20v-8z"
+                  fill="#0EA5E9"
+                />
+                <path d="M24 40h16" stroke="white" stroke-width="3" stroke-linecap="round" />
+              </svg>
+              
+<!-- payment/insurance.svg -->
+              <svg
+                :if={icon == "credit-card"}
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 64 64"
+                fill="none"
+                class="size-10"
+              >
+                <rect width="64" height="64" rx="18" fill="#EEF2FF" />
+                <rect x="14" y="20" width="36" height="26" rx="6" fill="#4F46E5" />
+                <path d="M14 28h36" stroke="white" stroke-width="4" />
+                <path d="M22 38h10" stroke="white" stroke-width="3" stroke-linecap="round" />
+              </svg>
+              
+<!-- ai.svg -->
+              <svg
+                :if={icon == "cpu-chip"}
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 64 64"
+                fill="none"
+                class="size-10"
+              >
+                <rect width="64" height="64" rx="18" fill="#F3E8FF" />
+                <rect x="20" y="20" width="24" height="24" rx="6" fill="#7C3AED" />
+                <path
+                  d="M28 30h8M28 36h8"
+                  stroke="white"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M16 26h4M16 38h4M44 26h4M44 38h4M26 16v4M38 16v4M26 44v4M38 44v4"
+                  stroke="#7C3AED"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                />
+              </svg>
+              
+<!-- remote care.svg -->
+              <svg
+                :if={icon == "globe-alt"}
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 64 64"
+                fill="none"
+                class="size-10"
+              >
+                <rect width="64" height="64" rx="18" fill="#DCFCE7" />
+                <circle cx="32" cy="32" r="18" fill="#16A34A" />
+                <path
+                  d="M14 32h36M32 14c6 6 8 12 8 18s-2 12-8 18M32 14c-6 6-8 12-8 18s2 12 8 18"
+                  stroke="white"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                />
+              </svg>
+              
+<!-- emergency.svg -->
+              <svg
+                :if={icon == "bolt"}
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 64 64"
+                fill="none"
+                class="size-10"
+              >
+                <rect width="64" height="64" rx="18" fill="#FEE2E2" />
+                <path d="M36 8L18 36h12l-3 20 19-30H34l2-18z" fill="#DC2626" />
+              </svg>
+              
+<!-- analytics.svg -->
+              <svg
+                :if={icon == "chart-bar"}
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 64 64"
+                fill="none"
+                class="size-10"
+              >
+                <rect width="64" height="64" rx="18" fill="#E0E7FF" />
+                <rect x="18" y="34" width="7" height="14" rx="3" fill="#4F46E5" />
+                <rect x="29" y="24" width="7" height="24" rx="3" fill="#2563EB" />
+                <rect x="40" y="16" width="7" height="32" rx="3" fill="#0EA5E9" />
+              </svg>
+            </div>
+          </div>
+
+          <div class="p-6">
+            <h3 class="text-xl font-black text-slate-950">
+              {title}
+            </h3>
+
+            <p class="mt-3 min-h-16 text-sm leading-6 text-slate-600">
+              {body}
+            </p>
+
+            <a
+              class="mt-5 inline-flex font-bold text-blue-700 transition group-hover:text-sky-500"
+              href="#"
+            >
+              Learn more →
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <div class="mt-8 flex justify-center gap-3">
+        <button class="size-3 rounded-full bg-blue-700"></button>
+        <button class="size-3 rounded-full bg-blue-100"></button>
+        <button class="size-3 rounded-full bg-blue-100"></button>
+        <button class="size-3 rounded-full bg-blue-100"></button>
+      </div>
+    </div>
+  </section>
+  
+<!-- CTA / FULL WIDTH NAVY -->
+  <section class="relative overflow-hidden bg-[#061427] py-24">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(14,165,233,0.16),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.18),transparent_36%)]">
+    </div>
+
+    <div class="relative mx-auto max-w-[1500px] px-6">
+      <div class="flex flex-col items-start justify-between gap-8 rounded-[2.5rem] border border-white/10 bg-white/[0.05] p-10 text-white shadow-2xl shadow-black/20 backdrop-blur-2xl md:flex-row md:items-center">
+        <div>
+          <div class="mb-5 w-fit rounded-full border border-sky-300/20 bg-sky-300/10 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-sky-200">
+            The Future of Healthcare Systems
+          </div>
+
+          <p class="max-w-3xl text-2xl font-black md:text-5xl">
+            Ready to transform healthcare with HELEXIA +?
+          </p>
+
+          <p class="mt-4 max-w-xl text-slate-300/75">
+            Join the digital health revolution and deliver better care to more people, everywhere.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-4">
+          <button class="rounded-2xl bg-sky-300 px-6 py-4 font-black text-[#061427] shadow-[0_0_34px_rgba(125,211,252,0.35)] transition hover:scale-105 hover:bg-white">
+            Book a Demo
+          </button>
+
+          <button class="rounded-2xl border border-white/15 bg-white/[0.05] px-6 py-4 font-black text-white backdrop-blur-xl transition hover:border-sky-300/30 hover:bg-white/[0.09]">
+            Partner With Us
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<Layouts.footer />
