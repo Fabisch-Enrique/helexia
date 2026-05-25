@@ -83,13 +83,14 @@ defmodule HelexiaWeb do
       use Gettext, backend: HelexiaWeb.Gettext
 
       # HTML escaping functionality
-      import Phoenix.HTML
       # Core UI components
+      import Phoenix.HTML
       import HelexiaWeb.CoreComponents
+      import HelexiaWeb.LiveViewHelpers
 
       # Common modules used in templates
-      alias Phoenix.LiveView.JS
       alias HelexiaWeb.Layouts
+      alias Phoenix.LiveView.JS
 
       # Routes generation with the ~p sigil
       unquote(verified_routes())

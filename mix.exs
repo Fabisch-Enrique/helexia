@@ -41,14 +41,14 @@ defmodule Helexia.MixProject do
   defp deps do
     [
       {:phoenix, "~> 1.8.7"},
-      {:phoenix_ecto, "~> 4.5"},
       {:ecto_sql, "~> 3.13"},
       {:postgrex, ">= 0.0.0"},
+      {:phoenix_ecto, "~> 4.5"},
       {:phoenix_html, "~> 4.1"},
-      {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_live_view, "~> 1.1.0"},
       {:lazy_html, ">= 0.1.0", only: :test},
       {:phoenix_live_dashboard, "~> 0.8.3"},
+      {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:esbuild, "~> 0.10", runtime: Mix.env() == :dev},
       {:tailwind, "~> 0.3", runtime: Mix.env() == :dev},
       {:heroicons,
@@ -58,14 +58,19 @@ defmodule Helexia.MixProject do
        app: false,
        compile: false,
        depth: 1},
-      {:swoosh, "~> 1.16"},
       {:req, "~> 0.5"},
-      {:telemetry_metrics, "~> 1.0"},
-      {:telemetry_poller, "~> 1.0"},
-      {:gettext, "~> 1.0"},
       {:jason, "~> 1.2"},
+      {:bandit, "~> 1.5"},
+      {:swoosh, "~> 1.16"},
+      {:slugify, "~> 1.3"},
+      {:gettext, "~> 0.26"},
+      {:timex, "~> 3.7.13"},
+      {:qr_code, "~> 3.0.0"},
+      {:qrcode_ex, "~> 0.1.0"},
       {:dns_cluster, "~> 0.2.0"},
-      {:bandit, "~> 1.5"}
+      {:telemetry_poller, "~> 1.0"},
+      {:telemetry_metrics, "~> 1.0"},
+      {:vc_utils, git: "https://github.com/valuechainfactory/vc_utils.git"}
     ]
   end
 

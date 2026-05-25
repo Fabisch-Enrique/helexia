@@ -1,0 +1,321 @@
+<style>
+  @keyframes nodePulse {
+    0%,100% { transform: scale(1); opacity:.6; }
+    50% { transform: scale(1.45); opacity:1; }
+  }
+
+  @keyframes dataSweep {
+    0% { transform: translateX(-140%); opacity:0; }
+    20% { opacity:1; }
+    100% { transform: translateX(160%); opacity:0; }
+  }
+
+  @keyframes floatPanel {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes dashMove {
+    to { stroke-dashoffset: -120; }
+  }
+</style>
+
+<section class="relative overflow-hidden bg-[#F3F6FA] px-6 py-28 md:px-10 xl:px-20">
+  <!-- HUD GRID -->
+  <div
+    class="absolute inset-0 opacity-60"
+    style="
+      background-image:
+        linear-gradient(to right, rgba(37,99,235,.07) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(37,99,235,.07) 1px, transparent 1px);
+      background-size: 48px 48px;
+    "
+  >
+  </div>
+  
+<!-- SOFT GLOWS -->
+  <div class="absolute -left-24 top-20 h-96 w-96 rounded-full bg-blue-300/20 blur-3xl"></div>
+  <div class="absolute right-0 top-0 h-[34rem] w-[34rem] rounded-full bg-cyan-300/20 blur-3xl">
+  </div>
+  <div class="absolute bottom-20 left-1/2 h-80 w-80 rounded-full bg-violet-300/10 blur-3xl"></div>
+  
+<!-- NETWORK ROUTES -->
+  <svg class="pointer-events-none absolute inset-0 h-full w-full opacity-40" fill="none">
+    <path
+      d="M80 250 C260 120, 480 420, 680 250 S1020 180, 1240 390"
+      stroke="url(#routeGradient)"
+      stroke-width="1.4"
+      stroke-dasharray="10 14"
+      style="animation: dashMove 9s linear infinite;"
+    />
+    <path
+      d="M220 680 C420 470, 690 620, 900 350 S1120 180, 1320 260"
+      stroke="url(#routeGradient)"
+      stroke-width="1.4"
+      stroke-dasharray="10 14"
+      style="animation: dashMove 11s linear infinite;"
+    />
+    <defs>
+      <linearGradient id="routeGradient" x1="0" x2="1">
+        <stop stop-color="#2563EB" />
+        <stop offset="1" stop-color="#06B6D4" />
+      </linearGradient>
+    </defs>
+  </svg>
+  
+<!-- FLOATING NODES -->
+  <div
+    class="absolute left-[8%] top-[24%] h-3 w-3 rounded-full bg-blue-600 shadow-[0_0_28px_rgba(37,99,235,.8)]"
+    style="animation:nodePulse 2.8s infinite;"
+  >
+  </div>
+  <div
+    class="absolute left-[30%] bottom-[20%] h-2.5 w-2.5 rounded-full bg-cyan-500 shadow-[0_0_28px_rgba(6,182,212,.8)]"
+    style="animation:nodePulse 3.2s infinite;"
+  >
+  </div>
+  <div
+    class="absolute right-[12%] top-[28%] h-3 w-3 rounded-full bg-blue-500 shadow-[0_0_28px_rgba(37,99,235,.8)]"
+    style="animation:nodePulse 2.5s infinite;"
+  >
+  </div>
+  <div
+    class="absolute right-[36%] bottom-[18%] h-2.5 w-2.5 rounded-full bg-cyan-400 shadow-[0_0_28px_rgba(34,211,238,.8)]"
+    style="animation:nodePulse 3.6s infinite;"
+  >
+  </div>
+
+  <div class="relative grid items-center gap-20 lg:grid-cols-[1.05fr_0.95fr]">
+    <!-- LEFT CONTENT -->
+    <div class="max-w-3xl">
+      <p class="mb-5 inline-flex rounded-full border border-blue-100 bg-white/80 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-blue-700 shadow-sm backdrop-blur">
+        About HELEXIA+
+      </p>
+
+      <h1 class="text-5xl font-black leading-[1.04] tracking-tight text-slate-950 xl:text-7xl">
+        Healthcare networks, <span class="text-slate-500"> powered by intelligence.</span>
+        <br /> Built for
+        <span class="bg-gradient-to-r from-blue-700 via-cyan-500 to-blue-500 bg-clip-text text-transparent">
+          Africa.
+        </span>
+      </h1>
+
+      <p class="mt-8 max-w-2xl text-lg leading-9 text-slate-600 md:text-xl">
+        HELEXIA+ connects patients, hospitals, labs, pharmacies and care teams into one intelligent health ecosystem — designed for real-world deployment, offline access and scalable digital health operations.
+      </p>
+      
+<!-- INFORMATIVE CHIPS -->
+      <div class="mt-9 grid max-w-2xl gap-4 sm:grid-cols-2">
+        <div class="rounded-2xl border border-white bg-white/75 p-4 shadow-sm backdrop-blur">
+          <p class="text-sm font-black text-slate-950">Offline-first care</p>
+          <p class="mt-1 text-sm leading-6 text-slate-500">
+            Keeps workflows running where connectivity is unreliable.
+          </p>
+        </div>
+
+        <div class="rounded-2xl border border-white bg-white/75 p-4 shadow-sm backdrop-blur">
+          <p class="text-sm font-black text-slate-950">Connected providers</p>
+          <p class="mt-1 text-sm leading-6 text-slate-500">
+            Links patients, doctors, labs and pharmacies in one flow.
+          </p>
+        </div>
+
+        <div class="rounded-2xl border border-white bg-white/75 p-4 shadow-sm backdrop-blur">
+          <p class="text-sm font-black text-slate-950">AI-assisted workflows</p>
+          <p class="mt-1 text-sm leading-6 text-slate-500">
+            Supports smarter triage, routing and healthcare decisions.
+          </p>
+        </div>
+
+        <div class="rounded-2xl border border-white bg-white/75 p-4 shadow-sm backdrop-blur">
+          <p class="text-sm font-black text-slate-950">Pilot-ready system</p>
+          <p class="mt-1 text-sm leading-6 text-slate-500">
+            Starting with practical deployment in Mombasa.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-10 flex flex-wrap gap-5">
+        <a
+          href="/"
+          class="rounded-2xl bg-blue-600 px-7 py-4 font-bold text-white shadow-xl shadow-blue-600/20 transition hover:-translate-y-0.5 hover:bg-blue-700"
+        >
+          Explore Platform
+        </a>
+
+        <a
+          href="#mission"
+          class="rounded-2xl border border-blue-100 bg-white/80 px-7 py-4 font-bold text-slate-900 shadow-sm backdrop-blur transition hover:border-blue-300 hover:bg-white"
+        >
+          Learn More
+        </a>
+      </div>
+    </div>
+    
+<!-- RIGHT FUTURISTIC ECOSYSTEM PANEL -->
+    <div class="relative" style="animation:floatPanel 7s ease-in-out infinite;">
+      <div class="absolute -inset-5 rounded-[3rem] bg-gradient-to-r from-blue-500/20 via-cyan-400/25 to-violet-500/20 blur-2xl">
+      </div>
+
+      <div class="relative overflow-hidden rounded-[2.75rem] border border-white/80 bg-white/75 p-6 shadow-2xl shadow-blue-900/10 backdrop-blur-xl">
+        <!-- DATA FLOW SWEEP -->
+        <div class="pointer-events-none absolute inset-0 overflow-hidden rounded-[2.75rem]">
+          <div
+            class="absolute inset-y-0 w-1/2 bg-gradient-to-r from-transparent via-cyan-300/35 to-transparent blur-xl"
+            style="animation:dataSweep 4.5s linear infinite;"
+          >
+          </div>
+        </div>
+
+        <div class="relative rounded-[2.2rem] bg-gradient-to-br from-white via-blue-50 to-cyan-50 p-7">
+          <!-- HEADER -->
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-xs font-black uppercase tracking-[0.18em] text-blue-600">
+                Health Network
+              </p>
+              <h3 class="mt-2 text-2xl font-black text-slate-950">
+                Connected Ecosystem
+              </h3>
+            </div>
+
+            <div class="flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1 text-xs font-black text-emerald-700">
+              <span class="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_14px_rgba(16,185,129,.9)]">
+              </span>
+              Live Pilot
+            </div>
+          </div>
+          
+<!-- NETWORK MAP CARD -->
+          <div class="relative mt-8 rounded-3xl border border-blue-100/80 bg-white/85 p-6 shadow-sm">
+            <div
+              class="absolute inset-0 rounded-3xl opacity-50"
+              style="
+                background-image:
+                  linear-gradient(to right, rgba(37,99,235,.06) 1px, transparent 1px),
+                  linear-gradient(to bottom, rgba(37,99,235,.06) 1px, transparent 1px);
+                background-size: 28px 28px;
+              "
+            >
+            </div>
+
+            <div class="relative grid grid-cols-2 gap-4 text-sm font-bold text-slate-700">
+              <div class="rounded-2xl bg-blue-600 p-4 text-white shadow-lg shadow-blue-600/20">
+                Patients
+                <p class="mt-1 text-xs font-medium text-blue-100">Access care</p>
+              </div>
+
+              <div class="rounded-2xl bg-white p-4 shadow-sm">
+                Hospitals
+                <p class="mt-1 text-xs font-medium text-slate-500">Manage care</p>
+              </div>
+
+              <div class="rounded-2xl bg-white p-4 shadow-sm">
+                Labs
+                <p class="mt-1 text-xs font-medium text-slate-500">Share results</p>
+              </div>
+
+              <div class="rounded-2xl bg-cyan-50 p-4 text-cyan-700 shadow-sm">
+                Pharmacies
+                <p class="mt-1 text-xs font-medium text-cyan-600">Fulfil medication</p>
+              </div>
+            </div>
+            
+<!-- CENTRAL AI NODE -->
+            <div class="relative mx-auto mt-5 flex h-20 w-20 items-center justify-center rounded-full bg-slate-950 text-xs font-black text-white shadow-2xl shadow-blue-900/20">
+              AI Core
+              <span class="absolute -inset-3 rounded-full border border-blue-300/50"></span>
+              <span class="absolute -inset-6 rounded-full border border-cyan-300/30"></span>
+            </div>
+          </div>
+          
+<!-- LOWER INSIGHTS -->
+          <div class="mt-5 grid gap-5 md:grid-cols-2">
+            <div class="relative overflow-hidden rounded-3xl bg-blue-600 p-7 text-white shadow-xl shadow-blue-600/20">
+              <div class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-cyan-300/30 blur-2xl">
+              </div>
+              <p class="relative text-3xl font-black">Smart Routing</p>
+              <p class="relative mt-3 text-sm leading-7 text-blue-100">
+                Guides patients across care pathways, referrals, labs and pharmacy touchpoints.
+              </p>
+            </div>
+
+            <div class="rounded-3xl border border-blue-100/70 bg-white/90 p-7 shadow-sm">
+              <p class="text-3xl font-black text-slate-950">Offline Sync</p>
+              <p class="mt-3 text-sm leading-7 text-slate-500">
+                Captures activity locally and syncs records when connectivity returns.
+              </p>
+            </div>
+          </div>
+          
+<!-- MINI STATUS BAR -->
+          <div class="mt-5 rounded-2xl border border-blue-100 bg-white/80 p-4">
+            <div class="flex items-center justify-between text-xs font-black text-slate-500">
+              <span>Mombasa Pilot Readiness</span>
+              <span class="text-blue-600">78%</span>
+            </div>
+
+            <div class="mt-3 h-2 overflow-hidden rounded-full bg-blue-100">
+              <div class="h-full w-[78%] rounded-full bg-gradient-to-r from-blue-600 to-cyan-400">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION SECTION -->
+<section id="mission" class="relative overflow-hidden bg-[#F3F6FA] px-6 pb-28 md:px-10 xl:px-20">
+  <div
+    class="absolute inset-0 opacity-50"
+    style="
+      background-image:
+        linear-gradient(to right, rgba(37,99,235,.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(37,99,235,.06) 1px, transparent 1px);
+      background-size: 48px 48px;
+    "
+  >
+  </div>
+
+  <div class="relative overflow-hidden rounded-[2.5rem] border border-white/80 bg-white/75 p-8 shadow-xl shadow-blue-900/5 backdrop-blur-xl md:p-12">
+    <div class="absolute inset-0 bg-gradient-to-r from-blue-50 via-white to-cyan-50"></div>
+    <div class="absolute right-10 top-10 h-40 w-40 rounded-full bg-blue-300/20 blur-3xl"></div>
+
+    <div class="relative grid gap-14 lg:grid-cols-[0.9fr_1.1fr]">
+      <div>
+        <p class="text-sm font-black uppercase tracking-[0.2em] text-blue-700">
+          Our Mission
+        </p>
+
+        <h2 class="mt-5 text-4xl font-black leading-tight tracking-tight text-slate-950 md:text-5xl">
+          Making healthcare more connected, intelligent and accessible.
+        </h2>
+      </div>
+
+      <div class="flex flex-col justify-center gap-6">
+        <p class="max-w-3xl text-lg leading-9 text-slate-600">
+          We are building HELEXIA+ to improve how healthcare systems communicate, operate and deliver care — starting with practical deployment in Mombasa and scaling across Africa.
+        </p>
+
+        <div class="grid gap-4 sm:grid-cols-3">
+          <div class="rounded-2xl bg-white/80 p-5 shadow-sm">
+            <p class="text-2xl font-black text-blue-600">01</p>
+            <p class="mt-2 text-sm font-bold text-slate-700">Connect providers</p>
+          </div>
+
+          <div class="rounded-2xl bg-white/80 p-5 shadow-sm">
+            <p class="text-2xl font-black text-blue-600">02</p>
+            <p class="mt-2 text-sm font-bold text-slate-700">Support offline care</p>
+          </div>
+
+          <div class="rounded-2xl bg-white/80 p-5 shadow-sm">
+            <p class="text-2xl font-black text-blue-600">03</p>
+            <p class="mt-2 text-sm font-bold text-slate-700">Scale health access</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
