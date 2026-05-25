@@ -32,6 +32,18 @@ defmodule HelexiaWeb.Router do
     end
   end
 
+  scope "/", HelexiaWeb do
+    pipe_through :browser
+
+    live_session(:team,
+      on_mount: []
+    ) do
+      scope "/", TeamLive do
+        live "/meet-the-team", Index, :team
+      end
+    end
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", HelexiaWeb do
   #   pipe_through :api

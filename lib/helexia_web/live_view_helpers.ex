@@ -1,12 +1,12 @@
 defmodule HelexiaWeb.LiveViewHelpers do
-  def qr_code(url) do
+  def generate_qr_code(url) do
     url
     |> QRCodeEx.encode()
     |> QRCodeEx.svg(
       color: "#03B6AD",
       shape: "circle",
       width: 300,
-      background_color: "#FFFFFF"
+      background_color: "#022a65"
     )
   end
 
