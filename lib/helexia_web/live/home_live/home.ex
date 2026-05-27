@@ -3,6 +3,8 @@ defmodule HelexiaWeb.HomeLive.Home do
 
   import HelexiaWeb.HomeLive.Components
 
+  alias Helexia.Members
+
   def mount(_params, _session, socket) do
     assigns = [
       locations: [
@@ -39,7 +41,7 @@ defmodule HelexiaWeb.HomeLive.Home do
   end
 
   def apply_action(socket, :landing_page, _params) do
-    socket
+    assign(socket, founders: Members.list_team_by_level(1) |> dbg())
   end
 
   def patient_modules() do

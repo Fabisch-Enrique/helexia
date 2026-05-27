@@ -67,9 +67,11 @@ defmodule Helexia.MixProject do
       {:timex, "~> 3.7.13"},
       {:qr_code, "~> 3.0.0"},
       {:qrcode_ex, "~> 0.1.0"},
+      {:waffle_ecto, "~> 0.0.12"},
       {:dns_cluster, "~> 0.2.0"},
       {:telemetry_poller, "~> 1.0"},
       {:telemetry_metrics, "~> 1.0"},
+      {:typed_ecto_schema, "~> 0.4.3", runtime: false},
       {:vc_utils, git: "https://github.com/valuechainfactory/vc_utils.git"}
     ]
   end
