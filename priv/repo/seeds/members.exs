@@ -10,7 +10,7 @@ defmodule Helexia.Seeds.Members do
       image_url: "/images/ceo0.png",
       email: "moses@sensspectra.com",
       title: "President & Co-Founder",
-      expertise: ["commercial law", "company law", "litigation", "conveyancing"]
+      expertise: ["Strategy", "Governance", "Fintech"]
     },
     %{
       level: 1,
@@ -20,7 +20,7 @@ defmodule Helexia.Seeds.Members do
       image_url: "/images/ceo1.png",
       email: "aishwariyasrinagesh@gmail.com",
       title: "Chief Executive Officer & Co-Founder",
-      expertise: ["litigation", "conveyancing", "civil litigation"]
+      expertise: ["Operations", "Management", "Solutions Expert"]
     },
     %{
       level: 2,
@@ -31,6 +31,26 @@ defmodule Helexia.Seeds.Members do
       email: "erikrind@gmil.com",
       image_url: "/images/cto.png",
       expertise: ["litigation", "conveyancing", "arbitration proceedings"]
+    },
+        %{
+      level: 2,
+      status: "active",
+      display_order: 4,
+      name: "Titus Njihigu",
+      email: "titusnjihigu@gmil.com",
+      image_url: "/images/uat_cs.png",
+      expertise: ["Health", "Clinics"],
+      title: "UAT & Clinical Systems QA"
+    },
+            %{
+      level: 2,
+      status: "active",
+      display_order: 5,
+      name: "Mercy Nasimiyu",
+      email: "mercynasimiyu@gmil.com",
+      image_url: "/images/co_nas.png",
+      expertise: ["Nursing", "Health", "Patient Care"],
+      title: "Clinical Operations & Nursing Adoption Support"
     }
   ]
 

@@ -40,7 +40,7 @@ defmodule HelexiaWeb.Router do
     ) do
       scope "/", TeamLive do
         live "/meet-the-team", Index, :team
-        live "/meet-the-team/:id/:name", Index, :member
+        live "/meet-the-team/:title/:name/:id", Index, :view_member
       end
     end
   end

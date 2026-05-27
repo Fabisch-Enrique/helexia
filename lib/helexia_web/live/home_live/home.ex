@@ -41,7 +41,7 @@ defmodule HelexiaWeb.HomeLive.Home do
   end
 
   def apply_action(socket, :landing_page, _params) do
-    assign(socket, founders: Members.list_team_by_level(1) |> dbg())
+    assign(socket, founders: Members.list_team_by_level(1))
   end
 
   def patient_modules() do

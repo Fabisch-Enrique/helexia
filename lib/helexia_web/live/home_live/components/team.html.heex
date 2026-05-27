@@ -1,4 +1,7 @@
-<section class="relative overflow-hidden bg-[#F8FBFF] px-6 py-28 md:px-10 xl:px-20">
+<section
+  id="team-leadership"
+  class="relative overflow-hidden bg-[#F8FBFF] px-6 py-28 md:px-10 xl:px-20"
+>
   <div
     class="absolute inset-0 opacity-[0.05]"
     style="
@@ -43,8 +46,9 @@
       
 <!-- MEMBER 1 -->
       <a
+        :for={founder <- @founders}
         class="group block"
-        href="/meet-the-team/president-co-founder"
+        href={"/meet-the-team/#{founder.title}/#{founder.name}/#{founder.id}"}
       >
         <article class="group relative overflow-hidden rounded-[2.5rem] border border-white/70 bg-white/75 p-5 shadow-2xl shadow-blue-900/5 backdrop-blur-xl transition duration-500 hover:-translate-y-2">
           <div class="absolute right-0 top-0 h-56 w-56 rounded-full bg-blue-400/20 blur-3xl">
@@ -52,96 +56,41 @@
 
           <div class="relative overflow-hidden rounded-[2rem] bg-slate-950 p-3">
             <img
-              src="/images/ceo0.png"
-              alt="President & Co-Founder"
+              alt={founder.title}
+              src={founder.image_url}
               class="h-[360px] w-full rounded-[1.6rem] object-cover object-center opacity-95 transition duration-700 group-hover:scale-105"
             />
 
             <div class="absolute inset-3 rounded-[1.6rem] bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent">
             </div>
 
-            <div class="absolute left-7 top-7 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-white backdrop-blur">
-              Vision Systems
-            </div>
-
             <div class="absolute bottom-7 left-7 right-7">
-              <p class="text-xs font-black uppercase tracking-[0.22em] text-cyan-300">
-                Chief Executive Officer
-              </p>
               <h3 class="mt-2 text-3xl font-black text-white">
-                President & Co-Founder
+                {founder.title}
               </h3>
             </div>
           </div>
 
           <div class="relative p-5">
             <p class="text-sm leading-7 text-slate-600">
-              Leads HELEXIA+ as a connected healthcare intelligence ecosystem,
-              focused on accessibility, AI-driven workflows and interoperable care.
+              <%= cond do %>
+                <% founder.slug == "president_co_founder" -> %>
+                  Leads HELEXIA+ through strategic healthcare transformation,
+                  partnerships and long-term ecosystem growth across Africa.
+                <% founder.slug == "ceo_co_founder" -> %>
+                  Drives the vision, technology and intelligent healthcare infrastructure
+                  powering the HELEXIA+ digital health ecosystem.
+                <% true -> %>
+                  Contributes to the growth and innovation of the HELEXIA+ healthcare platform.
+              <% end %>
             </p>
 
             <div class="mt-6 flex flex-wrap gap-3">
-              <span class="rounded-full bg-blue-50 px-4 py-2 text-xs font-black text-blue-700">
-                Strategy
-              </span>
-              <span class="rounded-full bg-cyan-50 px-4 py-2 text-xs font-black text-cyan-700">
-                Product Vision
-              </span>
-              <span class="rounded-full bg-violet-50 px-4 py-2 text-xs font-black text-violet-700">
-                AI Care
-              </span>
-            </div>
-          </div>
-        </article>
-      </a>
-      
-<!-- MEMBER 2 -->
-      <a
-        class="group block"
-        href="/meet-the-team/president-co-founder"
-      >
-        <article class="group relative overflow-hidden rounded-[2.5rem] border border-white/70 bg-white/75 p-5 shadow-2xl shadow-blue-900/5 backdrop-blur-xl transition duration-500 hover:-translate-y-2">
-          <div class="absolute left-0 top-0 h-56 w-56 rounded-full bg-cyan-400/20 blur-3xl"></div>
-
-          <div class="relative overflow-hidden rounded-[2rem] bg-slate-950 p-3">
-            <img
-              src="/images/ceo1.png"
-              alt="Chief Executive Officer & Co-Founder"
-              class="h-[360px] w-full rounded-[1.6rem] object-cover object-[center_20%] opacity-95 transition duration-700 group-hover:scale-105"
-            />
-
-            <div class="absolute inset-3 rounded-[1.6rem] bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent">
-            </div>
-
-            <div class="absolute left-7 top-7 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-white backdrop-blur">
-              Infrastructure Core
-            </div>
-
-            <div class="absolute bottom-7 left-7 right-7">
-              <p class="text-xs font-black uppercase tracking-[0.22em] text-cyan-300">
-                Chief Technology Officer
-              </p>
-              <h3 class="mt-2 text-3xl font-black text-white">
-                Chief Executive Officer & Co-Founder
-              </h3>
-            </div>
-          </div>
-
-          <div class="relative p-5">
-            <p class="text-sm leading-7 text-slate-600">
-              Builds the secure technical backbone of HELEXIA+, enabling scalable
-              systems, real-time interoperability and intelligent healthcare connectivity.
-            </p>
-
-            <div class="mt-6 flex flex-wrap gap-3">
-              <span class="rounded-full bg-cyan-50 px-4 py-2 text-xs font-black text-cyan-700">
-                Engineering
-              </span>
-              <span class="rounded-full bg-blue-50 px-4 py-2 text-xs font-black text-blue-700">
-                Security
-              </span>
-              <span class="rounded-full bg-emerald-50 px-4 py-2 text-xs font-black text-emerald-700">
-                Systems
+              <span
+                :for={expertise <- founder.expertise}
+                class="rounded-full bg-blue-50 px-4 py-2 text-xs font-black text-blue-700"
+              >
+                {expertise}
               </span>
             </div>
           </div>
@@ -154,7 +103,7 @@
         href="/meet-the-team"
         class="group inline-flex items-center gap-3 rounded-2xl bg-slate-950 px-8 py-4 text-sm font-black text-white shadow-xl shadow-slate-900/10 transition hover:-translate-y-1 hover:bg-blue-700"
       >
-        Meet the Full Team <span class="transition group-hover:translate-x-1">→</span>
+        Meet the Team <span class="transition group-hover:translate-x-1">→</span>
       </a>
     </div>
   </div>

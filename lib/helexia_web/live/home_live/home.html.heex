@@ -1,8 +1,7 @@
 <Layouts.header />
 
 <main class="bg-white">
-  
-<!-- HERO / WHITE SECTION -->
+  <!-- HERO / WHITE SECTION -->
   <section class="relative overflow-hidden bg-white px-6 pb-28 pt-24">
     <div class="absolute -right-32 top-10 h-[520px] w-[520px] rounded-full bg-sky-200/50 blur-3xl">
     </div>
@@ -505,42 +504,11 @@
   
 <!-- About Us -->
   <.about_us />
+  <!-- Partners  -->
   <.partners />
+  <!-- Begin the journey -->
   <.scan_qr />
-  
-<!-- CTA / FULL WIDTH NAVY -->
-  <.team />
-  <%!-- <section class="relative overflow-hidden bg-[#061427] py-24">
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(14,165,233,0.16),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.18),transparent_36%)]">
-    </div>
-
-    <div class="relative mx-auto max-w-[1500px] px-6">
-      <div class="flex flex-col items-start justify-between gap-8 rounded-[2.5rem] border border-white/10 bg-white/[0.05] p-10 text-white shadow-2xl shadow-black/20 backdrop-blur-2xl md:flex-row md:items-center">
-        <div>
-          <div class="mb-5 w-fit rounded-full border border-sky-300/20 bg-sky-300/10 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-sky-200">
-            The Future of Healthcare Systems
-          </div>
-
-          <p class="max-w-3xl text-2xl font-black md:text-5xl">
-            Ready to transform healthcare with HELEXIA +?
-          </p>
-
-          <p class="mt-4 max-w-xl text-slate-300/75">
-            Join the digital health revolution and deliver better care to more people, everywhere.
-          </p>
-        </div>
-
-        <div class="flex flex-wrap gap-4">
-          <button class="rounded-2xl bg-sky-300 px-6 py-4 font-black text-[#061427] shadow-[0_0_34px_rgba(125,211,252,0.35)] transition hover:scale-105 hover:bg-white">
-            Book a Demo
-          </button>
-
-          <button class="rounded-2xl border border-white/15 bg-white/[0.05] px-6 py-4 font-black text-white backdrop-blur-xl transition hover:border-sky-300/30 hover:bg-white/[0.09]">
-            Partner With Us
-          </button>
-        </div>
-      </div>
-    </div>
-  </section> --%>
+  <!-- The Team -->
+  <.team founders={@founders} />
 </main>
 <Layouts.footer />

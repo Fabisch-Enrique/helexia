@@ -8,7 +8,10 @@
   For a real app, replace the static member object below with route-based data.
 -->
 
-<section class="relative min-h-screen overflow-hidden bg-[#F8FBFF] px-6 py-24 md:px-10 xl:px-20">
+<section
+  :if={@live_action == :view_member}
+  class="relative min-h-screen overflow-hidden bg-[#F8FBFF] px-6 py-24 md:px-10 xl:px-20"
+>
   <!-- HELEXIA background system -->
   <div
     class="absolute inset-0 opacity-[0.05]"
@@ -20,7 +23,6 @@
     "
   >
   </div>
-
   <div class="absolute left-[-12%] top-10 h-[34rem] w-[34rem] rounded-full bg-blue-400/20 blur-3xl">
   </div>
   <div class="absolute right-[-10%] top-72 h-[32rem] w-[32rem] rounded-full bg-cyan-300/20 blur-3xl">
@@ -45,34 +47,32 @@
         <div class="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-cyan-300/20 blur-3xl">
         </div>
 
-        <div class="relative h-full overflow-hidden rounded-[2.4rem] bg-slate-950 p-3">
-          <img
-            id="memberImage"
-            src="/images/ceo0.png"
-            alt="President & Co-Founder"
-            class="h-[620px] w-full rounded-[2rem] object-cover object-center opacity-95 transition duration-700 group-hover:scale-105"
-          />
-
-          <div class="absolute inset-3 rounded-[2rem] bg-gradient-to-t from-slate-950 via-slate-950/25 to-transparent">
-          </div>
-
-          <div class="absolute left-7 top-7 rounded-full border border-white/20 bg-white/10 px-5 py-2 text-xs font-black uppercase tracking-[0.2em] text-white backdrop-blur">
-            <span id="memberSystem">Vision Systems</span>
-          </div>
-
-          <div class="absolute bottom-8 left-8 right-8">
-            <p
-              id="memberLayer"
-              class="text-xs font-black uppercase tracking-[0.25em] text-cyan-300"
-            >
-              Layer 01 · Founding Leadership
-            </p>
-            <h1
-              id="memberNameImage"
-              class="mt-3 text-4xl font-black tracking-tight text-white md:text-5xl"
-            >
-              President & Co-Founder
-            </h1>
+        <div class="relative overflow-hidden rounded-[2.4rem] bg-slate-950 p-3">
+          
+<!-- IMAGE -->
+          <div class="relative overflow-hidden rounded-[2rem]">
+            <img
+              id="member-image"
+              alt={@member.title}
+              src={@member.image_url}
+              class="h-[520px] min-h-[520px] w-full object-cover object-[center_20%] opacity-95 transition duration-700 group-hover:scale-105 md:h-[620px]"
+            />
+            
+<!-- DARK OVERLAY -->
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent">
+            </div>
+            
+<!-- CONTENT -->
+            <div class="absolute inset-x-0 bottom-0 p-6 md:p-8">
+              <div class="max-w-[90%]">
+                <h1
+                  id="memberNameImage"
+                  class="text-3xl font-black leading-tight tracking-tight text-white sm:text-4xl md:text-5xl"
+                >
+                  {@member.title}
+                </h1>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -111,24 +111,13 @@
           </p>
 
           <div class="mt-8 grid gap-4 sm:grid-cols-3">
-            <div class="rounded-[2rem] border border-blue-100 bg-[#F8FBFF] p-5">
+            <div
+              :for={expertise <- @member.expertise}
+              class="rounded-[2rem] border border-blue-100 bg-[#F8FBFF] p-5"
+            >
               <p class="text-xs font-black uppercase tracking-[0.2em] text-blue-700">Focus</p>
-              <p id="memberFocus" class="mt-3 text-sm font-bold leading-6 text-slate-700">
-                Strategy
-              </p>
-            </div>
-
-            <div class="rounded-[2rem] border border-cyan-100 bg-[#F8FBFF] p-5">
-              <p class="text-xs font-black uppercase tracking-[0.2em] text-cyan-700">Strength</p>
-              <p id="memberStrength" class="mt-3 text-sm font-bold leading-6 text-slate-700">
-                Product Vision
-              </p>
-            </div>
-
-            <div class="rounded-[2rem] border border-violet-100 bg-[#F8FBFF] p-5">
-              <p class="text-xs font-black uppercase tracking-[0.2em] text-violet-700">Impact</p>
-              <p id="memberImpact" class="mt-3 text-sm font-bold leading-6 text-slate-700">
-                AI Care
+              <p id="memberFocus" class="mt-3 text-sm font-bold leading-6 text-cyan-700">
+                {expertise}
               </p>
             </div>
           </div>
@@ -152,72 +141,89 @@
     <div class="mt-14 grid gap-8 lg:grid-cols-[1fr_0.42fr]">
       <article class="rounded-[3rem] border border-white/70 bg-white/80 p-7 shadow-2xl shadow-blue-900/5 backdrop-blur-xl md:p-10">
         <p class="text-xs font-black uppercase tracking-[0.25em] text-blue-700">Full Biography</p>
-        <h2 class="mt-4 text-4xl font-black tracking-tight text-slate-950">
-          Role in the HELEXIA+ mission
-        </h2>
 
         <div class="mt-7 space-y-6 text-base leading-8 text-slate-600">
-          <p id="memberBioOne">
-            This member helps shape the strategic direction of HELEXIA+, connecting the platform’s healthcare mission with practical product execution. Their leadership keeps the company focused on solving real access, coordination and trust challenges in healthcare.
-          </p>
+          <%= cond do %>
+            <% @member.slug == "president_co_founder" -> %>
+              <p>
+                Moses Ondicho leads HELEXIA+ with a focus on healthcare transformation,
+                digital accessibility and scalable healthcare coordination systems
+                designed for Africa’s evolving healthcare infrastructure.
+              </p>
 
-          <p id="memberBioTwo">
-            Within the team, they act as a bridge between vision, systems thinking and execution. Their contribution is not limited to leadership oversight; it includes defining the kind of healthcare experience HELEXIA+ should deliver for patients, providers and partners.
-          </p>
+              <p>
+                His leadership combines systems thinking, operational strategy and
+                long-term platform vision to ensure HELEXIA+ remains both innovative
+                and practical in real-world healthcare environments.
+              </p>
 
-          <p id="memberBioThree">
-            As HELEXIA+ grows, their role is to protect the long-term mission while helping the team move quickly, responsibly and with a clear understanding of the human impact behind every technical decision.
-          </p>
+              <p>
+                With a decade of experience in government relations, advisory, and business development,
+                he has worked extensively across East Africa shaping policy dialogues, structuring PPPs, and advancing digital transformation programmes.
+              </p>
+
+              <p>
+                He's a Former CEO of Sens Spectra and strategic consultant to the World Smart Cities Forum,
+                where he supported urban innovation, health systems strengthening, and sustainable master-planning efforts across Kenya.
+              </p>
+
+              <p>
+                Moses Champions for UHC, women’s health, youth empowerment, and digital inclusion, Moses drives HELEXIA ➕ ’s mission to build equitable preventive-health infrastructure at national and continental scale.
+              </p>
+
+              <p>
+                Through HELEXIA+, he continues driving initiatives focused on connected
+                care delivery, intelligent patient experiences and interoperable
+                healthcare ecosystems.
+              </p>
+            <% @member.slug == "ceo_co_founder" -> %>
+              <p>
+                As CEO & Co-Founder, this leader drives the technological and strategic
+                direction behind HELEXIA+, helping shape the future of intelligent
+                healthcare systems across Africa.
+              </p>
+
+              <p>
+                Their work centers on building scalable infrastructure, AI-powered
+                healthcare workflows and seamless patient-provider connectivity
+                experiences.
+              </p>
+
+              <p>
+                By combining innovation with execution, they help ensure HELEXIA+
+                remains secure, accessible and operationally efficient.
+              </p>
+            <% @member.level == 2 -> %>
+              <p>
+                This member contributes to the technical and operational growth of
+                HELEXIA+, helping strengthen the platform’s reliability, scalability
+                and healthcare intelligence capabilities.
+              </p>
+
+              <p>
+                Their leadership supports the development of systems that improve
+                patient engagement, provider collaboration and healthcare access.
+              </p>
+            <% @member.level == 3 -> %>
+              <p>
+                As part of the advisory structure, this member provides strategic
+                guidance and domain expertise that helps shape the long-term direction
+                of HELEXIA+.
+              </p>
+
+              <p>
+                Their insights contribute to governance, healthcare alignment and
+                sustainable innovation across the platform ecosystem.
+              </p>
+            <% true -> %>
+              <p>
+                This member contributes to the HELEXIA+ mission of building connected,
+                secure and intelligent healthcare experiences for modern healthcare
+                systems.
+              </p>
+          <% end %>
         </div>
       </article>
-
-      <aside class="space-y-8">
-        <div class="rounded-[3rem] border border-white/70 bg-white/80 p-7 shadow-2xl shadow-blue-900/5 backdrop-blur-xl">
-          <p class="text-xs font-black uppercase tracking-[0.25em] text-cyan-700">Expertise</p>
-          <div id="memberTags" class="mt-5 flex flex-wrap gap-3">
-            <span class="rounded-full bg-blue-50 px-4 py-2 text-xs font-black text-blue-700">
-              Strategy
-            </span>
-            <span class="rounded-full bg-cyan-50 px-4 py-2 text-xs font-black text-cyan-700">
-              Product Vision
-            </span>
-            <span class="rounded-full bg-violet-50 px-4 py-2 text-xs font-black text-violet-700">
-              AI Care
-            </span>
-          </div>
-        </div>
-
-        <div class="rounded-[3rem] border border-white/70 bg-white/80 p-7 shadow-2xl shadow-blue-900/5 backdrop-blur-xl">
-          <p class="text-xs font-black uppercase tracking-[0.25em] text-violet-700">
-            Contribution
-          </p>
-          <ul id="memberContributions" class="mt-5 space-y-4 text-sm leading-7 text-slate-600">
-            <li class="flex gap-3">
-              <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-blue-600"></span>Defines strategic direction for HELEXIA+.
-            </li>
-            <li class="flex gap-3">
-              <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-cyan-500"></span>Connects product vision with care delivery needs.
-            </li>
-            <li class="flex gap-3">
-              <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-violet-500"></span>Protects the long-term mission and trust layer.
-            </li>
-          </ul>
-        </div>
-
-        <div class="rounded-[3rem] bg-slate-950 p-7 shadow-2xl shadow-slate-900/10">
-          <p class="text-xs font-black uppercase tracking-[0.25em] text-cyan-300">Next Profile</p>
-          <h3 class="mt-4 text-2xl font-black text-white">Explore more of the team</h3>
-          <p class="mt-4 text-sm leading-7 text-slate-300">
-            Return to the full team page to view other members by seniority layer.
-          </p>
-          <a
-            href="/meet-the-team"
-            class="mt-6 inline-flex items-center gap-3 rounded-2xl bg-white px-6 py-3 text-xs font-black uppercase tracking-[0.18em] text-slate-950 transition hover:-translate-y-1 hover:bg-cyan-100"
-          >
-            View Full Team <span>→</span>
-          </a>
-        </div>
-      </aside>
     </div>
   </div>
 </section>
