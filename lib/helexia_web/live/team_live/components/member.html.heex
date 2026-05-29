@@ -1,5 +1,5 @@
 <!--
-  HELEXIA+ Member Show Page
+  HELEXIA ➕  Member Show Page
   Destination page for a clicked member card.
   Example route: /meet-the-team/:slug
 -->
@@ -8,18 +8,6 @@
   :if={@live_action == :view_member}
   class="relative min-h-screen overflow-hidden bg-[#F8FBFF] px-6 py-24 md:px-10 xl:px-20"
 >
-  <!-- HELEXIA background system -->
-  <div
-    class="absolute inset-0 opacity-[0.05]"
-    style="
-      background-image:
-        linear-gradient(to right, #2563eb 1px, transparent 1px),
-        linear-gradient(to bottom, #2563eb 1px, transparent 1px);
-      background-size: 70px 70px;
-    "
-  >
-  </div>
-
   <div class="absolute left-[-14%] top-0 h-[38rem] w-[38rem] rounded-full bg-blue-400/20 blur-3xl">
   </div>
   <div class="absolute right-[-12%] top-80 h-[34rem] w-[34rem] rounded-full bg-cyan-300/20 blur-3xl">
@@ -76,14 +64,14 @@
         
 <!-- Hero content -->
         <div class="relative overflow-hidden p-7 md:p-10 lg:p-12">
-          <div class="absolute right-[-8rem] top-[-8rem] h-80 w-80 rounded-full bg-blue-500/20 blur-3xl">
+          <div class="absolute right-[-8rem] top-[-8rem] h-80 w-80 rounded-full bg-blue-500/20 blur-2xl">
           </div>
-          <div class="absolute bottom-[-10rem] left-[-8rem] h-80 w-80 rounded-full bg-cyan-400/10 blur-3xl">
+          <div class="absolute bottom-[-8rem] left-[-8rem] h-80 w-80 rounded-full bg-blue-500/10 blur-2xl">
           </div>
 
           <div class="relative flex h-full flex-col justify-between">
             <div>
-              <h2 class="mt-8 text-3xl font-bold tracking-tight text-slate-900 md:text-5xl md:leading-tight">
+              <h2 class="mt-8 font-bold tracking-tight text-cyan-400 md:text-4xl md:leading-tight">
                 <%= cond do %>
                   <% @member.slug == "president_co_founder" -> %>
                     Architecting equitable health access.
@@ -101,15 +89,15 @@
               <p class="mt-7 max-w-2xl text-lg leading-9 text-slate-300 md:text-xl">
                 <%= cond do %>
                   <% @member.slug == "president_co_founder" -> %>
-                    Moses Ondicho leads HELEXIA+ with a focus on healthcare transformation, digital accessibility and scalable healthcare coordination systems designed for Africa’s evolving healthcare infrastructure.
+                    Moses Ondicho leads HELEXIA ➕  with a focus on healthcare transformation, digital accessibility and scalable healthcare coordination systems designed for Africa’s evolving healthcare infrastructure.
                   <% @member.slug == "chief_executive_officer_co_founder" -> %>
-                    Aishwariya Srinagesh drives the operational and strategic direction behind HELEXIA+, helping shape the future of intelligent healthcare systems across Africa.
+                    Aishwariya Srinagesh drives the operational and strategic direction behind HELEXIA ➕ , helping shape the future of intelligent healthcare systems across Africa.
                   <% @member.slug == "clinical_operations_nursing_adoption_support" -> %>
-                    Mercy Nasimiyu Musungu strengthens the technical and operational growth of HELEXIA+, helping build a platform that is reliable, scalable and useful in real healthcare environments.
+                    Mercy Nasimiyu Musungu strengthens the technical and operational growth ofHELEXIA ➕ , helping build a platform that is reliable, scalable and useful in real healthcare environments.
                   <% @member.slug == "uat_clinical_systems_qa" -> %>
-                    Titus brings domain expertise and strategic guidance that helps HELEXIA+ grow with stronger governance, healthcare alignment and long-term credibility.
+                    Titus brings domain expertise and strategic guidance that helps HELEXIA ➕  grow with stronger governance, healthcare alignment and long-term credibility.
                   <% true -> %>
-                    Contributes to the HELEXIA+ mission of building connected, secure and intelligent healthcare experiences for modern health systems.
+                    Contributes to the HELEXIA ➕  mission of building connected, secure and intelligent healthcare experiences for modern health systems.
                 <% end %>
               </p>
             </div>
@@ -137,7 +125,7 @@
           <% end %>
         </h3>
         <p class="mt-3 text-sm leading-7 text-slate-600">
-          Helps HELEXIA+ move with clarity across product, people, systems and real-world healthcare outcomes.
+          Helps HELEXIA ➕  move with clarity across product, people, systems and real-world healthcare outcomes.
         </p>
       </div>
 
@@ -158,7 +146,7 @@
           <% end %>
         </h3>
         <p class="mt-3 text-sm leading-7 text-slate-600">
-          Brings discipline to the way HELEXIA+ turns ideas into structured, useful and trusted healthcare tools.
+          Brings discipline to the way HELEXIA ➕  turns ideas into structured, useful and trusted healthcare tools.
         </p>
       </div>
 
@@ -179,7 +167,7 @@
           <% end %>
         </h3>
         <p class="mt-3 text-sm leading-7 text-slate-600">
-          Supports the larger HELEXIA+ goal: better access, stronger coordination and more intelligent care experiences.
+          Supports the larger HELEXIA ➕  goal: better access, stronger coordination and more intelligent care experiences.
         </p>
       </div>
     </div>
@@ -200,14 +188,14 @@
             <%= cond do %>
               <% @member.slug == "president_co_founder" -> %>
                 <p>
-                  Moses Ondicho leads HELEXIA+ with a focus on healthcare transformation,
+                  Moses Ondicho leads HELEXIA ➕  with a focus on healthcare transformation,
                   digital accessibility and scalable healthcare coordination systems designed
                   for Africa’s evolving healthcare infrastructure.
                 </p>
 
                 <p>
                   His leadership combines systems thinking, operational strategy and
-                  long-term platform vision to ensure HELEXIA+ remains both innovative
+                  long-term platform vision to ensure HELEXIA ➕  remains both innovative
                   and practical in real-world healthcare environments.
                 </p>
 
@@ -225,27 +213,39 @@
 
                 <p>
                   Moses champions UHC, women’s health, youth empowerment and digital inclusion, driving
-                  HELEXIA+’s mission to build equitable preventive-health infrastructure at national and
+                  HELEXIA ➕ ’s mission to build equitable preventive-health infrastructure at national and
                   continental scale.
                 </p>
 
                 <p>
-                  Through HELEXIA+, he continues driving initiatives focused on connected care delivery,
+                  Through HELEXIA ➕ , he continues driving initiatives focused on connected care delivery,
                   intelligent patient experiences and interoperable healthcare ecosystems.
                 </p>
               <% @member.slug == "chief_executive_officer_co_founder" -> %>
                 <p>
-                  As CEO & Co-Founder, Aishwariya Srinagesh drives the technological and strategic direction behind
-                  HELEXIA+, helping shape the future of intelligent healthcare systems across Africa.
+                  Aishwariya Srinagesh is a Commercial strategist and execution leader with extensive experience scaling enterprise software, HCM platforms,
+                  and CX/ERP solutions across East Africa, the Middle East, and Asia
                 </p>
 
                 <p>
-                  Their work centers on building scalable infrastructure, AI-powered healthcare workflows
+                  She's a Former Regional Sales Manager at ZingHR and Head of New Customer Acquisition at iAPPS Africa, she has built a strong track record in market expansion,
+                  partner ecosystems, and operational delivery of complex digital transformations
+                </p>
+                <p>
+                  As CEO & Co-Founder of HELEXIA ➕ , she leads company strategy, government and donor engagement, commercial growth, and end-to-end execution of national-scale preventive health programs.
+                </p>
+                <p>
+                  Aishwariya Srinagesh drives the technological and strategic direction behind
+                  HELEXIA ➕ , helping shape the future of intelligent healthcare systems across Africa.
+                </p>
+
+                <p>
+                  Her work centers on building scalable infrastructure, AI-powered healthcare workflows
                   and seamless patient-provider connectivity experiences.
                 </p>
 
                 <p>
-                  By combining innovation with execution, they help ensure HELEXIA+ remains secure,
+                  By combining innovation with execution, she helps ensure HELEXIA ➕  remains secure,
                   accessible and operationally efficient.
                 </p>
               <% @member.slug == "clinical_operations_nursing_adoption_support" -> %>
@@ -278,14 +278,14 @@
                 </p>
                 <p>
                   As part of the advisory structure,  Titus provides strategic guidance and domain
-                  expertise that helps shape the long-term direction of HELEXIA+.
+                  expertise that helps shape the long-term direction of HELEXIA ➕ .
                 </p>
                 <p>
                   He specializes in clinical systems QA, Agile testing frameworks, and digital transformation support for large-scale health deployments.
                 </p>
               <% true -> %>
                 <p>
-                  This member contributes to the HELEXIA+ mission of building connected, secure and
+                  This member contributes to the HELEXIA ➕  mission of building connected, secure and
                   intelligent healthcare experiences for modern healthcare systems.
                 </p>
             <% end %>
@@ -349,7 +349,7 @@
               <span class="mt-1 h-3 w-3 shrink-0 rounded-full bg-blue-600 shadow-[0_0_0_6px_rgba(37,99,235,0.12)]">
               </span>
               <p class="text-sm font-bold leading-7 text-slate-700">
-                Strengthens HELEXIA+ through role-specific leadership and execution.
+                Strengthens HELEXIA ➕  through role-specific leadership and execution.
               </p>
             </div>
 
@@ -365,7 +365,7 @@
               <span class="mt-1 h-3 w-3 shrink-0 rounded-full bg-violet-500 shadow-[0_0_0_6px_rgba(139,92,246,0.12)]">
               </span>
               <p class="text-sm font-bold leading-7 text-slate-700">
-                Helps turn the HELEXIA+ mission into practical healthcare transformation.
+                Helps turn the HELEXIA ➕  mission into practical healthcare transformation.
               </p>
             </div>
           </div>
