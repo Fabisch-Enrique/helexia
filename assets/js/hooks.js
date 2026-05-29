@@ -1,5 +1,6 @@
-import helexia_map_hook from "./hooks/helexia_map_hook";
+
+import countup from "./hooks/countup";
 
 export default {
-    helexia_map_hook,
+    countup,
 };

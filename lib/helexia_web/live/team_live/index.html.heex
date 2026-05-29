@@ -82,7 +82,7 @@
       <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
         <div>
           <p class="text-xs font-black uppercase tracking-[0.25em] text-blue-700">
-            Layer 01 · Highest Seniority
+            1 · Seniority
           </p>
           <h2 class="mt-3 text-4xl font-black tracking-tight text-slate-950 md:text-5xl">
             Founding Leadership
@@ -104,18 +104,22 @@
             <div class="absolute right-0 top-0 h-56 w-56 rounded-full bg-blue-400/20 blur-3xl">
             </div>
 
-            <div class="relative overflow-hidden rounded-[2rem] bg-slate-950 p-3">
+            <div class="relative h-[360px] overflow-hidden rounded-[1.6rem] bg-slate-950">
               <img
                 alt={founder.title}
                 src={founder.image_url}
-                class="h-[360px] w-full rounded-[1.6rem] object-cover object-center opacity-95 transition duration-700 group-hover:scale-105"
+                class={[
+                  "absolute inset-0 h-full w-full object-cover opacity-95 transition duration-700 group-hover:scale-105",
+                  founder.slug == "chief_executive_officer_co_founder" && "object-[center_15%]",
+                  founder.slug != "chief_executive_officer_co_founder" && "object-center"
+                ]}
               />
 
-              <div class="absolute inset-3 rounded-[1.6rem] bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent">
+              <div class="absolute inset-0 rounded-[1.6rem] bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent">
               </div>
 
               <div class="absolute bottom-7 left-7 right-7">
-                <h3 class="mt-2 text-3xl font-black text-white">
+                <h3 class="mt-2 text-2xl font-black text-white">
                   {founder.title}
                 </h3>
               </div>
@@ -123,8 +127,18 @@
 
             <div class="relative p-5">
               <p class="text-sm leading-7 text-slate-600">
-                Leads HELEXIA+ as a connected healthcare intelligence ecosystem,
-                focused on accessibility, AI-driven workflows and interoperable care.
+                <%= cond do %>
+                  <% @member.slug == "president_co_founder" -> %>
+                    Shapes the long-term vision of HELEXIA+, driving strategic healthcare
+                    innovation, ecosystem partnerships and sustainable digital health growth
+                    across Africa.
+                  <% @member.slug == "chief_executive_officer_co_founder" -> %>
+                    Leads the intelligent systems, product direction and healthcare technology
+                    infrastructure powering the HELEXIA+ connected care experience.
+                  <% true -> %>
+                    Helps advance the HELEXIA+ mission of building accessible, secure and
+                    intelligent healthcare experiences for modern care systems.
+                <% end %>
               </p>
 
               <div class="mt-6 flex flex-wrap gap-3">
@@ -146,7 +160,7 @@
       <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
         <div>
           <p class="text-xs font-black uppercase tracking-[0.25em] text-cyan-700">
-            Layer 02 · Executive Core
+            2 · Executive Core
           </p>
           <h2 class="mt-3 text-4xl font-black tracking-tight text-slate-950 md:text-5xl">
             Department Leadership
@@ -168,19 +182,30 @@
             </div>
 
             <div class="relative overflow-hidden rounded-[2rem] bg-slate-950 p-3">
-              <img
-                alt={founder.title}
-                src={founder.image_url}
-                class="h-[360px] w-full rounded-[1.6rem] object-cover object-center opacity-95 transition duration-700 group-hover:scale-105"
-              />
+              <div class="relative h-[400px] overflow-hidden rounded-[1.6rem]">
+                <img
+                  alt={founder.title}
+                  src={founder.image_url}
+                  class={[
+                    "absolute inset-0 h-full w-full object-cover opacity-95 transition duration-700 group-hover:scale-105",
+                    founder.slug in [
+                      "group_cto",
+                      "uat_clinical_systems_qa",
+                      "clinical_operations_nursing_adoption_support"
+                    ] &&
+                      "object-[center_20%]",
+                    true && "object-center"
+                  ]}
+                />
 
-              <div class="absolute inset-3 rounded-[1.6rem] bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent">
-              </div>
+                <div class="absolute inset-0 rounded-[1.6rem] bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent">
+                </div>
 
-              <div class="absolute bottom-7 left-7 right-7">
-                <h3 class="mt-2 text-3xl font-black text-white">
-                  {founder.title}
-                </h3>
+                <div class="absolute bottom-7 left-7 right-7">
+                  <h3 class="mt-2 text-xl font-black text-white">
+                    {founder.title}
+                  </h3>
+                </div>
               </div>
             </div>
 
@@ -225,9 +250,6 @@
             <div class="absolute inset-3 rounded-[1.35rem] bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent">
             </div>
             <div class="absolute bottom-6 left-6 right-6">
-              <p class="text-xs font-black uppercase tracking-[0.2em] text-cyan-300">
-                Clinical Operations Lead
-              </p>
               <h3 class="mt-2 text-2xl font-black text-white">Care Delivery Lead</h3>
             </div>
           </div>
@@ -258,9 +280,6 @@
             <div class="absolute inset-3 rounded-[1.35rem] bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent">
             </div>
             <div class="absolute bottom-6 left-6 right-6">
-              <p class="text-xs font-black uppercase tracking-[0.2em] text-cyan-300">
-                Growth & Partnerships Lead
-              </p>
               <h3 class="mt-2 text-2xl font-black text-white">Ecosystem Lead</h3>
             </div>
           </div>

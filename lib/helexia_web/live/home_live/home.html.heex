@@ -3,7 +3,7 @@
 <main class="bg-white">
   <!-- HERO / WHITE SECTION -->
   <section class="relative overflow-hidden bg-white px-6 pb-28 pt-24">
-    <div class="absolute -right-32 top-10 h-[520px] w-[520px] rounded-full bg-sky-200/50 blur-3xl">
+    <div class="absolute -right-32 top-10 h-[520px] w-[520px] rounded-full bg-cyan-300/40 blur-3xl">
     </div>
     <div class="absolute right-80 top-56 h-80 w-80 rounded-full bg-blue-300/20 blur-3xl"></div>
 
@@ -13,15 +13,15 @@
         <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white/80 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-700 shadow-lg backdrop-blur-xl">
           <span class="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.9)]">
           </span>
-          AI-powered healthcare ecosystem
+          healthcare ecosystem
         </div>
 
-        <h1 class="text-5xl font-black leading-[1.02] tracking-tight text-slate-950 md:text-6xl">
+        <h1 class="text-5xl font-black leading-[1.02] tracking-tight text-slate-950 md:text-5xl">
           Smart health for
-          <span class="bg-gradient-to-r from-blue-900 via-sky-600 to-cyan-400 bg-clip-text text-transparent">
+          <span class="bg-gradient-to-r from-cyan-300 via-blue-900 bg-clip-text text-transparent">
             everyone
           </span>
-          — anywhere, anytime.
+          anywhere, anytime.
         </h1>
 
         <p class="mt-6 max-w-xl text-lg leading-8 text-slate-600">
@@ -82,7 +82,7 @@
             target="_blank"
             rel="noopener noreferrer"
             href="https://frontend-dev.imaginebc.io"
-            class="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-blue-900 to-sky-500 px-6 py-4 font-bold text-white shadow-[0_12px_40px_rgba(14,116,255,0.28)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_50px_rgba(14,116,255,0.35)]"
+            class="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-blue-900 to-blue-900 px-6 py-4 font-bold text-white shadow-[0_12px_40px_rgba(14,116,255,0.28)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_50px_rgba(14,116,255,0.35)]"
           >
             <span class="relative flex items-center gap-2">
               Get Started <span class="transition group-hover:translate-x-1">→</span>
@@ -93,7 +93,7 @@
             target="_blank"
             rel="noopener noreferrer"
             href="https://frontend-dev.imaginebc.io"
-            class="rounded-2xl border border-slate-200 bg-white px-6 py-4 font-bold text-slate-800 shadow-lg transition hover:border-sky-300 hover:bg-sky-50"
+            class="rounded-2xl border border-slate-200 bg-white px-6 py-4 font-bold text-slate-800 shadow-lg transition hover:border-sky-600 hover:bg-sky-50"
           >
             Register
           </a>
@@ -162,138 +162,130 @@
     </div>
   </section>
   
-<!-- LIGHT TO DARK TRANSITION -->
-  <div class="relative h-44 overflow-hidden bg-white">
-    <div class="absolute inset-0 bg-gradient-to-b from-white via-slate-100 to-[#081a2f]"></div>
-    <div class="absolute left-1/2 top-8 h-44 w-[42rem] -translate-x-1/2 rounded-full bg-sky-400/20 blur-3xl">
-    </div>
-    <div class="absolute inset-0 opacity-[0.04] [background-image:linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] [background-size:42px_42px]">
-    </div>
-  </div>
-  
 <!-- PILOT / MAP SECTION -->
   <section
     id="pilot"
-    class="relative overflow-hidden bg-gradient-to-b from-[#081a2f] to-[#061427] py-28"
+    class="relative overflow-hidden bg-gradient-to-br from-cyan-300/40 via-[#f7fbff] to-white py-24"
   >
-    <div class="absolute left-0 top-0 h-[520px] w-[520px] rounded-full bg-sky-500/10 blur-3xl">
+    <div class="absolute -left-40 top-20 h-[520px] w-[520px] rounded-full bg-cyan-300/20 blur-3xl">
     </div>
-    <div class="absolute bottom-0 right-0 h-[520px] w-[520px] rounded-full bg-blue-500/10 blur-3xl">
+    <div class="absolute -right-40 bottom-0 h-[520px] w-[520px] rounded-full bg-blue-300/20 blur-3xl">
     </div>
 
-    <div class="relative mx-auto max-w-[1600px] px-6">
-      <div class="mx-auto max-w-3xl text-center">
-        <span class="inline-flex items-center gap-2 rounded-full border border-sky-300/20 bg-sky-300/10 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-sky-200 backdrop-blur-xl">
-          <span class="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_14px_rgba(52,211,153,0.9)]">
+    <div class="relative mx-auto grid max-w-[1500px] items-center gap-12 px-6 lg:grid-cols-12">
+      <div class="lg:col-span-7">
+        <div class="relative overflow-hidden rounded-[3rem]">
+          <video
+            muted
+            loop
+            autoplay
+            playsinline
+            class="h-full w-full object-cover"
+          >
+            <source src={~p"/videos/globe.mp4"} type="video/mp4" />
+          </video>
+
+          <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-white/10">
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5">
+        <span class="inline-flex items-center gap-2 rounded-full border border-cyan-300/40 bg-cyan-100/70 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-cyan-700 shadow-sm backdrop-blur-xl">
+          <span class="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_14px_rgba(52,211,153,0.9)]">
           </span>
           Pilot Location
         </span>
 
-        <h2 class="mt-5 text-4xl font-black tracking-tight text-white md:text-5xl">
+        <h2 class="mt-6 max-w-xl text-4xl font-black tracking-tight text-[#08213d] md:text-5xl">
           Launching HELEXIA+ from Likoni, Mombasa
         </h2>
 
-        <p class="mt-5 text-base leading-7 text-slate-300/75">
-          Our pilot begins in Likoni, connecting clinics, pharmacies, labs, hospitals,
-          and patient access points into one practical healthcare network built for
-          real-world conditions.
+        <p class="mt-5 max-w-xl text-base leading-8 text-slate-600">
+          Our pilot begins in Likoni, connecting healthcare facilities, workers,
+          and patient access points into one practical digital health network built
+          for real-world community care.
         </p>
-      </div>
 
-      <div class="mt-14 grid gap-8 lg:grid-cols-3">
-        <div class="lg:col-span-2">
-          <div class="overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/[0.03] shadow-2xl shadow-black/20 backdrop-blur-2xl">
-            <div class="flex items-center justify-between border-b border-white/10 px-6 py-5">
-              <div>
-                <h3 class="text-lg font-black text-white">HELEXIA+ Coverage Map</h3>
-                <p class="text-sm text-slate-300/65">
-                  Pilot healthcare intelligence hub
-                </p>
+        <div class="mt-9 space-y-5">
+          <div class="group rounded-[1.8rem] border border-white/80 bg-white/75 p-5 shadow-xl shadow-cyan-900/5 backdrop-blur-2xl transition hover:-translate-y-1 hover:shadow-2xl">
+            <div class="flex items-center gap-5">
+              <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-cyan-500 text-white shadow-lg shadow-cyan-500/25">
+                <.icon name="hero-users" class="h-8 w-8" />
               </div>
 
-              <span class="rounded-full border border-sky-300/20 bg-sky-300/10 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-sky-200">
-                Mombasa
-              </span>
+              <div>
+                <p
+                  id="population"
+                  data-suffix="+"
+                  phx-hook="countup"
+                  data-duration="20000"
+                  data-to-value="100000"
+                  class="text-4xl font-black tracking-tight text-[#08213d]"
+                >
+                  0
+                </p>
+                <p class="mt-1 text-sm font-semibold text-slate-500">
+                  Population Reached
+                </p>
+              </div>
             </div>
+          </div>
 
-            <div
-              id="helexia-map"
-              phx-update="ignore"
-              phx-hook="helexia_map_hook"
-              data-locations={Jason.encode!(@locations)}
-              class="h-[620px] w-full rounded-b-[2.5rem] overflow-hidden"
-            >
+          <div class="group rounded-[1.8rem] border border-white/80 bg-white/75 p-5 shadow-xl shadow-cyan-900/5 backdrop-blur-2xl transition hover:-translate-y-1 hover:shadow-2xl">
+            <div class="flex items-center gap-5">
+              <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-cyan-500 text-white shadow-lg shadow-cyan-500/25">
+                <.icon name="hero-briefcase" class="h-8 w-8" />
+              </div>
+
+              <div>
+                <p
+                  id="workers"
+                  data-suffix="+"
+                  phx-hook="countup"
+                  data-to-value="600"
+                  data-duration="2000"
+                  class="text-4xl font-black tracking-tight text-[#08213d]"
+                >
+                  600+
+                </p>
+                <p class="mt-1 text-sm font-semibold text-slate-500">
+                  Healthcare Workers
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="group rounded-[1.8rem] border border-white/80 bg-white/75 p-5 shadow-xl shadow-cyan-900/5 backdrop-blur-2xl transition hover:-translate-y-1 hover:shadow-2xl">
+            <div class="flex items-center gap-5">
+              <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-cyan-500 text-white shadow-lg shadow-cyan-500/25">
+                <.icon name="hero-heart" class="h-8 w-8" />
+              </div>
+
+              <div>
+                <p class="text-3xl font-black tracking-tight text-[#08213d]">
+                  NCDs & MNCH
+                </p>
+                <p class="mt-1 text-sm font-semibold text-slate-500">
+                  Care Segments
+                </p>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="space-y-5">
-          <div class="rounded-[2rem] border border-sky-300/15 bg-sky-300/10 p-6 shadow-xl backdrop-blur-2xl transition hover:-translate-y-1 hover:bg-sky-300/[0.14]">
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <h3 class="text-xl font-black text-white">Likoni, Mombasa</h3>
-                <p class="mt-3 text-sm leading-6 text-slate-300/75">
-                  The first HELEXIA+ pilot location focused on practical healthcare workflows,
-                  patient access, and connected facility operations.
-                </p>
-              </div>
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <a
+            target="_blank"
+            href="https://www.google.com/maps?q=Likoni,Mombasa,Kenya"
+            class="rounded-2xl bg-[#08213d] px-6 py-3 text-sm font-black text-white shadow-xl shadow-slate-900/15 transition hover:-translate-y-0.5 hover:bg-[#0b2d52]"
+          >
+            View Pilot Location
+          </a>
 
-              <span class="rounded-full border border-emerald-300/20 bg-emerald-300/10 px-3 py-1 text-xs font-black text-emerald-200">
-                Active
-              </span>
-            </div>
-
-            <div class="mt-6 flex flex-wrap items-center gap-3">
-              <button
-                type="button"
-                onclick="updateHelexiaMap(-4.1006, 39.6619, 'Likoni Pilot Hub')"
-                class="rounded-xl bg-sky-300 px-4 py-2.5 text-sm font-black text-[#061427]"
-              >
-                View on Map
-              </button>
-
-              <a
-                href="https://www.google.com/maps?q=Likoni,Mombasa,Kenya"
-                target="_blank"
-                class="text-sm font-bold text-sky-200 transition hover:text-white"
-              >
-                Get Directions →
-              </a>
-            </div>
-          </div>
-
-          <div class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 shadow-xl backdrop-blur-2xl">
-            <h4 class="text-sm font-black uppercase tracking-[0.22em] text-sky-200">
-              Pilot Intelligence
-            </h4>
-
-            <div class="mt-5 grid gap-3">
-              <div class="rounded-2xl border border-white/10 bg-white/[0.05] p-4">
-                <p class="text-xs text-slate-400">Deployment Zone</p>
-                <p class="mt-1 font-black text-white">Likoni Sub-County</p>
-              </div>
-
-              <div class="rounded-2xl border border-white/10 bg-white/[0.05] p-4">
-                <p class="text-xs text-slate-400">Healthcare Network</p>
-                <p class="mt-1 font-black text-white">Clinics · Labs · Pharmacies</p>
-              </div>
-
-              <div class="rounded-2xl border border-white/10 bg-white/[0.05] p-4">
-                <p class="text-xs text-slate-400">Expansion Status</p>
-                <p class="mt-1 font-black text-emerald-200">Ready to Scale</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="rounded-[2rem] border border-emerald-300/15 bg-emerald-300/10 p-6 text-white shadow-xl backdrop-blur-2xl">
-            <h4 class="text-sm font-black uppercase tracking-[0.22em] text-emerald-200">
-              Expansion Ready
-            </h4>
-            <p class="mt-3 text-sm leading-6 text-slate-300/75">
-              This map can later scale across Mombasa County and other regions by adding
-              more facility coordinates and coverage zones.
-            </p>
-          </div>
+          <span class="rounded-2xl border border-emerald-300/40 bg-emerald-50 px-5 py-3 text-sm font-black text-emerald-700">
+            Active Pilot
+          </span>
         </div>
       </div>
     </div>
@@ -302,8 +294,8 @@
 <!-- DARK TO LIGHT TRANSITION -->
   <div class="relative h-44 overflow-hidden bg-[#061427]">
     <div class="absolute inset-0 bg-gradient-to-b from-[#061427] via-slate-100 to-white"></div>
-    <div class="absolute left-1/2 bottom-8 h-44 w-[42rem] -translate-x-1/2 rounded-full bg-sky-400/20 blur-3xl">
-    </div>
+    <%!-- <div class="absolute left-1/2 bottom-8 h-44 w-[42rem] -translate-x-1/2 rounded-full bg-sky-400/20 blur-3xl">
+    </div> --%>
   </div>
   
 <!-- PATIENTS / WHITE SECTION -->
@@ -504,7 +496,8 @@
   
 <!-- About Us -->
   <.about_us />
-  <!-- Partners  -->
+  
+<!-- Partners  -->
   <.partners />
   <!-- Begin the journey -->
   <.scan_qr />

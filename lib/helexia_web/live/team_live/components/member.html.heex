@@ -1,11 +1,7 @@
 <!--
-  HELEXIA+ Member Detail Page
-  Use this page as the destination when a member card is clicked.
-
-  Example card link from the team carousel/page:
-  <a href="/meet-the-team/president-co-founder"> ...member card... </a>
-
-  For a real app, replace the static member object below with route-based data.
+  HELEXIA+ Member Show Page
+  Destination page for a clicked member card.
+  Example route: /meet-the-team/:slug
 -->
 
 <section
@@ -23,207 +19,358 @@
     "
   >
   </div>
-  <div class="absolute left-[-12%] top-10 h-[34rem] w-[34rem] rounded-full bg-blue-400/20 blur-3xl">
+
+  <div class="absolute left-[-14%] top-0 h-[38rem] w-[38rem] rounded-full bg-blue-400/20 blur-3xl">
   </div>
-  <div class="absolute right-[-10%] top-72 h-[32rem] w-[32rem] rounded-full bg-cyan-300/20 blur-3xl">
+  <div class="absolute right-[-12%] top-80 h-[34rem] w-[34rem] rounded-full bg-cyan-300/20 blur-3xl">
   </div>
-  <div class="absolute bottom-[-10rem] left-[30%] h-[34rem] w-[34rem] rounded-full bg-violet-400/10 blur-3xl">
+  <div class="absolute bottom-[-12rem] left-[28%] h-[36rem] w-[36rem] rounded-full bg-violet-400/10 blur-3xl">
   </div>
 
   <div class="relative mx-auto max-w-7xl">
-    <!-- Back link -->
-    <a
-      href="/meet-the-team"
-      class="inline-flex items-center gap-3 rounded-full border border-blue-100 bg-white/80 px-5 py-2 text-xs font-black uppercase tracking-[0.22em] text-blue-700 backdrop-blur transition hover:border-blue-200 hover:bg-white"
-    >
-      <span class="transition">←</span> Back to Full Team
-    </a>
-    
-<!-- Hero profile -->
-    <div class="mt-10 grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch">
-      <!-- Image panel -->
-      <div class="group relative overflow-hidden rounded-[3rem] border border-white/70 bg-white/75 p-5 shadow-2xl shadow-blue-900/10 backdrop-blur-xl">
-        <div class="absolute right-0 top-0 h-72 w-72 rounded-full bg-blue-400/20 blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-cyan-300/20 blur-3xl">
-        </div>
+    <!-- Top navigation -->
+    <div class="flex flex-col justify-between gap-5 sm:flex-row sm:items-center">
+      <a
+        href="/meet-the-team"
+        class="inline-flex w-fit items-center gap-3 rounded-full border border-blue-100 bg-white/80 px-5 py-2 text-xs font-black uppercase tracking-[0.22em] text-blue-700 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:border-blue-200 hover:bg-white"
+      >
+        <span class="transition">←</span> Back to the Team
+      </a>
 
-        <div class="relative overflow-hidden rounded-[2.4rem] bg-slate-950 p-3">
-          
-<!-- IMAGE -->
-          <div class="relative overflow-hidden rounded-[2rem]">
-            <img
-              id="member-image"
-              alt={@member.title}
-              src={@member.image_url}
-              class="h-[520px] min-h-[520px] w-full object-cover object-[center_20%] opacity-95 transition duration-700 group-hover:scale-105 md:h-[620px]"
-            />
-            
-<!-- DARK OVERLAY -->
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent">
-            </div>
-            
-<!-- CONTENT -->
-            <div class="absolute inset-x-0 bottom-0 p-6 md:p-8">
-              <div class="max-w-[90%]">
-                <h1
-                  id="memberNameImage"
-                  class="text-3xl font-black leading-tight tracking-tight text-white sm:text-4xl md:text-5xl"
-                >
-                  {@member.title}
-                </h1>
-              </div>
-            </div>
+      <div class="inline-flex w-fit items-center gap-3 rounded-full border border-white/70 bg-white/75 px-5 py-2 text-xs font-black uppercase tracking-[0.22em] text-slate-500 shadow-sm backdrop-blur">
+        <span class="h-2.5 w-2.5 rounded-full bg-cyan-500 shadow-[0_0_0_6px_rgba(34,211,238,0.15)]">
+        </span>
+        Profile
+      </div>
+    </div>
+    
+<!-- Cinematic hero -->
+    <div class="mt-10 overflow-hidden rounded-[3.25rem] border border-white/70 bg-white/70 p-4 shadow-2xl shadow-blue-900/10 backdrop-blur-xl md:p-6">
+      <div class="grid overflow-hidden rounded-[2.7rem] bg-slate-950 lg:grid-cols-[0.92fr_1.08fr]">
+        <!-- Portrait -->
+        <div class="group relative min-h-[540px] overflow-hidden lg:min-h-[720px]">
+          <img
+            id="member-image"
+            alt={@member.title}
+            src={@member.image_url}
+            class="absolute inset-0 h-full w-full object-cover object-[center_18%] opacity-95 transition duration-700 group-hover:scale-105"
+          />
+
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/35 to-transparent">
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-slate-950/30">
+          </div>
+
+          <div class="absolute left-6 top-6 rounded-full border border-white/15 bg-white/10 px-5 py-2 text-xs font-black uppercase tracking-[0.2em] text-white backdrop-blur md:left-8 md:top-8">
+            {if @member.level == 1,
+              do: "Founding Leadership",
+              else: "Layer #{@member.level} Leadership"}
+          </div>
+
+          <div class="absolute bottom-6 left-6 right-6 md:bottom-8 md:left-8 md:right-8">
+            <h1 class="mt-3 max-w-xl text-4xl font-black leading-tight tracking-tight text-white md:text-3xl">
+              {@member.title}
+            </h1>
           </div>
         </div>
-      </div>
-      
-<!-- Content panel -->
-      <div class="relative overflow-hidden rounded-[3rem] border border-white/70 bg-white/80 p-7 shadow-2xl shadow-blue-900/10 backdrop-blur-xl md:p-10">
-        <div class="absolute right-[-6rem] top-[-6rem] h-72 w-72 rounded-full bg-violet-400/10 blur-3xl">
-        </div>
+        
+<!-- Hero content -->
+        <div class="relative overflow-hidden p-7 md:p-10 lg:p-12">
+          <div class="absolute right-[-8rem] top-[-8rem] h-80 w-80 rounded-full bg-blue-500/20 blur-3xl">
+          </div>
+          <div class="absolute bottom-[-10rem] left-[-8rem] h-80 w-80 rounded-full bg-cyan-400/10 blur-3xl">
+          </div>
 
-        <div class="relative">
-          <p class="inline-flex items-center gap-3 rounded-full border border-blue-100 bg-[#F8FBFF] px-5 py-2 text-xs font-black uppercase tracking-[0.22em] text-blue-700">
-            <span class="relative flex h-2.5 w-2.5">
-              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75">
-              </span>
-              <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-cyan-500"></span>
-            </span>
-            Member Insight
-          </p>
+          <div class="relative flex h-full flex-col justify-between">
+            <div>
+              <h2 class="mt-8 text-3xl font-bold tracking-tight text-slate-900 md:text-5xl md:leading-tight">
+                <%= cond do %>
+                  <% @member.slug == "president_co_founder" -> %>
+                    Architecting equitable health access.
+                  <% @member.slug == "chief_executive_officer_co_founder" -> %>
+                    Engineering Operations and trusted care infrastructure.
+                  <% @member.slug == "clinical_operations_nursing_adoption_support" -> %>
+                    Translating strategy into healthcare execution.
+                  <% @member.slug == "uat_clinical_systems_qa" -> %>
+                    Guiding growth with clinical intelligence.
+                  <% true -> %>
+                    Building the foundation for smarter care.
+                <% end %>
+              </h2>
 
-          <h2
-            id="memberName"
-            class="mt-8 text-5xl font-black tracking-tight text-slate-950 md:text-6xl md:leading-[1.05]"
-          >
-            President & Co-Founder
-          </h2>
-
-          <p
-            id="memberTitle"
-            class="mt-5 text-sm font-black uppercase tracking-[0.25em] text-cyan-700"
-          >
-            Chief Executive Officer
-          </p>
-
-          <p id="memberIntro" class="mt-8 text-xl leading-9 text-slate-600">
-            Leads HELEXIA+ as a connected healthcare intelligence ecosystem, focused on accessibility, AI-driven workflows and interoperable care.
-          </p>
-
-          <div class="mt-8 grid gap-4 sm:grid-cols-3">
-            <div
-              :for={expertise <- @member.expertise}
-              class="rounded-[2rem] border border-blue-100 bg-[#F8FBFF] p-5"
-            >
-              <p class="text-xs font-black uppercase tracking-[0.2em] text-blue-700">Focus</p>
-              <p id="memberFocus" class="mt-3 text-sm font-bold leading-6 text-cyan-700">
-                {expertise}
+              <p class="mt-7 max-w-2xl text-lg leading-9 text-slate-300 md:text-xl">
+                <%= cond do %>
+                  <% @member.slug == "president_co_founder" -> %>
+                    Moses Ondicho leads HELEXIA+ with a focus on healthcare transformation, digital accessibility and scalable healthcare coordination systems designed for Africa’s evolving healthcare infrastructure.
+                  <% @member.slug == "chief_executive_officer_co_founder" -> %>
+                    Aishwariya Srinagesh drives the operational and strategic direction behind HELEXIA+, helping shape the future of intelligent healthcare systems across Africa.
+                  <% @member.slug == "clinical_operations_nursing_adoption_support" -> %>
+                    Mercy Nasimiyu Musungu strengthens the technical and operational growth of HELEXIA+, helping build a platform that is reliable, scalable and useful in real healthcare environments.
+                  <% @member.slug == "uat_clinical_systems_qa" -> %>
+                    Titus brings domain expertise and strategic guidance that helps HELEXIA+ grow with stronger governance, healthcare alignment and long-term credibility.
+                  <% true -> %>
+                    Contributes to the HELEXIA+ mission of building connected, secure and intelligent healthcare experiences for modern health systems.
+                <% end %>
               </p>
             </div>
-          </div>
-
-          <div class="mt-8 rounded-[2rem] bg-slate-950 p-7 shadow-xl shadow-slate-900/10">
-            <p class="text-xs font-black uppercase tracking-[0.25em] text-cyan-300">
-              Leadership Lens
-            </p>
-            <blockquote
-              id="memberQuote"
-              class="mt-4 text-2xl font-black leading-9 tracking-tight text-white"
-            >
-              “Healthcare technology should feel intelligent, secure and human at the same time.”
-            </blockquote>
           </div>
         </div>
       </div>
     </div>
     
-<!-- Deep bio content -->
-    <div class="mt-14 grid gap-8 lg:grid-cols-[1fr_0.42fr]">
-      <article class="rounded-[3rem] border border-white/70 bg-white/80 p-7 shadow-2xl shadow-blue-900/5 backdrop-blur-xl md:p-10">
-        <p class="text-xs font-black uppercase tracking-[0.25em] text-blue-700">Full Biography</p>
-
-        <div class="mt-7 space-y-6 text-base leading-8 text-slate-600">
+<!-- Profile intelligence strip -->
+    <div class="mt-8 grid gap-5 md:grid-cols-3">
+      <div class="rounded-[2.25rem] border border-white/70 bg-white/80 p-6 shadow-xl shadow-blue-900/5 backdrop-blur-xl transition hover:-translate-y-1">
+        <p class="text-xs font-black uppercase tracking-[0.22em] text-blue-700">Primary Focus</p>
+        <h3 class="mt-3 text-2xl font-black text-slate-950">
           <%= cond do %>
             <% @member.slug == "president_co_founder" -> %>
-              <p>
-                Moses Ondicho leads HELEXIA+ with a focus on healthcare transformation,
-                digital accessibility and scalable healthcare coordination systems
-                designed for Africa’s evolving healthcare infrastructure.
-              </p>
-
-              <p>
-                His leadership combines systems thinking, operational strategy and
-                long-term platform vision to ensure HELEXIA+ remains both innovative
-                and practical in real-world healthcare environments.
-              </p>
-
-              <p>
-                With a decade of experience in government relations, advisory, and business development,
-                he has worked extensively across East Africa shaping policy dialogues, structuring PPPs, and advancing digital transformation programmes.
-              </p>
-
-              <p>
-                He's a Former CEO of Sens Spectra and strategic consultant to the World Smart Cities Forum,
-                where he supported urban innovation, health systems strengthening, and sustainable master-planning efforts across Kenya.
-              </p>
-
-              <p>
-                Moses Champions for UHC, women’s health, youth empowerment, and digital inclusion, Moses drives HELEXIA ➕ ’s mission to build equitable preventive-health infrastructure at national and continental scale.
-              </p>
-
-              <p>
-                Through HELEXIA+, he continues driving initiatives focused on connected
-                care delivery, intelligent patient experiences and interoperable
-                healthcare ecosystems.
-              </p>
-            <% @member.slug == "ceo_co_founder" -> %>
-              <p>
-                As CEO & Co-Founder, this leader drives the technological and strategic
-                direction behind HELEXIA+, helping shape the future of intelligent
-                healthcare systems across Africa.
-              </p>
-
-              <p>
-                Their work centers on building scalable infrastructure, AI-powered
-                healthcare workflows and seamless patient-provider connectivity
-                experiences.
-              </p>
-
-              <p>
-                By combining innovation with execution, they help ensure HELEXIA+
-                remains secure, accessible and operationally efficient.
-              </p>
-            <% @member.level == 2 -> %>
-              <p>
-                This member contributes to the technical and operational growth of
-                HELEXIA+, helping strengthen the platform’s reliability, scalability
-                and healthcare intelligence capabilities.
-              </p>
-
-              <p>
-                Their leadership supports the development of systems that improve
-                patient engagement, provider collaboration and healthcare access.
-              </p>
-            <% @member.level == 3 -> %>
-              <p>
-                As part of the advisory structure, this member provides strategic
-                guidance and domain expertise that helps shape the long-term direction
-                of HELEXIA+.
-              </p>
-
-              <p>
-                Their insights contribute to governance, healthcare alignment and
-                sustainable innovation across the platform ecosystem.
-              </p>
+              Strategic Healthcare Transformation
+            <% @member.slug == "chief_executive_officer_co_founder" -> %>
+              Technology Infrastructure
+            <% @member.slug == "clinical_operations_nursing_adoption_support" -> %>
+              Platform Execution
+            <% @member.slug == "uat_clinical_systems_qa" -> %>
+              Advisory Guidance
             <% true -> %>
-              <p>
-                This member contributes to the HELEXIA+ mission of building connected,
-                secure and intelligent healthcare experiences for modern healthcare
-                systems.
-              </p>
+              Mission Delivery
           <% end %>
+        </h3>
+        <p class="mt-3 text-sm leading-7 text-slate-600">
+          Helps HELEXIA+ move with clarity across product, people, systems and real-world healthcare outcomes.
+        </p>
+      </div>
+
+      <div class="rounded-[2.25rem] border border-white/70 bg-white/80 p-6 shadow-xl shadow-blue-900/5 backdrop-blur-xl transition hover:-translate-y-1">
+        <p class="text-xs font-black uppercase tracking-[0.22em] text-cyan-700">Strength</p>
+        <h3 class="mt-3 text-2xl font-black text-slate-950">
+          <%= cond do %>
+            <% @member.slug == "president_co_founder" -> %>
+              Systems Thinking, Innovation and Scalability
+            <% @member.slug == "chief_executive_officer_co_founder" -> %>
+              Secure Scalability && Operations
+            <% @member.slug == "clinical_operations_nursing_adoption_support" -> %>
+              Specialist Depth
+            <% @member.slug == "uat_clinical_systems_qa" -> %>
+              Organization Insight
+            <% true -> %>
+              Execution Support
+          <% end %>
+        </h3>
+        <p class="mt-3 text-sm leading-7 text-slate-600">
+          Brings discipline to the way HELEXIA+ turns ideas into structured, useful and trusted healthcare tools.
+        </p>
+      </div>
+
+      <div class="rounded-[2.25rem] border border-white/70 bg-white/80 p-6 shadow-xl shadow-blue-900/5 backdrop-blur-xl transition hover:-translate-y-1">
+        <p class="text-xs font-black uppercase tracking-[0.22em] text-violet-700">Impact</p>
+        <h3 class="mt-3 text-2xl font-black text-slate-950">
+          <%= cond do %>
+            <% @member.slug == "president_co_founder" -> %>
+              Continental Health Access
+            <% @member.slug == "chief_executive_officer_co_founder" -> %>
+              Reliable Operational Digital Care
+            <% @member.slug == "clinical_operations_nursing_adoption_support" -> %>
+              Stronger Product Delivery
+            <% @member.slug == "uat_clinical_systems_qa" -> %>
+              Responsible Growth
+            <% true -> %>
+              Team Momentum
+          <% end %>
+        </h3>
+        <p class="mt-3 text-sm leading-7 text-slate-600">
+          Supports the larger HELEXIA+ goal: better access, stronger coordination and more intelligent care experiences.
+        </p>
+      </div>
+    </div>
+    
+<!-- Deep content -->
+    <div class="mt-12 grid gap-8 lg:grid-cols-[1fr_0.42fr]">
+      <!-- Biography -->
+      <article class="relative overflow-hidden rounded-[3rem] border border-white/70 bg-white/85 p-7 shadow-2xl shadow-blue-900/5 backdrop-blur-xl md:p-10">
+        <div class="absolute right-[-7rem] top-[-7rem] h-72 w-72 rounded-full bg-blue-400/10 blur-3xl">
+        </div>
+
+        <div class="relative">
+          <p class="text-xs font-black uppercase tracking-[0.25em] text-blue-700">
+            Biography
+          </p>
+
+          <div class="mt-8 space-y-6 text-base leading-8 text-slate-600">
+            <%= cond do %>
+              <% @member.slug == "president_co_founder" -> %>
+                <p>
+                  Moses Ondicho leads HELEXIA+ with a focus on healthcare transformation,
+                  digital accessibility and scalable healthcare coordination systems designed
+                  for Africa’s evolving healthcare infrastructure.
+                </p>
+
+                <p>
+                  His leadership combines systems thinking, operational strategy and
+                  long-term platform vision to ensure HELEXIA+ remains both innovative
+                  and practical in real-world healthcare environments.
+                </p>
+
+                <p>
+                  With a decade of experience in government relations, advisory and business development,
+                  he has worked extensively across East Africa shaping policy dialogues, structuring PPPs
+                  and advancing digital transformation programmes.
+                </p>
+
+                <p>
+                  He is a former CEO of Sens Spectra and strategic consultant to the World Smart Cities Forum,
+                  where he supported urban innovation, health systems strengthening and sustainable
+                  master-planning efforts across Kenya.
+                </p>
+
+                <p>
+                  Moses champions UHC, women’s health, youth empowerment and digital inclusion, driving
+                  HELEXIA+’s mission to build equitable preventive-health infrastructure at national and
+                  continental scale.
+                </p>
+
+                <p>
+                  Through HELEXIA+, he continues driving initiatives focused on connected care delivery,
+                  intelligent patient experiences and interoperable healthcare ecosystems.
+                </p>
+              <% @member.slug == "chief_executive_officer_co_founder" -> %>
+                <p>
+                  As CEO & Co-Founder, Aishwariya Srinagesh drives the technological and strategic direction behind
+                  HELEXIA+, helping shape the future of intelligent healthcare systems across Africa.
+                </p>
+
+                <p>
+                  Their work centers on building scalable infrastructure, AI-powered healthcare workflows
+                  and seamless patient-provider connectivity experiences.
+                </p>
+
+                <p>
+                  By combining innovation with execution, they help ensure HELEXIA+ remains secure,
+                  accessible and operationally efficient.
+                </p>
+              <% @member.slug == "clinical_operations_nursing_adoption_support" -> %>
+                <p>
+                  Mercy Nasimiyu Musungu is a clinical operations and nursing systems specialist with hands-on experience across hospital nursing leadership,
+                  patient care coordination, and healthcare service delivery.
+                </p>
+                <p>
+                  She has served in nursing leadership and operational roles in Kenyan healthcare facilities,
+                  including as Nursing Officer In-Charge at Martha Amadeas Mission Hospital and founder of Mercy Mobile Homecare Nursing Services.
+                </p>
+
+                <p>
+                  Her expertise spans nursing workflow optimization, infection prevention and control,
+                  maternity and medical-surgical care, staff mentorship, and patient-centered care coordination.
+                </p>
+
+                <p>
+                  At HELEXIA, she supports clinical workflow validation, nursing adoption, SOP implementation,
+                  and facility-level stabilization during digital health rollouts.
+                </p>
+              <% @member.slug == "uat_clinical_systems_qa" -> %>
+                <p>
+                  Titus John Njuhigu is a healthcare systems quality assurance and clinical workflow specialist with a unique blend of Clinical Medicine and Information Technology expertise.
+                  He holds qualifications from Kenya Medical Training College and Kenyatta University, combining frontline healthcare knowledge with enterprise IT systems experience.
+                </p>
+                <p>
+                  With over 9 years as a Quality Assurance Business Test Lead at Equity Bank and prior leadership at Equity Afia’s healthcare technology initiatives,
+                  Titus has extensive experience in UAT planning, workflow validation, go-live testing, and healthcare systems implementation.
+                </p>
+                <p>
+                  As part of the advisory structure,  Titus provides strategic guidance and domain
+                  expertise that helps shape the long-term direction of HELEXIA+.
+                </p>
+                <p>
+                  He specializes in clinical systems QA, Agile testing frameworks, and digital transformation support for large-scale health deployments.
+                </p>
+              <% true -> %>
+                <p>
+                  This member contributes to the HELEXIA+ mission of building connected, secure and
+                  intelligent healthcare experiences for modern healthcare systems.
+                </p>
+            <% end %>
+          </div>
         </div>
       </article>
+      
+<!-- Side rail -->
+      <aside class="space-y-8">
+        <!-- Expertise -->
+        <div class="rounded-[3rem] border border-white/70 bg-white/85 p-7 shadow-2xl shadow-blue-900/5 backdrop-blur-xl">
+          <p class="text-xs font-black uppercase tracking-[0.25em] text-cyan-700">
+            Expertise
+          </p>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            <span
+              :for={expertise <- @member.expertise}
+              class="rounded-full border border-blue-100 bg-blue-50 px-4 py-2 text-xs font-black text-blue-700"
+            >
+              {expertise}
+            </span>
+          </div>
+        </div>
+        
+<!-- Leadership lens -->
+        <div class="relative overflow-hidden rounded-[3rem] bg-slate-950 p-7 shadow-2xl shadow-slate-900/15">
+          <div class="absolute right-[-5rem] top-[-5rem] h-56 w-56 rounded-full bg-blue-500/20 blur-3xl">
+          </div>
+          <div class="absolute bottom-[-5rem] left-[-5rem] h-56 w-56 rounded-full bg-cyan-400/10 blur-3xl">
+          </div>
+
+          <div class="relative">
+            <p class="text-xs font-black uppercase tracking-[0.25em] text-cyan-300">
+              Leadership Lens
+            </p>
+            <blockquote class="mt-5 text-base italic leading-8 text-emerald-300 md:text-lg">
+              <%= cond do %>
+                <% @member.slug == "president_co_founder" -> %>
+                  “Healthcare transformation has to be practical enough to reach people,
+                  and ambitious enough to change systems.”
+                <% @member.slug == "chief_executive_officer_co_founder" -> %>
+                  “The future of care depends on infrastructure people can trust
+                  before they even notice it.”
+                <% true -> %>
+                  “Every contribution matters when the mission is to make healthcare
+                  more connected, intelligent and human.”
+              <% end %>
+            </blockquote>
+          </div>
+        </div>
+        
+<!-- Contributions -->
+        <div class="rounded-[3rem] border border-white/70 bg-white/85 p-7 shadow-2xl shadow-blue-900/5 backdrop-blur-xl">
+          <p class="text-xs font-black uppercase tracking-[0.25em] text-violet-700">
+            Contribution Map
+          </p>
+
+          <div class="mt-6 space-y-4">
+            <div class="flex gap-4 rounded-[1.5rem] bg-[#F8FBFF] p-4">
+              <span class="mt-1 h-3 w-3 shrink-0 rounded-full bg-blue-600 shadow-[0_0_0_6px_rgba(37,99,235,0.12)]">
+              </span>
+              <p class="text-sm font-bold leading-7 text-slate-700">
+                Strengthens HELEXIA+ through role-specific leadership and execution.
+              </p>
+            </div>
+
+            <div class="flex gap-4 rounded-[1.5rem] bg-[#F8FBFF] p-4">
+              <span class="mt-1 h-3 w-3 shrink-0 rounded-full bg-cyan-500 shadow-[0_0_0_6px_rgba(34,211,238,0.14)]">
+              </span>
+              <p class="text-sm font-bold leading-7 text-slate-700">
+                Supports the platform’s commitment to secure, intelligent and accessible care.
+              </p>
+            </div>
+
+            <div class="flex gap-4 rounded-[1.5rem] bg-[#F8FBFF] p-4">
+              <span class="mt-1 h-3 w-3 shrink-0 rounded-full bg-violet-500 shadow-[0_0_0_6px_rgba(139,92,246,0.12)]">
+              </span>
+              <p class="text-sm font-bold leading-7 text-slate-700">
+                Helps turn the HELEXIA+ mission into practical healthcare transformation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </aside>
     </div>
   </div>
 </section>
