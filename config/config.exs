@@ -11,7 +11,10 @@ config :helexia,
   ecto_repos: [Helexia.Repo],
   generators: [timestamp_type: :utc_datetime]
 
-config :helexia, Helexia.Repo, migration_primary_key: [type: :binary_id]
+config :helexia, Helexia.Repo,
+  migration_primary_key: [name: :id, type: :binary_id],
+  migration_foreign_key: [type: :binary_id],
+  log: :debug
 
 # Configure the endpoint
 config :helexia, HelexiaWeb.Endpoint,
