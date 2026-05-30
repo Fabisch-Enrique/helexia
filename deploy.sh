@@ -10,7 +10,7 @@ git checkout $branch || exit 1
 git pull || exit 1
 echo "Running deployment for branch $(git rev-parse --short HEAD)"
 
-cd ~/helexia-web/ || exit 1
+cd ~/helexia/ || exit 1
 npm i --prefix assets
 
 mix deps.get --only prod
