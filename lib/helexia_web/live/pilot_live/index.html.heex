@@ -1,0 +1,93 @@
+<section class="relative overflow-hidden bg-[#061427] py-24 text-white">
+  <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(14,165,233,0.22),transparent_34%),radial-gradient(circle_at_80%_20%,rgba(16,185,129,0.12),transparent_34%)]">
+  </div>
+
+  <div class="relative mx-auto max-w-[1500px] px-6 lg:px-12">
+    <div class="mx-auto max-w-3xl text-center">
+      <span class="inline-flex rounded-full border border-sky-300/20 bg-sky-300/10 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-sky-200">
+        HELEXIA+ Pilots
+      </span>
+
+      <h1 class="mt-6 text-5xl font-black tracking-tight text-white md:text-6xl">
+        Building connected healthcare intelligence from the ground up.
+      </h1>
+
+      <p class="mt-6 text-lg leading-8 text-slate-300/75">
+        Explore active and future HELEXIA+ pilot deployments, their care focus,
+        population reach, implementation events, and expansion progress.
+      </p>
+    </div>
+
+    <div class="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      <%= for pilot <- @pilots do %>
+        <a
+          href={~p"/pilots/#{pilot.slug}"}
+          class="group overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/[0.05] shadow-2xl shadow-black/20 backdrop-blur-2xl transition hover:-translate-y-1 hover:bg-white/[0.08]"
+        >
+          <div class="relative h-64 overflow-hidden">
+            <%= if pilot.media.type == :video do %>
+              <video
+                loop
+                muted
+                autoplay
+                playsinline
+                preload="metadata"
+                class="h-full w-full object-cover opacity-80 transition duration-700 group-hover:scale-105"
+              >
+                <source src={pilot.media.src} type="video/mp4" />
+              </video>
+            <% else %>
+              <img
+                alt={pilot.name}
+                src={pilot.media.src}
+                class="h-full w-full object-cover opacity-80 transition duration-700 group-hover:scale-105"
+              />
+            <% end %>
+
+            <div class="absolute inset-0 bg-gradient-to-t from-[#061427] via-[#061427]/30 to-transparent">
+            </div>
+
+            <div class="absolute bottom-5 left-5 right-5">
+              <span class="inline-flex rounded-full border border-emerald-300/20 bg-emerald-300/10 px-3 py-1 text-xs font-black text-emerald-200 backdrop-blur-xl">
+                {pilot.status}
+              </span>
+            </div>
+          </div>
+
+          <div class="p-7">
+            <p class="text-sm font-black uppercase tracking-[0.18em] text-sky-200">
+              {pilot.location.area}
+            </p>
+
+            <h2 class="mt-3 text-2xl font-black text-white">
+              {pilot.name}
+            </h2>
+
+            <p class="mt-4 line-clamp-3 text-sm leading-7 text-slate-300/75">
+              {pilot.subtitle}
+            </p>
+
+            <div class="mt-6 grid gap-3">
+              <%= for metric <- Enum.take(pilot.metrics, 2) do %>
+                <div class="rounded-2xl border border-white/10 bg-white/[0.05] p-4">
+                  <p class="text-xs text-slate-400">{metric.label}</p>
+                  <p class="mt-1 font-black text-white">{metric.value}</p>
+                </div>
+              <% end %>
+            </div>
+
+            <div class="mt-6 flex items-center justify-between">
+              <span class="text-sm font-black text-sky-200">
+                View Pilot Details
+              </span>
+
+              <span class="flex h-10 w-10 items-center justify-center rounded-full bg-sky-300 text-[#061427] transition group-hover:translate-x-1">
+                →
+              </span>
+            </div>
+          </div>
+        </a>
+      <% end %>
+    </div>
+  </div>
+</section>

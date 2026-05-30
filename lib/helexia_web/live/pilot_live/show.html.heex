@@ -1,0 +1,307 @@
+<section class="relative overflow-hidden bg-[#061427] text-white">
+  <div class="pointer-events-none absolute inset-0">
+    <div class="absolute -left-40 top-20 h-[520px] w-[520px] rounded-full bg-sky-400/20 blur-3xl">
+    </div>
+    <div class="absolute right-0 top-0 h-[560px] w-[560px] rounded-full bg-cyan-400/10 blur-3xl">
+    </div>
+  </div>
+
+  <div class="relative mx-auto grid min-h-[760px] max-w-[1600px] items-center gap-14 px-6 py-24 lg:grid-cols-12 lg:px-12">
+    <div class="lg:col-span-6">
+      <span class="inline-flex items-center gap-2 rounded-full border border-sky-300/20 bg-sky-300/10 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-sky-200 backdrop-blur-xl">
+        <span class="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_14px_rgba(52,211,153,0.9)]">
+        </span>
+        {@pilot.status}
+      </span>
+
+      <h1 class="mt-7 max-w-4xl text-5xl font-black tracking-tight text-white md:text-6xl lg:text-7xl">
+        {@pilot.title}
+      </h1>
+
+      <p class="mt-7 max-w-2xl text-lg leading-8 text-slate-300/80">
+        {@pilot.subtitle}
+      </p>
+
+      <div class="mt-10 flex flex-wrap items-center gap-4">
+        <a
+          href="/contact-us"
+          class="group relative overflow-hidden rounded-full bg-sky-300 px-7 py-4 text-sm font-black text-[#061427] shadow-[0_0_40px_rgba(125,211,252,0.4)] transition hover:scale-105 hover:bg-white"
+        >
+          <span class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition duration-700 group-hover:translate-x-full">
+          </span>
+          <span class="relative">Partner With Us</span>
+        </a>
+
+        <a
+          href={@pilot.location.map_url}
+          target="_blank"
+          class="rounded-full border border-white/10 bg-white/[0.06] px-7 py-4 text-sm font-black text-sky-100 backdrop-blur-xl transition hover:bg-white/[0.1] hover:text-white"
+        >
+          View Location
+        </a>
+      </div>
+    </div>
+
+    <div class="lg:col-span-6">
+      <div class="relative overflow-hidden rounded-[3rem] border border-white/10 bg-white/[0.04] shadow-2xl shadow-black/30 backdrop-blur-2xl">
+        <%= if @pilot.media.type == :video do %>
+          <video
+            loop
+            muted
+            autoplay
+            playsinline
+            preload="auto"
+            poster={@pilot.media.fallback}
+            class="h-[520px] w-full object-cover"
+          >
+            <source src={@pilot.media.src} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        <% else %>
+          <img
+            src={@pilot.media.src}
+            alt={@pilot.name}
+            class="h-[520px] w-full object-cover"
+          />
+        <% end %>
+
+        <div class="absolute bottom-6 left-6 right-6 rounded-[2rem] border border-white/10 bg-[#061427]/75 p-5 backdrop-blur-2xl">
+          <p class="text-xs font-black uppercase tracking-[0.22em] text-sky-200">
+            Pilot Launch Zone
+          </p>
+          <p class="mt-2 text-2xl font-black text-white">
+            {@pilot.location.area}, {@pilot.location.county}
+          </p>
+          <p class="mt-2 text-sm leading-6 text-slate-300/75">
+            {@pilot.location.country}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-gradient-to-b from-[#061427] to-[#081a2f] py-20 text-white">
+  <div class="mx-auto max-w-[1500px] px-6 lg:px-12">
+    <div class="grid gap-5 md:grid-cols-3">
+      <%= for metric <- @pilot.metrics do %>
+        <div class="rounded-[2rem] border border-sky-300/15 bg-sky-300/10 p-7 shadow-xl backdrop-blur-2xl">
+          <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-sky-300 text-[#061427]">
+            <.icon name={metric.icon} class="h-7 w-7" />
+          </div>
+
+          <p class="mt-6 text-4xl font-black tracking-tight text-white">
+            {metric.value}
+          </p>
+
+          <p class="mt-2 text-sm font-semibold text-slate-300/70">
+            {metric.label}
+          </p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white py-24">
+  <div class="mx-auto max-w-[1500px] px-6 lg:px-12">
+    <div class="mx-auto max-w-3xl text-center">
+      <span class="inline-flex rounded-full border border-cyan-200 bg-cyan-50 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-cyan-700">
+        Pilot Model
+      </span>
+
+      <h2 class="mt-6 text-4xl font-black tracking-tight text-[#08213d] md:text-5xl">
+        What this pilot will validate
+      </h2>
+
+      <p class="mt-5 text-base leading-8 text-slate-600">
+        Each HELEXIA+ pilot tracks practical healthcare workflows, care access,
+        worker enablement, and intelligence signals that guide future scale.
+      </p>
+    </div>
+
+    <div class="mt-14 grid gap-5 lg:grid-cols-4">
+      <%= for objective <- @pilot.objectives do %>
+        <div class="rounded-[2rem] border border-slate-200 bg-slate-50 p-7">
+          <p class="text-sm font-black text-sky-600">{objective.number}</p>
+
+          <h3 class="mt-4 text-xl font-black text-[#08213d]">
+            {objective.title}
+          </h3>
+
+          <p class="mt-3 text-sm leading-7 text-slate-600">
+            {objective.description}
+          </p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<section class="relative overflow-hidden bg-[#081a2f] py-24 text-white">
+  <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_0%,rgba(14,165,233,0.18),transparent_36%),radial-gradient(circle_at_80%_80%,rgba(16,185,129,0.12),transparent_34%)]">
+  </div>
+
+  <div class="relative mx-auto grid max-w-[1500px] gap-12 px-6 lg:grid-cols-12 lg:px-12">
+    <div class="lg:col-span-5">
+      <span class="inline-flex rounded-full border border-emerald-300/20 bg-emerald-300/10 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-emerald-200">
+        Care Focus
+      </span>
+
+      <h2 class="mt-6 text-4xl font-black tracking-tight text-white md:text-5xl">
+        Priority care segments.
+      </h2>
+
+      <p class="mt-5 text-base leading-8 text-slate-300/75">
+        These are the care segments and operational areas currently attached to this pilot.
+      </p>
+    </div>
+
+    <div class="lg:col-span-7">
+      <div class="space-y-5">
+        <%= for segment <- @pilot.care_segments do %>
+          <div class="rounded-[2rem] border border-white/10 bg-white/[0.05] p-7 backdrop-blur-2xl">
+            <div class="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
+              <div>
+                <h3 class="text-2xl font-black text-white">
+                  {segment.name}
+                </h3>
+
+                <p class="mt-3 max-w-2xl text-sm leading-7 text-slate-300/75">
+                  {segment.description}
+                </p>
+              </div>
+
+              <span class="rounded-full border border-sky-300/20 bg-sky-300/10 px-4 py-2 text-xs font-black text-sky-200">
+                {segment.tag}
+              </span>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-[#f4fbff] py-24">
+  <div class="mx-auto max-w-[1500px] px-6 lg:px-12">
+    <div class="grid gap-12 lg:grid-cols-12">
+      <div class="lg:col-span-4">
+        <span class="inline-flex rounded-full border border-sky-200 bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-sky-700">
+          Pilot Events
+        </span>
+
+        <h2 class="mt-6 text-4xl font-black tracking-tight text-[#08213d]">
+          Activity timeline.
+        </h2>
+
+        <p class="mt-5 text-base leading-8 text-slate-600">
+          Events, engagements, activations, and implementation updates can be added here as the pilot progresses.
+        </p>
+      </div>
+
+      <div class="lg:col-span-8">
+        <div class="space-y-5">
+          <%= for event <- @pilot.events do %>
+            <div class="rounded-[2rem] border border-white bg-white p-7 shadow-xl shadow-sky-900/5">
+              <div class="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                <div>
+                  <p class="text-sm font-black uppercase tracking-[0.16em] text-sky-600">
+                    {event.category}
+                  </p>
+
+                  <h3 class="mt-2 text-xl font-black text-[#08213d]">
+                    {event.title}
+                  </h3>
+
+                  <p class="mt-3 text-sm leading-7 text-slate-600">
+                    {event.description}
+                  </p>
+                </div>
+
+                <span class="shrink-0 rounded-full bg-slate-100 px-4 py-2 text-xs font-black text-slate-600">
+                  {event.date}
+                </span>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white py-24">
+  <div class="mx-auto max-w-[1500px] px-6 lg:px-12">
+    <div class="grid gap-12 lg:grid-cols-12">
+      <div class="lg:col-span-4">
+        <span class="inline-flex rounded-full border border-cyan-200 bg-cyan-50 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-cyan-700">
+          Rollout Plan
+        </span>
+
+        <h2 class="mt-6 text-4xl font-black tracking-tight text-[#08213d]">
+          From local pilot to regional scale.
+        </h2>
+      </div>
+
+      <div class="lg:col-span-8">
+        <div class="grid gap-5">
+          <%= for milestone <- @pilot.milestones do %>
+            <div class="rounded-[2rem] border border-slate-200 bg-slate-50 p-7">
+              <div class="flex gap-5">
+                <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-sky-600 text-sm font-black text-white">
+                  {milestone.step}
+                </div>
+
+                <div>
+                  <h3 class="text-xl font-black text-[#08213d]">
+                    {milestone.title}
+                  </h3>
+
+                  <p class="mt-2 text-sm leading-7 text-slate-600">
+                    {milestone.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="relative overflow-hidden bg-[#061427] py-24 text-white">
+  <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(14,165,233,0.24),transparent_36%)]">
+  </div>
+
+  <div class="relative mx-auto max-w-5xl px-6 text-center">
+    <span class="inline-flex rounded-full border border-sky-300/20 bg-sky-300/10 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-sky-200">
+      Join the Pilot Network
+    </span>
+
+    <h2 class="mt-6 text-4xl font-black tracking-tight text-white md:text-5xl">
+      Help shape the next HELEXIA+ pilot.
+    </h2>
+
+    <p class="mx-auto mt-5 max-w-3xl text-base leading-8 text-slate-300/75">
+      Healthcare facilities, community partners, program teams, and implementation collaborators can participate in active or upcoming pilot deployments.
+    </p>
+
+    <div class="mt-10 flex flex-wrap justify-center gap-4">
+      <a
+        href="/contact-us"
+        class="rounded-full bg-sky-300 px-8 py-4 text-sm font-black text-[#061427] shadow-[0_0_40px_rgba(125,211,252,0.4)] transition hover:scale-105 hover:bg-white"
+      >
+        Schedule a Demo
+      </a>
+
+      <a
+        href={~p"/pilots"}
+        class="rounded-full border border-white/10 bg-white/[0.06] px-8 py-4 text-sm font-black text-sky-100 backdrop-blur-xl transition hover:bg-white/[0.1] hover:text-white"
+      >
+        View All Pilots
+      </a>
+    </div>
+  </div>
+</section>
