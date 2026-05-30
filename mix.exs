@@ -10,6 +10,7 @@ defmodule Helexia.MixProject do
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
+      releases: releases(),
       compilers: [:phoenix_live_view] ++ Mix.compilers(),
       listeners: [Phoenix.CodeReloader]
     ]
@@ -96,6 +97,20 @@ defmodule Helexia.MixProject do
         "phx.digest"
       ],
       precommit: ["compile --warnings-as-errors", "deps.unlock --unused", "format", "test"]
+    ]
+  end
+
+  defp releases do
+    [
+      helexia: [
+        include_executables_for: [:unix],
+        applications: [
+          runtime_tools: :permanent,
+          helexia: :permanent
+        ],
+        version: "0.1.0",
+        steps: [:assemble, :tar]
+      ]
     ]
   end
 end
