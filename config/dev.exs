@@ -2,7 +2,6 @@ import Config
 
 # Configure your database
 config :helexia, Helexia.Repo,
-  migration_primary_key: [type: :binary_id],
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
