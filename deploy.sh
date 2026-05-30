@@ -15,7 +15,6 @@ npm i --prefix assets
 
 mix deps.get --only prod
 mix compile
-mix sentry_recompile
 mix assets.build
 mix assets.deploy
 mix phx.digest

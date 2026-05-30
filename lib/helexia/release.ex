@@ -21,7 +21,7 @@ defmodule Helexia.Release do
       {:ok, _, _} = Ecto.Migrator.with_repo(repo, &Ecto.Migrator.run(&1, :down, to: version))
     end
 
-    def seed(_) do
+    def seed() do
       for {app, repo, seed_files} <- seeds() do
         Logger.info("Running seeds for #{inspect(repo)}")
 
