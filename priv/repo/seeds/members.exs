@@ -18,7 +18,7 @@ defmodule Helexia.Seeds.Members do
       display_order: 2,
       name: "Aishwariya Srinagesh",
       image_url: "/images/ceo1.png",
-      email: "aishwariyasrinagesh@gmail.com",
+      email: "aishwariya@iappsafrica.com",
       title: "Chief Executive Officer & Co-Founder",
       expertise: ["Operations", "Management", "Solutions Expert"]
     },
@@ -32,7 +32,7 @@ defmodule Helexia.Seeds.Members do
       image_url: "/images/cto.png",
       expertise: ["litigation", "conveyancing", "arbitration proceedings"]
     },
-        %{
+    %{
       level: 2,
       status: "active",
       display_order: 4,
@@ -42,7 +42,7 @@ defmodule Helexia.Seeds.Members do
       expertise: ["Health", "Clinics"],
       title: "UAT & Clinical Systems QA"
     },
-            %{
+    %{
       level: 2,
       status: "active",
       display_order: 5,
@@ -51,6 +51,16 @@ defmodule Helexia.Seeds.Members do
       image_url: "/images/co_nas.png",
       expertise: ["Nursing", "Health", "Patient Care"],
       title: "Clinical Operations & Nursing Adoption Support"
+    },
+    %{
+      level: 3,
+      status: "active",
+      display_order: 6,
+      name: "Peter Pushparaj",
+      email: "peter@ainexus.com",
+      title: "Advisory & Operations",
+      image_url: "/images/advisor.png",
+      expertise: ["Advisory", "Operations"]
     }
   ]
 

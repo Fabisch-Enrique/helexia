@@ -3,7 +3,6 @@
   Destination page for a clicked member card.
   Example route: /meet-the-team/:slug
 -->
-
 <section
   :if={@live_action == :view_member}
   class="relative min-h-screen overflow-hidden bg-[#F8FBFF] px-6 py-24 md:px-10 xl:px-20"
@@ -81,6 +80,8 @@
                     Translating strategy into healthcare execution.
                   <% @member.slug == "uat_clinical_systems_qa" -> %>
                     Guiding growth with clinical intelligence.
+                  <% @member.slug == "advisory_operations" -> %>
+                    Clinical, Compliance & Research Advisor.
                   <% true -> %>
                     Building the foundation for smarter care.
                 <% end %>
@@ -91,11 +92,13 @@
                   <% @member.slug == "president_co_founder" -> %>
                     Moses Ondicho leads HELEXIA ➕  with a focus on healthcare transformation, digital accessibility and scalable healthcare coordination systems designed for Africa’s evolving healthcare infrastructure.
                   <% @member.slug == "chief_executive_officer_co_founder" -> %>
-                    Aishwariya Srinagesh drives the operational and strategic direction behind HELEXIA ➕ , helping shape the future of intelligent healthcare systems across Africa.
+                    Aishwariya Srinagesh drives the operational and strategic direction behind HELEXIA ➕, helping shape the future of intelligent healthcare systems across Africa.
                   <% @member.slug == "clinical_operations_nursing_adoption_support" -> %>
-                    Mercy Nasimiyu Musungu strengthens the technical and operational growth ofHELEXIA ➕ , helping build a platform that is reliable, scalable and useful in real healthcare environments.
+                    Mercy Nasimiyu Musungu strengthens the technical and operational growth ofHELEXIA ➕, helping build a platform that is reliable, scalable and useful in real healthcare environments.
                   <% @member.slug == "uat_clinical_systems_qa" -> %>
                     Titus brings domain expertise and strategic guidance that helps HELEXIA ➕  grow with stronger governance, healthcare alignment and long-term credibility.
+                  <% @member.slug == "advisory_operations" -> %>
+                    Peter Pushparaj guides HELEXIA ➕ across governance, medical safety, AI ethics and healthcare systems alignment.
                   <% true -> %>
                     Contributes to the HELEXIA ➕  mission of building connected, secure and intelligent healthcare experiences for modern health systems.
                 <% end %>
@@ -120,6 +123,8 @@
               Platform Execution
             <% @member.slug == "uat_clinical_systems_qa" -> %>
               Advisory Guidance
+            <% @member.slug == "advisory_operations" -> %>
+              Advisory and Operations
             <% true -> %>
               Mission Delivery
           <% end %>
@@ -141,6 +146,8 @@
               Specialist Depth
             <% @member.slug == "uat_clinical_systems_qa" -> %>
               Organization Insight
+            <% @member.slug == "advisory_operations" -> %>
+              Operations and Advisory Insight
             <% true -> %>
               Execution Support
           <% end %>
@@ -162,6 +169,8 @@
               Stronger Product Delivery
             <% @member.slug == "uat_clinical_systems_qa" -> %>
               Responsible Growth
+            <% @member.slug == "advisory_operations" -> %>
+              Strategy, Planning Growth and Operations
             <% true -> %>
               Team Momentum
           <% end %>
@@ -283,6 +292,24 @@
                 <p>
                   He specializes in clinical systems QA, Agile testing frameworks, and digital transformation support for large-scale health deployments.
                 </p>
+              <% @member.slug == "advisory_operations" -> %>
+                <p>
+                  Peter Pushparaj is a senior business leader with over 35 years of experience in operational leadership, business transformation, market expansion,
+                  and organizational development across India, the Asia-Pacific region, and the UAE.
+                </p>
+                <p>
+                  Throughout his career, he has successfully built and scaled businesses, established new market operations, led cross-functional teams,
+                  and driven strategic growth initiatives across healthcare, technology, consumer, and industrial sectors
+                  His expertise includes operational excellence, business scaling, commercial strategy, partnership development, governance, and performance management
+                </p>
+                <p>
+                  Having held senior leadership roles across multinational and emerging organizations, Peter brings practical experience in translating strategy into execution,
+                  strengthening operational frameworks, and supporting sustainable business growth.
+                </p>
+                <p>
+                  As an Advisory Board Member for Operations, he provides guidance on organizational scaling, operational effectiveness, market deployment, strategic partnerships,
+                  governance, and execution excellence, supporting HELEXIA AI's mission to deliver innovative AI-powered healthcare solutions across Africa.
+                </p>
               <% true -> %>
                 <p>
                   This member contributes to the HELEXIA ➕  mission of building connected, secure and
@@ -330,6 +357,8 @@
                 <% @member.slug == "chief_executive_officer_co_founder" -> %>
                   “The future of care depends on infrastructure people can trust
                   before they even notice it.”
+                <% @member.slug == "advisory_operations" -> %>
+                  “Operations and planning are a pivot of excellence.”
                 <% true -> %>
                   “Every contribution matters when the mission is to make healthcare
                   more connected, intelligent and human.”

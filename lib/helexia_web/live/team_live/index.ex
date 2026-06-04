@@ -7,7 +7,7 @@ defmodule HelexiaWeb.TeamLive.Index do
   alias Helexia.Members.Member
 
   def mount(_params, _session, socket) do
-    assigns = [founders: [], ctos: [], member: %Member{}]
+    assigns = [founders: [], executives: [], advisors: [], member: %Member{}]
 
     {:ok, assign(socket, assigns)}
   end
@@ -17,7 +17,11 @@ defmodule HelexiaWeb.TeamLive.Index do
 
   def apply_action(socket, :team, _params),
     do:
-      assign(socket, founders: Members.list_team_by_level(1), ctos: Members.list_team_by_level(2))
+      assign(socket,
+        founders: Members.list_team_by_level(1),
+        advisors: Members.list_team_by_level(3),
+        executives: Members.list_team_by_level(2)
+      )
 
   def apply_action(socket, :view_member, params),
     do: assign(socket, member: Member.get(params["id"]))
