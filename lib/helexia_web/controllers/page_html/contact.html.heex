@@ -79,21 +79,21 @@
             <div class="form-field">
               <label for="email">Email address <span>*</span></label>
               <input
+                required
                 id="email"
-                name="contact[email]"
                 type="email"
                 autocomplete="email"
+                name="contact[email]"
                 placeholder="you@example.com"
-                required
               />
             </div>
             <div class="form-field">
               <label for="phone">Phone number</label>
               <input
                 id="phone"
-                name="contact[phone]"
                 type="tel"
                 autocomplete="tel"
+                name="contact[phone]"
                 placeholder="+254 700 000 000"
               />
             </div>
@@ -150,22 +150,22 @@
           <div class="form-field">
             <label for="subject">Subject <span>*</span></label>
             <input
+              required
+              type="text"
               id="subject"
               name="contact[subject]"
-              type="text"
               placeholder="Briefly describe your request"
-              required
             />
           </div>
 
           <div class="form-field">
             <label for="message">Message <span>*</span></label>
             <textarea
+              rows="7"
+              required
               id="message"
               name="contact[message]"
-              rows="7"
               placeholder="Tell us what you need..."
-              required
             ></textarea>
           </div>
         </fieldset>
