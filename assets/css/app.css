@@ -100,7 +100,10 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 /* Make LiveView wrapper divs transparent for layout */
-[data-phx-session], [data-phx-teleported-src] { display: contents }
+[data-phx-session],
+[data-phx-teleported-src] {
+  display: contents
+}
 
 /* This file is for your main application CSS */
 
@@ -134,18 +137,37 @@
 }
 
 @keyframes globe-map-drift {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @keyframes globe-orbit-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes globe-float {
-  0%, 100% { transform: translateY(0); opacity: 0.7; }
-  50% { transform: translateY(-14px); opacity: 1; }
+
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: translateY(-14px);
+    opacity: 1;
+  }
 }
 
 .contact-page {
@@ -339,11 +361,25 @@
   border-radius: 45% 55% 60% 40% / 52% 35% 65% 48%;
 }
 
-.land--repeat.land--one { left: 108%; }
-.land--repeat.land--two { left: 124%; }
-.land--repeat.land--three { left: 142%; }
-.land--repeat.land--four { left: 158%; }
-.land--repeat.land--five { left: 174%; }
+.land--repeat.land--one {
+  left: 108%;
+}
+
+.land--repeat.land--two {
+  left: 124%;
+}
+
+.land--repeat.land--three {
+  left: 142%;
+}
+
+.land--repeat.land--four {
+  left: 158%;
+}
+
+.land--repeat.land--five {
+  left: 174%;
+}
 
 .health-pulse,
 .data-node {
@@ -359,9 +395,20 @@
   height: 0.7rem;
 }
 
-.health-pulse--one { left: 38%; top: 32%; }
-.health-pulse--two { left: 58%; top: 48%; }
-.health-pulse--three { left: 46%; top: 68%; }
+.health-pulse--one {
+  left: 38%;
+  top: 32%;
+}
+
+.health-pulse--two {
+  left: 58%;
+  top: 48%;
+}
+
+.health-pulse--three {
+  left: 46%;
+  top: 68%;
+}
 
 .data-node {
   width: 0.65rem;
@@ -369,10 +416,28 @@
   animation: globe-float 5s ease-in-out infinite;
 }
 
-.data-node--one { left: 16%; top: 28%; }
-.data-node--two { right: 16%; top: 28%; animation-delay: 1.2s; }
-.data-node--three { right: 24%; bottom: 20%; animation-delay: 2.1s; }
-.data-node--four { left: 23%; bottom: 28%; animation-delay: 3s; }
+.data-node--one {
+  left: 16%;
+  top: 28%;
+}
+
+.data-node--two {
+  right: 16%;
+  top: 28%;
+  animation-delay: 1.2s;
+}
+
+.data-node--three {
+  right: 24%;
+  bottom: 20%;
+  animation-delay: 2.1s;
+}
+
+.data-node--four {
+  left: 23%;
+  bottom: 28%;
+  animation-delay: 3s;
+}
 
 .health-chip {
   position: absolute;
@@ -498,7 +563,7 @@
   letter-spacing: -0.04em;
 }
 
-.contact-panel > p:not(.panel-kicker) {
+.contact-panel>p:not(.panel-kicker) {
   margin: 1rem 0 0;
   color: #475569;
   line-height: 1.75;
@@ -747,4 +812,64 @@ button:focus-visible {
   button {
     width: 100%;
   }
+}
+
+.contact-video-card {
+  animation: helexia-pulse 3s ease-in-out infinite;
+}
+
+@keyframes helexia-pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(34, 211, 238, 0);
+    border-color: rgba(226, 232, 240, 1);
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 4px rgba(34, 211, 238, 0.15),
+      0 0 30px rgba(34, 211, 238, 0.25);
+    border-color: rgba(34, 211, 238, 0.6);
+  }
+}
+
+
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  transition: all 200ms ease;
+  border: 1px solid #e2e8f0;
+}
+
+/* synced glow response */
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  animation: helexia-pulse 3s ease-in-out infinite;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  animation: none;
+  border-color: #22d3ee;
+  box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.12);
+}
+
+.contact-form input:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.contact-form input:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.contact-form input:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.contact-form input:nth-child(4) {
+  animation-delay: 0.6s;
 }
