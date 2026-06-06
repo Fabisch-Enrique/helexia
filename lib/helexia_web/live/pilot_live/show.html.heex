@@ -1,307 +1,1220 @@
-<section class="relative overflow-hidden bg-[#061427] text-white">
-  <div class="pointer-events-none absolute inset-0">
-    <div class="absolute -left-40 top-20 h-[520px] w-[520px] rounded-full bg-sky-400/20 blur-3xl">
+<Layouts.header />
+
+<main class="relative min-h-screen overflow-hidden bg-[#f8fafc] text-slate-950">
+  <%!-- Global hero atmosphere --%>
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-x-0 top-0 h-[64rem] overflow-hidden"
+  >
+    <div class="absolute inset-0 bg-gradient-to-b from-[#e8edf2] via-[#f7fafc] to-transparent">
     </div>
-    <div class="absolute right-0 top-0 h-[560px] w-[560px] rounded-full bg-cyan-400/10 blur-3xl">
+
+    <div class="absolute -left-52 top-10 h-[42rem] w-[42rem] rounded-full bg-sky-200/35 blur-[110px]">
+    </div>
+
+    <div class="absolute -right-52 top-72 h-[38rem] w-[38rem] rounded-full bg-emerald-100/40 blur-[110px]">
     </div>
   </div>
 
-  <div class="relative mx-auto grid min-h-[760px] max-w-[1600px] items-center gap-14 px-6 py-24 lg:grid-cols-12 lg:px-12">
-    <div class="lg:col-span-6">
-      <span class="inline-flex items-center gap-2 rounded-full border border-sky-300/20 bg-sky-300/10 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-sky-200 backdrop-blur-xl">
-        <span class="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_14px_rgba(52,211,153,0.9)]">
-        </span>
-        {@pilot.status}
-      </span>
-
-      <h1 class="mt-7 max-w-4xl text-5xl font-black tracking-tight text-white md:text-6xl lg:text-7xl">
-        {@pilot.title}
-      </h1>
-
-      <p class="mt-7 max-w-2xl text-lg leading-8 text-slate-300/80">
-        {@pilot.subtitle}
-      </p>
-
-      <div class="mt-10 flex flex-wrap items-center gap-4">
-        <a
-          href="/contact-us"
-          class="group relative overflow-hidden rounded-full bg-sky-300 px-7 py-4 text-sm font-black text-[#061427] shadow-[0_0_40px_rgba(125,211,252,0.4)] transition hover:scale-105 hover:bg-white"
-        >
-          <span class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition duration-700 group-hover:translate-x-full">
-          </span>
-          <span class="relative">Partner With Us</span>
-        </a>
-
-        <a
-          href={@pilot.location.map_url}
-          target="_blank"
-          class="rounded-full border border-white/10 bg-white/[0.06] px-7 py-4 text-sm font-black text-sky-100 backdrop-blur-xl transition hover:bg-white/[0.1] hover:text-white"
-        >
-          View Location
-        </a>
-      </div>
+  <%!-- Hero --%>
+  <section
+    aria-labelledby="pilot-title"
+    class="relative isolate overflow-hidden"
+  >
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-[#f0f7fb]"
+    >
     </div>
 
-    <div class="lg:col-span-6">
-      <div class="relative overflow-hidden rounded-[3rem] border border-white/10 bg-white/[0.04] shadow-2xl shadow-black/30 backdrop-blur-2xl">
-        <%= if @pilot.media.type == :video do %>
-          <video
-            loop
-            muted
-            autoplay
-            playsinline
-            preload="auto"
-            poster={@pilot.media.fallback}
-            class="h-[520px] w-full object-cover"
-          >
-            <source src={@pilot.media.src} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        <% else %>
-          <img
-            src={@pilot.media.src}
-            alt={@pilot.name}
-            class="h-[520px] w-full object-cover"
-          />
-        <% end %>
+    <div class="relative mx-auto grid max-w-[1500px] items-center gap-12 px-6 pb-20 pt-12 lg:grid-cols-12 lg:px-12 lg:pb-28 lg:pt-16">
+      <%!-- Hero content --%>
+      <div class="lg:col-span-6 xl:col-span-6">
+        <div class="flex flex-wrap items-center gap-3">
+          <span class={[
+            "inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-black uppercase tracking-[0.18em] shadow-sm",
+            pilot_status_badge_class(@pilot.status)
+          ]}>
+            <span class="relative flex h-2.5 w-2.5">
+              <%= if @pilot.status in ["active", "live", "in progress", "ongoing"] do %>
+                <span class={[
+                  "absolute inline-flex h-full w-full animate-ping rounded-full opacity-40",
+                  pilot_status_dot_class(@pilot.status)
+                ]}>
+                </span>
+              <% end %>
 
-        <div class="absolute bottom-6 left-6 right-6 rounded-[2rem] border border-white/10 bg-[#061427]/75 p-5 backdrop-blur-2xl">
-          <p class="text-xs font-black uppercase tracking-[0.22em] text-sky-200">
-            Pilot Launch Zone
-          </p>
-          <p class="mt-2 text-2xl font-black text-white">
-            {@pilot.location.area}, {@pilot.location.county}
-          </p>
-          <p class="mt-2 text-sm leading-6 text-slate-300/75">
-            {@pilot.location.country}
-          </p>
+              <span class={[
+                "relative inline-flex h-2.5 w-2.5 rounded-full",
+                pilot_status_dot_class(@pilot.status)
+              ]}>
+              </span>
+            </span>
+
+            {@pilot.status}
+          </span>
+        </div>
+
+        <h1
+          id="pilot-title"
+          class="mt-8 max-w-4xl text-4xl font-black leading-[0.98] tracking-[-0.05em] text-slate-950 sm:text-4xl lg:text-[3.95rem]"
+        >
+          {@pilot.title}
+        </h1>
+
+        <p class="mt-7 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg lg:text-xl lg:leading-9">
+          {@pilot.subtitle}
+        </p>
+
+        <%!-- Location summary --%>
+        <div class="mt-8 flex items-start gap-4 rounded-2xl border border-white/90 bg-white/75 p-5 shadow-[0_16px_45px_rgba(15,23,42,0.07)] backdrop-blur-xl sm:max-w-xl">
+          <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-sky-100 text-sky-700">
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              class="h-5 w-5"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 21s7-5.4 7-12a7 7 0 1 0-14 0c0 6.6 7 12 7 12Z"
+              />
+              <circle cx="12" cy="9" r="2.5" />
+            </svg>
+          </span>
+
+          <div>
+            <p class="text-xs font-black uppercase tracking-[0.16em] text-slate-500">
+              Pilot location
+            </p>
+
+            <p class="mt-1 font-black text-slate-950">
+              {@pilot.location.area}, {@pilot.location.county}
+            </p>
+
+            <p class="mt-1 text-sm text-slate-600">
+              {@pilot.location.country}
+            </p>
+          </div>
+        </div>
+
+        <%!-- Hero actions --%>
+        <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <a
+            href="/contact-us"
+            class="inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-slate-950 px-7 py-3 text-sm font-black text-white shadow-lg shadow-slate-950/15 transition hover:-translate-y-0.5 hover:bg-sky-700 focus:outline-none focus-visible:ring-4 focus-visible:ring-sky-200"
+          >
+            Partner with this pilot
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              class="h-4 w-4"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M5 12h14m-6-6 6 6-6 6"
+              />
+            </svg>
+          </a>
+
+          <a
+            href={@pilot.location.map_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex min-h-12 items-center justify-center gap-3 rounded-full border border-slate-300 bg-white/80 px-7 py-3 text-sm font-black text-slate-700 shadow-sm backdrop-blur-xl transition hover:border-sky-300 hover:bg-white hover:text-sky-700 focus:outline-none focus-visible:ring-4 focus-visible:ring-slate-200"
+          >
+            View location
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              class="h-4 w-4"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M14 5h5v5m0-5-8 8"
+              />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"
+              />
+            </svg>
+
+            <span class="sr-only">Opens in a new tab</span>
+          </a>
         </div>
       </div>
-    </div>
-  </div>
-</section>
 
-<section class="bg-gradient-to-b from-[#061427] to-[#081a2f] py-20 text-white">
-  <div class="mx-auto max-w-[1500px] px-6 lg:px-12">
-    <div class="grid gap-5 md:grid-cols-3">
-      <%= for metric <- @pilot.metrics do %>
-        <div class="rounded-[2rem] border border-sky-300/15 bg-sky-300/10 p-7 shadow-xl backdrop-blur-2xl">
-          <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-sky-300 text-[#061427]">
-            <.icon name={metric.icon} class="h-7 w-7" />
+      <%!-- Hero media --%>
+      <div class="lg:col-span-6 xl:col-span-6">
+        <div class="relative">
+          <div
+            aria-hidden="true"
+            class="absolute -inset-4 rounded-[3rem] bg-gradient-to-br from-sky-200/60 via-white to-emerald-100/50 blur-2xl"
+          >
           </div>
 
-          <p class="mt-6 text-4xl font-black tracking-tight text-white">
-            {metric.value}
-          </p>
+          <div class="relative overflow-hidden rounded-[2rem] border border-white bg-slate-200 shadow-[0_30px_90px_rgba(15,23,42,0.2)] sm:rounded-[3rem]">
+            <%= if @pilot.media.type == :video do %>
+              <video
+                loop
+                muted
+                autoplay
+                playsinline
+                preload="metadata"
+                poster={@pilot.media.fallback}
+                aria-label={"Video overview of #{@pilot.title}"}
+                class="h-[420px] w-full object-cover sm:h-[520px] lg:h-[600px]"
+              >
+                <source src={@pilot.media.src} type="video/mp4" />
+                Your browser does not support embedded video.
+              </video>
+            <% else %>
+              <img
+                src={@pilot.media.src}
+                alt={"#{@pilot.title} pilot in #{@pilot.location.area}"}
+                fetchpriority="high"
+                decoding="async"
+                class="h-[420px] w-full object-cover sm:h-[520px] lg:h-[600px]"
+              />
+            <% end %>
 
-          <p class="mt-2 text-sm font-semibold text-slate-300/70">
-            {metric.label}
-          </p>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</section>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/5 to-transparent">
+            </div>
 
-<section class="bg-white py-24">
-  <div class="mx-auto max-w-[1500px] px-6 lg:px-12">
-    <div class="mx-auto max-w-3xl text-center">
-      <span class="inline-flex rounded-full border border-cyan-200 bg-cyan-50 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-cyan-700">
-        Pilot Model
-      </span>
+            <div class="absolute bottom-5 left-5 right-5 sm:bottom-7 sm:left-7 sm:right-7">
+              <div class="rounded-[1.5rem] border border-white/20 bg-slate-950/70 p-5 text-white shadow-xl backdrop-blur-2xl sm:p-6">
+                <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+                  <div>
+                    <p class="text-xs font-black uppercase tracking-[0.2em] text-sky-300">
+                      Pilot launch zone
+                    </p>
 
-      <h2 class="mt-6 text-4xl font-black tracking-tight text-[#08213d] md:text-5xl">
-        What this pilot will validate
-      </h2>
+                    <p class="mt-2 text-xl font-black tracking-tight sm:text-2xl">
+                      {@pilot.location.area}, {@pilot.location.county}
+                    </p>
 
-      <p class="mt-5 text-base leading-8 text-slate-600">
-        Each HELEXIA+ pilot tracks practical healthcare workflows, care access,
-        worker enablement, and intelligence signals that guide future scale.
-      </p>
-    </div>
+                    <p class="mt-2 text-sm text-slate-300">
+                      {@pilot.location.country}
+                    </p>
+                  </div>
 
-    <div class="mt-14 grid gap-5 lg:grid-cols-4">
-      <%= for objective <- @pilot.objectives do %>
-        <div class="rounded-[2rem] border border-slate-200 bg-slate-50 p-7">
-          <p class="text-sm font-black text-sky-600">{objective.number}</p>
-
-          <h3 class="mt-4 text-xl font-black text-[#08213d]">
-            {objective.title}
-          </h3>
-
-          <p class="mt-3 text-sm leading-7 text-slate-600">
-            {objective.description}
-          </p>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</section>
-
-<section class="relative overflow-hidden bg-[#081a2f] py-24 text-white">
-  <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_0%,rgba(14,165,233,0.18),transparent_36%),radial-gradient(circle_at_80%_80%,rgba(16,185,129,0.12),transparent_34%)]">
-  </div>
-
-  <div class="relative mx-auto grid max-w-[1500px] gap-12 px-6 lg:grid-cols-12 lg:px-12">
-    <div class="lg:col-span-5">
-      <span class="inline-flex rounded-full border border-emerald-300/20 bg-emerald-300/10 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-emerald-200">
-        Care Focus
-      </span>
-
-      <h2 class="mt-6 text-4xl font-black tracking-tight text-white md:text-5xl">
-        Priority care segments.
-      </h2>
-
-      <p class="mt-5 text-base leading-8 text-slate-300/75">
-        These are the care segments and operational areas currently attached to this pilot.
-      </p>
-    </div>
-
-    <div class="lg:col-span-7">
-      <div class="space-y-5">
-        <%= for segment <- @pilot.care_segments do %>
-          <div class="rounded-[2rem] border border-white/10 bg-white/[0.05] p-7 backdrop-blur-2xl">
-            <div class="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
-              <div>
-                <h3 class="text-2xl font-black text-white">
-                  {segment.name}
-                </h3>
-
-                <p class="mt-3 max-w-2xl text-sm leading-7 text-slate-300/75">
-                  {segment.description}
-                </p>
+                  <a
+                    href={@pilot.location.map_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={"Open map for #{@pilot.location.area}"}
+                    class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-slate-950 transition hover:scale-105 hover:bg-sky-200 focus:outline-none focus-visible:ring-4 focus-visible:ring-sky-300"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      class="h-5 w-5"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M14 5h5v5m0-5-8 8"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M19 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"
+                      />
+                    </svg>
+                  </a>
+                </div>
               </div>
-
-              <span class="rounded-full border border-sky-300/20 bg-sky-300/10 px-4 py-2 text-xs font-black text-sky-200">
-                {segment.tag}
-              </span>
             </div>
           </div>
-        <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%!-- HELEXIA sticky pilot navigation --%>
+  <div class="sticky top-0 z-40 border-y border-sky-300/15 bg-[#061a2f]/95 shadow-[0_14px_45px_rgba(2,12,27,0.24)] backdrop-blur-2xl">
+    <%!-- Background atmosphere --%>
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-0 overflow-hidden"
+    >
+      <div class="absolute inset-0 bg-gradient-to-r from-[#05182c] via-[#082b49] to-[#061a2f]">
+      </div>
+
+      <div class="absolute -left-20 top-1/2 h-40 w-40 -translate-y-1/2 rounded-full bg-sky-400/15 blur-3xl">
+      </div>
+
+      <div class="absolute right-1/4 top-1/2 h-32 w-32 -translate-y-1/2 rounded-full bg-cyan-300/10 blur-3xl">
+      </div>
+    </div>
+
+    <div class="relative mx-auto max-w-[1500px] px-6 lg:px-12">
+      <div class="flex min-h-[78px] items-center gap-5">
+        <%!-- Animated pilot identity --%>
+        <div class="hidden w-[280px] shrink-0 items-center gap-4 border-r border-white/10 pr-6 lg:flex xl:w-[340px]">
+          <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-sky-300/20 bg-sky-300/10 text-sky-200 shadow-[0_0_30px_rgba(56,189,248,0.12)] backdrop-blur-xl">
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              class="h-5 w-5"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M5 19V9m7 10V5m7 14v-7"
+              />
+            </svg>
+          </span>
+
+          <div class="min-w-0 flex-1">
+            <p class="text-[0.62rem] font-black uppercase tracking-[0.22em] text-sky-300">
+              HELEXIA ➕ Pilot
+            </p>
+
+            <%!-- Infinite title marquee --%>
+            <div
+              class="pilot-title-marquee mt-1.5 overflow-hidden"
+              aria-label={@pilot.title}
+            >
+              <div class="pilot-title-marquee__track flex w-max items-center">
+                <div
+                  aria-hidden="true"
+                  class="flex shrink-0 items-center"
+                >
+                  <span class="whitespace-nowrap text-sm font-black text-white">
+                    {@pilot.title}
+                  </span>
+
+                  <span class="mx-5 h-1.5 w-1.5 shrink-0 rounded-full bg-sky-300"></span>
+                </div>
+
+                <div
+                  aria-hidden="true"
+                  class="flex shrink-0 items-center"
+                >
+                  <span class="whitespace-nowrap text-sm font-black text-white">
+                    {@pilot.title}
+                  </span>
+
+                  <span class="mx-5 h-1.5 w-1.5 shrink-0 rounded-full bg-sky-300"></span>
+                </div>
+
+                <div
+                  aria-hidden="true"
+                  class="flex shrink-0 items-center"
+                >
+                  <span class="whitespace-nowrap text-sm font-black text-white">
+                    {@pilot.title}
+                  </span>
+
+                  <span class="mx-5 h-1.5 w-1.5 shrink-0 rounded-full bg-sky-300"></span>
+                </div>
+
+                <div
+                  aria-hidden="true"
+                  class="flex shrink-0 items-center"
+                >
+                  <span class="whitespace-nowrap text-sm font-black text-white">
+                    {@pilot.title}
+                  </span>
+
+                  <span class="mx-5 h-1.5 w-1.5 shrink-0 rounded-full bg-sky-300"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <%!-- Section navigation --%>
+        <nav
+          aria-label="Pilot page sections"
+          class="-mx-2 flex min-w-0 flex-1 items-center gap-1 overflow-x-auto px-2 py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          <a
+            href="#overview"
+            class="group shrink-0 rounded-xl border border-sky-300/20 bg-sky-300 px-4 py-2.5 text-sm font-black text-[#061a2f] shadow-[0_8px_24px_rgba(56,189,248,0.2)] transition duration-300 hover:-translate-y-0.5 hover:bg-white focus:outline-none focus-visible:ring-4 focus-visible:ring-sky-200/40"
+          >
+            <span class="flex items-center gap-2">
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                class="h-4 w-4"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4 19V9m8 10V5m8 14v-7"
+                />
+              </svg>
+              Overview
+            </span>
+          </a>
+
+          <a
+            href="#objectives"
+            class="group shrink-0 rounded-xl border border-transparent px-4 py-2.5 text-sm font-bold text-slate-300 transition duration-300 hover:border-white/10 hover:bg-white/[0.08] hover:text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-sky-300/30"
+          >
+            <span class="flex items-center gap-2">
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                class="h-4 w-4 text-sky-300/70 transition group-hover:text-sky-300"
+              >
+                <circle cx="12" cy="12" r="8" />
+                <circle cx="12" cy="12" r="3" />
+
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 2v3m0 14v3M2 12h3m14 0h3"
+                />
+              </svg>
+              Objectives
+            </span>
+          </a>
+
+          <a
+            href="#care-focus"
+            class="group shrink-0 rounded-xl border border-transparent px-4 py-2.5 text-sm font-bold text-slate-300 transition duration-300 hover:border-white/10 hover:bg-white/[0.08] hover:text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-sky-300/30"
+          >
+            <span class="flex items-center gap-2">
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                class="h-4 w-4 text-sky-300/70 transition group-hover:text-sky-300"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 21s7-5.4 7-12a7 7 0 1 0-14 0c0 6.6 7 12 7 12Z"
+                />
+
+                <circle cx="12" cy="9" r="2.5" />
+              </svg>
+              Care focus
+            </span>
+          </a>
+
+          <a
+            href="#activity"
+            class="group shrink-0 rounded-xl border border-transparent px-4 py-2.5 text-sm font-bold text-slate-300 transition duration-300 hover:border-white/10 hover:bg-white/[0.08] hover:text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-sky-300/30"
+          >
+            <span class="flex items-center gap-2">
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                class="h-4 w-4 text-sky-300/70 transition group-hover:text-sky-300"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M7 3v3m10-3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v14H4V6a1 1 0 0 1 1-1Z"
+                />
+              </svg>
+              Activity
+            </span>
+          </a>
+
+          <a
+            href="#rollout"
+            class="group shrink-0 rounded-xl border border-transparent px-4 py-2.5 text-sm font-bold text-slate-300 transition duration-300 hover:border-white/10 hover:bg-white/[0.08] hover:text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-sky-300/30"
+          >
+            <span class="flex items-center gap-2">
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                class="h-4 w-4 text-sky-300/70 transition group-hover:text-sky-300"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M5 19 19 5M10 5h9v9"
+                />
+              </svg>
+              Rollout
+            </span>
+          </a>
+        </nav>
+
+        <%!-- All pilots action --%>
+        <div class="hidden shrink-0 border-l border-white/10 pl-5 xl:block">
+          <a
+            href={~p"/pilots"}
+            class="group inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/[0.07] px-4 py-2.5 text-sm font-black text-white shadow-sm backdrop-blur-xl transition duration-300 hover:border-sky-300/30 hover:bg-sky-300 hover:text-[#061a2f] focus:outline-none focus-visible:ring-4 focus-visible:ring-sky-300/30"
+          >
+            All pilots
+            <span class="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 transition group-hover:bg-[#061a2f]/10">
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                class="h-3.5 w-3.5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19 12H5m6-6-6 6 6 6"
+                />
+              </svg>
+            </span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
-</section>
 
-<section class="bg-[#f4fbff] py-24">
-  <div class="mx-auto max-w-[1500px] px-6 lg:px-12">
-    <div class="grid gap-12 lg:grid-cols-12">
-      <div class="lg:col-span-4">
-        <span class="inline-flex rounded-full border border-sky-200 bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-sky-700">
-          Pilot Events
-        </span>
-
-        <h2 class="mt-6 text-4xl font-black tracking-tight text-[#08213d]">
-          Activity timeline.
-        </h2>
-
-        <p class="mt-5 text-base leading-8 text-slate-600">
-          Events, engagements, activations, and implementation updates can be added here as the pilot progresses.
-        </p>
+  <%!-- Overview metrics --%>
+  <section
+    id="overview"
+    aria-labelledby="overview-title"
+    class="relative isolate scroll-mt-28 overflow-hidden bg-gradient-to-b from-[#f0f7fb] via-[#f5f9fc] to-white"
+  >
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-0 overflow-hidden"
+    >
+      <div class="absolute -left-40 top-24 h-[28rem] w-[28rem] rounded-full bg-sky-100/65 blur-3xl">
       </div>
 
-      <div class="lg:col-span-8">
-        <div class="space-y-5">
-          <%= for event <- @pilot.events do %>
-            <div class="rounded-[2rem] border border-white bg-white p-7 shadow-xl shadow-sky-900/5">
-              <div class="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-                <div>
-                  <p class="text-sm font-black uppercase tracking-[0.16em] text-sky-600">
-                    {event.category}
-                  </p>
+      <div class="absolute -right-40 bottom-0 h-[24rem] w-[24rem] rounded-full bg-cyan-50 blur-3xl">
+      </div>
 
-                  <h3 class="mt-2 text-xl font-black text-[#08213d]">
-                    {event.title}
-                  </h3>
+      <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-white">
+      </div>
+    </div>
 
-                  <p class="mt-3 text-sm leading-7 text-slate-600">
-                    {event.description}
-                  </p>
-                </div>
+    <div class="relative mx-auto max-w-[1500px] px-6 py-20 lg:px-12 lg:py-28">
+      <div class="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-end">
+        <div class="max-w-xl">
+          <p class="text-xs font-black uppercase tracking-[0.22em] text-sky-700">
+            Pilot overview
+          </p>
 
-                <span class="shrink-0 rounded-full bg-slate-100 px-4 py-2 text-xs font-black text-slate-600">
-                  {event.date}
+          <h2
+            id="overview-title"
+            class="mt-4 text-3xl font-black tracking-[-0.035em] text-slate-950 sm:text-5xl"
+          >
+            The deployment at a glance
+          </h2>
+
+          <p class="mt-5 text-base leading-8 text-slate-600">
+            These indicators provide a concise view of the pilot’s intended reach,
+            operating environment, and implementation footprint.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3 lg:justify-end">
+          <span class="rounded-full border border-white/90 bg-white/80 px-4 py-2 text-sm font-bold text-slate-600 shadow-sm backdrop-blur-xl">
+            {@metric_count} {if @metric_count == 1, do: "indicator", else: "indicators"}
+          </span>
+
+          <span class={[
+            "rounded-full border px-4 py-2 text-sm font-bold",
+            pilot_status_badge_class(@pilot.status)
+          ]}>
+            {@pilot.status}
+          </span>
+        </div>
+      </div>
+
+      <%= if Enum.any?(@pilot.metrics) do %>
+        <dl class="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+          <%= for metric <- @pilot.metrics do %>
+            <div class="group rounded-[1.75rem] border border-white/90 bg-white/85 p-6 shadow-[0_18px_55px_rgba(15,23,42,0.07)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-sky-200 hover:bg-white hover:shadow-[0_24px_65px_rgba(15,23,42,0.11)] sm:p-7">
+              <div class="flex items-start justify-between gap-5">
+                <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-100 text-sky-700 transition group-hover:bg-sky-700 group-hover:text-white">
+                  <.icon name={metric.icon} class="h-6 w-6" />
+                </span>
+
+                <span class="text-xs font-black uppercase tracking-[0.16em] text-slate-400">
+                  Metric
                 </span>
               </div>
+
+              <dd class="mt-7 text-4xl font-black tracking-[-0.04em] text-slate-950">
+                {metric.value}
+              </dd>
+
+              <dt class="mt-2 text-sm font-semibold leading-6 text-slate-600">
+                {metric.label}
+              </dt>
+            </div>
+          <% end %>
+        </dl>
+      <% else %>
+        <div class="mt-10 rounded-[2rem] border border-dashed border-slate-300 bg-white/70 p-10 text-center backdrop-blur-xl">
+          <p class="font-bold text-slate-700">
+            Pilot metrics will be published as implementation progresses.
+          </p>
+        </div>
+      <% end %>
+    </div>
+  </section>
+
+  <%!-- Objectives --%>
+  <section
+    id="objectives"
+    aria-labelledby="objectives-title"
+    class="relative isolate scroll-mt-28 overflow-hidden bg-white"
+  >
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-0 overflow-hidden"
+    >
+      <div class="absolute right-[-10rem] top-[-10rem] h-[32rem] w-[32rem] rounded-full bg-slate-100/90 blur-3xl">
+      </div>
+
+      <div class="absolute left-[-12rem] bottom-[-14rem] h-[30rem] w-[30rem] rounded-full bg-sky-50 blur-3xl">
+      </div>
+
+      <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-[#eef5f8]">
+      </div>
+    </div>
+
+    <div class="relative mx-auto max-w-[1500px] px-6 py-20 lg:px-12 lg:py-28">
+      <div class="grid gap-10 lg:grid-cols-12">
+        <div class="lg:col-span-4">
+          <div class="lg:sticky lg:top-28">
+            <p class="text-xs font-black uppercase tracking-[0.22em] text-sky-700">
+              Pilot model
+            </p>
+
+            <h2
+              id="objectives-title"
+              class="mt-4 text-3xl font-black tracking-[-0.035em] text-slate-950 sm:text-5xl"
+            >
+              What this pilot is designed to validate
+            </h2>
+
+            <p class="mt-6 text-base leading-8 text-slate-600">
+              The pilot evaluates practical healthcare workflows, access to care,
+              workforce enablement, and the intelligence signals required for
+              responsible future scale.
+            </p>
+
+            <div class="mt-7 inline-flex items-center gap-2 rounded-full bg-slate-100 px-4 py-2 text-sm font-bold text-slate-600">
+              <span class="h-2 w-2 rounded-full bg-sky-600"></span>
+
+              {@objective_count}
+              {if @objective_count == 1,
+                do: "validation objective",
+                else: "validation objectives"}
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-8">
+          <%= if Enum.any?(@pilot.objectives) do %>
+            <div class="grid gap-5 md:grid-cols-2">
+              <%= for objective <- @pilot.objectives do %>
+                <article class="group relative overflow-hidden rounded-[1.75rem] border border-slate-200/80 bg-gradient-to-br from-slate-50 to-white p-6 shadow-[0_10px_35px_rgba(15,23,42,0.045)] transition duration-300 hover:-translate-y-1 hover:border-sky-200 hover:shadow-[0_22px_55px_rgba(15,23,42,0.09)] sm:p-7">
+                  <div
+                    aria-hidden="true"
+                    class="absolute -right-16 -top-16 h-36 w-36 rounded-full bg-sky-100/0 blur-2xl transition duration-300 group-hover:bg-sky-100/80"
+                  >
+                  </div>
+
+                  <div class="relative flex items-start justify-between gap-4">
+                    <span class="flex h-11 min-w-11 items-center justify-center rounded-2xl bg-white px-3 text-sm font-black text-sky-700 shadow-sm transition group-hover:bg-sky-700 group-hover:text-white">
+                      {objective.number}
+                    </span>
+
+                    <svg
+                      aria-hidden="true"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      class="h-5 w-5 text-slate-300 transition group-hover:text-sky-600"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="m7 17 10-10M9 7h8v8"
+                      />
+                    </svg>
+                  </div>
+
+                  <h3 class="relative mt-6 text-xl font-black tracking-tight text-slate-950">
+                    {objective.title}
+                  </h3>
+
+                  <p class="relative mt-3 text-sm leading-7 text-slate-600">
+                    {objective.description}
+                  </p>
+                </article>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="rounded-[2rem] border border-dashed border-slate-300 bg-slate-50/80 p-10 text-center">
+              <p class="font-bold text-slate-700">
+                Validation objectives are being prepared.
+              </p>
             </div>
           <% end %>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="bg-white py-24">
-  <div class="mx-auto max-w-[1500px] px-6 lg:px-12">
-    <div class="grid gap-12 lg:grid-cols-12">
+  <%!-- Care focus --%>
+  <section
+    id="care-focus"
+    aria-labelledby="care-focus-title"
+    class="relative isolate scroll-mt-28 overflow-hidden bg-[#07182a] text-white"
+  >
+    <%!-- Transition from the preceding white section --%>
+    <div
+      aria-hidden="true"
+      class="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#eef5f8] via-[#b9cfda]/55 to-transparent"
+    >
+    </div>
+
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-0 overflow-hidden"
+    >
+      <div class="absolute inset-0 bg-gradient-to-b from-[#0b2238] via-[#07182a] to-[#091d30]">
+      </div>
+
+      <div class="absolute -left-44 top-28 h-[34rem] w-[34rem] rounded-full bg-sky-500/18 blur-[100px]">
+      </div>
+
+      <div class="absolute -right-40 bottom-[-8rem] h-[32rem] w-[32rem] rounded-full bg-emerald-400/10 blur-[100px]">
+      </div>
+    </div>
+
+    <div class="relative mx-auto grid max-w-[1500px] gap-12 px-6 pb-28 pt-32 lg:grid-cols-12 lg:px-12 lg:pb-32 lg:pt-36">
       <div class="lg:col-span-4">
-        <span class="inline-flex rounded-full border border-cyan-200 bg-cyan-50 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-cyan-700">
-          Rollout Plan
-        </span>
+        <div class="lg:sticky lg:top-28">
+          <span class="inline-flex items-center gap-2 rounded-full border border-emerald-300/20 bg-emerald-300/10 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-emerald-200 backdrop-blur-xl">
+            <span class="h-2 w-2 rounded-full bg-emerald-300"></span> Care focus
+          </span>
 
-        <h2 class="mt-6 text-4xl font-black tracking-tight text-[#08213d]">
-          From local pilot to regional scale.
-        </h2>
+          <h2
+            id="care-focus-title"
+            class="mt-6 text-3xl font-black tracking-[-0.035em] text-white sm:text-5xl"
+          >
+            Priority care segments
+          </h2>
+
+          <p class="mt-6 text-base leading-8 text-slate-300">
+            These care segments and operational priorities define where the pilot
+            is expected to produce practical value.
+          </p>
+
+          <p class="mt-6 text-sm font-bold text-sky-300">
+            {@care_segment_count}
+            {if @care_segment_count == 1,
+              do: " priority segment",
+              else: " priority segments"}
+          </p>
+        </div>
       </div>
 
       <div class="lg:col-span-8">
-        <div class="grid gap-5">
-          <%= for milestone <- @pilot.milestones do %>
-            <div class="rounded-[2rem] border border-slate-200 bg-slate-50 p-7">
-              <div class="flex gap-5">
-                <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-sky-600 text-sm font-black text-white">
-                  {milestone.step}
+        <%= if Enum.any?(@pilot.care_segments) do %>
+          <div class="space-y-5">
+            <%= for segment <- @pilot.care_segments do %>
+              <article class="group rounded-[1.75rem] border border-white/10 bg-gradient-to-br from-white/[0.09] to-white/[0.035] p-6 shadow-[0_20px_55px_rgba(0,0,0,0.14)] backdrop-blur-2xl transition duration-300 hover:-translate-y-0.5 hover:border-sky-300/30 hover:from-white/[0.12] hover:to-white/[0.055] sm:p-7">
+                <div class="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+                  <div class="max-w-2xl">
+                    <h3 class="text-xl font-black tracking-tight text-white sm:text-2xl">
+                      {segment.name}
+                    </h3>
+
+                    <p class="mt-3 text-sm leading-7 text-slate-300">
+                      {segment.description}
+                    </p>
+                  </div>
+
+                  <span class="shrink-0 self-start rounded-full border border-sky-300/20 bg-sky-300/10 px-4 py-2 text-xs font-black text-sky-200">
+                    {segment.tag}
+                  </span>
                 </div>
+              </article>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="rounded-[2rem] border border-dashed border-white/20 bg-white/[0.04] p-10 text-center backdrop-blur-xl">
+            <p class="font-bold text-slate-300">
+              Care focus information will be added as the pilot scope is confirmed.
+            </p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <%!-- Activity timeline --%>
+  <section
+    id="activity"
+    aria-labelledby="activity-title"
+    class="relative isolate scroll-mt-28 overflow-hidden bg-gradient-to-b from-[#dceaf1] via-[#eef6fa] to-[#f8fafc]"
+  >
+    <%!-- Soft bridge out of the dark care section --%>
+    <div
+      aria-hidden="true"
+      class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#091d30] via-[#6f8fa0]/55 to-transparent"
+    >
+    </div>
+
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-0 overflow-hidden"
+    >
+      <div class="absolute -right-48 top-32 h-[30rem] w-[30rem] rounded-full bg-sky-100/75 blur-3xl">
+      </div>
+
+      <div class="absolute -left-44 bottom-[-8rem] h-[28rem] w-[28rem] rounded-full bg-white/90 blur-3xl">
+      </div>
+    </div>
+
+    <div class="relative mx-auto max-w-[1500px] px-6 pb-28 pt-32 lg:px-12 lg:pb-32 lg:pt-36">
+      <div class="grid gap-12 lg:grid-cols-12">
+        <div class="lg:col-span-4">
+          <div class="lg:sticky lg:top-28">
+            <p class="text-xs font-black uppercase tracking-[0.22em] text-sky-700">
+              Pilot activity
+            </p>
+
+            <h2
+              id="activity-title"
+              class="mt-4 text-3xl font-black tracking-[-0.035em] text-slate-950 sm:text-5xl"
+            >
+              Implementation timeline
+            </h2>
+
+            <p class="mt-6 text-base leading-8 text-slate-600">
+              Follow engagements, activations, programme events, and important
+              implementation updates as the pilot develops.
+            </p>
+
+            <div class="mt-7 inline-flex items-center gap-2 rounded-full border border-white/90 bg-white/75 px-4 py-2 text-sm font-bold text-slate-600 shadow-sm backdrop-blur-xl">
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                class="h-4 w-4 text-sky-700"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M7 3v3m10-3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v14H4V6a1 1 0 0 1 1-1Z"
+                />
+              </svg>
+
+              {@event_count}
+              {if @event_count == 1,
+                do: "published update",
+                else: "published updates"}
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-8">
+          <%= if Enum.any?(@pilot.events) do %>
+            <div class="relative">
+              <div
+                aria-hidden="true"
+                class="absolute bottom-8 left-[1.15rem] top-8 w-px bg-gradient-to-b from-sky-400 via-sky-200 to-transparent sm:left-[1.4rem]"
+              >
+              </div>
+
+              <ol class="space-y-6">
+                <%= for event <- @pilot.events do %>
+                  <li class="relative pl-14 sm:pl-16">
+                    <span class="absolute left-0 top-7 flex h-10 w-10 items-center justify-center rounded-full border-4 border-[#eef6fa] bg-sky-700 text-white shadow-md sm:h-12 sm:w-12">
+                      <svg
+                        aria-hidden="true"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        class="h-4 w-4"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="m8 12 3 3 5-6"
+                        />
+                      </svg>
+                    </span>
+
+                    <article class="rounded-[1.75rem] border border-white/90 bg-white/85 p-6 shadow-[0_18px_50px_rgba(15,23,42,0.075)] backdrop-blur-xl transition duration-300 hover:-translate-y-0.5 hover:border-sky-200 hover:bg-white hover:shadow-[0_26px_65px_rgba(15,23,42,0.11)] sm:p-7">
+                      <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                        <div>
+                          <p class="text-xs font-black uppercase tracking-[0.18em] text-sky-700">
+                            {event.category}
+                          </p>
+
+                          <h3 class="mt-3 text-xl font-black tracking-tight text-slate-950">
+                            {event.title}
+                          </h3>
+                        </div>
+
+                        <time class="shrink-0 self-start rounded-full bg-slate-100 px-4 py-2 text-xs font-black text-slate-600">
+                          {event.date}
+                        </time>
+                      </div>
+
+                      <p class="mt-4 text-sm leading-7 text-slate-600">
+                        {event.description}
+                      </p>
+                    </article>
+                  </li>
+                <% end %>
+              </ol>
+            </div>
+          <% else %>
+            <div class="rounded-[2rem] border border-dashed border-white bg-white/65 p-10 text-center shadow-sm backdrop-blur-xl">
+              <span class="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-100 text-slate-500">
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  class="h-6 w-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M7 3v3m10-3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v14H4V6a1 1 0 0 1 1-1Z"
+                  />
+                </svg>
+              </span>
+
+              <h3 class="mt-5 text-xl font-black text-slate-950">
+                No activity updates yet
+              </h3>
+
+              <p class="mx-auto mt-3 max-w-lg text-sm leading-7 text-slate-600">
+                Events, engagements, and implementation milestones will appear
+                here as the pilot progresses.
+              </p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%!-- Rollout roadmap --%>
+  <section
+    id="rollout"
+    aria-labelledby="rollout-title"
+    class="relative isolate scroll-mt-28 overflow-hidden bg-gradient-to-b from-[#f8fafc] via-[#fbfbfa] to-[#f3f5f6]"
+  >
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-0 overflow-hidden"
+    >
+      <div class="absolute -left-48 top-24 h-[30rem] w-[30rem] rounded-full bg-white blur-3xl">
+      </div>
+
+      <div class="absolute -right-48 bottom-[-10rem] h-[32rem] w-[32rem] rounded-full bg-slate-200/55 blur-3xl">
+      </div>
+
+      <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-[#e8f0f4]">
+      </div>
+    </div>
+
+    <div class="relative mx-auto max-w-[1500px] px-6 py-20 lg:px-12 lg:py-28">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-xs font-black uppercase tracking-[0.22em] text-sky-700">
+          Rollout plan
+        </p>
+
+        <h2
+          id="rollout-title"
+          class="mt-4 text-3xl font-black tracking-[-0.035em] text-slate-950 sm:text-5xl"
+        >
+          From local deployment to regional learning
+        </h2>
+
+        <p class="mt-6 text-base leading-8 text-slate-600">
+          The roadmap shows how implementation learning can move from local
+          validation toward a stronger, adaptable, and potentially scalable model.
+        </p>
+
+        <span class="mt-7 inline-flex rounded-full bg-white/80 px-4 py-2 text-sm font-bold text-slate-600 shadow-sm backdrop-blur-xl">
+          {@milestone_count}
+          {if @milestone_count == 1,
+            do: " rollout stage",
+            else: " rollout stages"}
+        </span>
+      </div>
+
+      <%= if Enum.any?(@pilot.milestones) do %>
+        <ol class="mt-14 grid gap-5 lg:grid-cols-2">
+          <%= for milestone <- @pilot.milestones do %>
+            <li class="group relative overflow-hidden rounded-[1.75rem] border border-slate-200/80 bg-white/75 p-6 shadow-[0_12px_38px_rgba(15,23,42,0.055)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-sky-200 hover:bg-white hover:shadow-[0_24px_60px_rgba(15,23,42,0.1)] sm:p-7">
+              <div
+                aria-hidden="true"
+                class="absolute right-0 top-0 h-32 w-32 translate-x-1/3 -translate-y-1/3 rounded-full bg-sky-100 opacity-0 blur-2xl transition group-hover:opacity-100"
+              >
+              </div>
+
+              <div class="relative flex gap-5">
+                <span class="flex h-12 min-w-12 shrink-0 items-center justify-center rounded-2xl bg-slate-950 px-3 text-sm font-black text-white shadow-md transition group-hover:bg-sky-700">
+                  {milestone.step}
+                </span>
 
                 <div>
-                  <h3 class="text-xl font-black text-[#08213d]">
+                  <p class="text-xs font-black uppercase tracking-[0.16em] text-sky-700">
+                    Rollout stage
+                  </p>
+
+                  <h3 class="mt-2 text-xl font-black tracking-tight text-slate-950">
                     {milestone.title}
                   </h3>
 
-                  <p class="mt-2 text-sm leading-7 text-slate-600">
+                  <p class="mt-3 text-sm leading-7 text-slate-600">
                     {milestone.description}
                   </p>
                 </div>
               </div>
-            </div>
+            </li>
           <% end %>
+        </ol>
+      <% else %>
+        <div class="mt-12 rounded-[2rem] border border-dashed border-slate-300 bg-white/60 p-10 text-center backdrop-blur-xl">
+          <p class="font-bold text-slate-700">
+            The rollout roadmap is being developed.
+          </p>
+        </div>
+      <% end %>
+    </div>
+  </section>
+
+  <%!-- Pilot summary panel --%>
+  <section
+    aria-labelledby="pilot-summary-title"
+    class="relative isolate overflow-hidden bg-gradient-to-b from-[#e8f0f4] via-[#edf4f7] to-[#dce7ed]"
+  >
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-0 overflow-hidden"
+    >
+      <div class="absolute -left-48 top-10 h-[28rem] w-[28rem] rounded-full bg-sky-100/70 blur-3xl">
+      </div>
+
+      <div class="absolute -right-48 bottom-[-6rem] h-[28rem] w-[28rem] rounded-full bg-white/80 blur-3xl">
+      </div>
+    </div>
+
+    <div class="relative mx-auto max-w-[1500px] px-6 py-20 lg:px-12 lg:py-28">
+      <div class="overflow-hidden rounded-[2.5rem] border border-white/90 bg-white/85 shadow-[0_30px_90px_rgba(15,23,42,0.12)] backdrop-blur-2xl">
+        <div class="grid lg:grid-cols-[1.15fr_0.85fr]">
+          <div class="p-7 sm:p-10 lg:p-12">
+            <p class="text-xs font-black uppercase tracking-[0.22em] text-sky-700">
+              Pilot profile summary
+            </p>
+
+            <h2
+              id="pilot-summary-title"
+              class="mt-4 text-3xl font-black tracking-[-0.035em] text-slate-950 sm:text-4xl"
+            >
+              {@pilot.title}
+            </h2>
+
+            <p class="mt-5 max-w-2xl text-base leading-8 text-slate-600">
+              {@pilot.subtitle}
+            </p>
+
+            <div class="mt-8 flex flex-wrap gap-3">
+              <span class={[
+                "inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-bold",
+                pilot_status_badge_class(@pilot.status)
+              ]}>
+                <span class={[
+                  "h-2 w-2 rounded-full",
+                  pilot_status_dot_class(@pilot.status)
+                ]}>
+                </span>
+
+                {@pilot.status}
+              </span>
+
+              <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-bold text-slate-600">
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  class="h-4 w-4"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 21s7-5.4 7-12a7 7 0 1 0-14 0c0 6.6 7 12 7 12Z"
+                  />
+                  <circle cx="12" cy="9" r="2.5" />
+                </svg>
+
+                {@pilot.location.area}
+              </span>
+            </div>
+          </div>
+
+          <dl class="grid grid-cols-2 border-t border-slate-200 bg-slate-50/85 lg:border-l lg:border-t-0">
+            <div class="border-b border-r border-slate-200 p-6 text-center sm:p-8">
+              <dt class="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">
+                Indicators
+              </dt>
+
+              <dd class="mt-3 text-3xl font-black text-slate-950">
+                {@metric_count}
+              </dd>
+            </div>
+
+            <div class="border-b border-slate-200 p-6 text-center sm:p-8">
+              <dt class="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">
+                Objectives
+              </dt>
+
+              <dd class="mt-3 text-3xl font-black text-slate-950">
+                {@objective_count}
+              </dd>
+            </div>
+
+            <div class="border-r border-slate-200 p-6 text-center sm:p-8">
+              <dt class="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">
+                Care segments
+              </dt>
+
+              <dd class="mt-3 text-3xl font-black text-slate-950">
+                {@care_segment_count}
+              </dd>
+            </div>
+
+            <div class="p-6 text-center sm:p-8">
+              <dt class="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">
+                Updates
+              </dt>
+
+              <dd class="mt-3 text-3xl font-black text-slate-950">
+                {@event_count}
+              </dd>
+            </div>
+          </dl>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="relative overflow-hidden bg-[#061427] py-24 text-white">
-  <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(14,165,233,0.24),transparent_36%)]">
-  </div>
-
-  <div class="relative mx-auto max-w-5xl px-6 text-center">
-    <span class="inline-flex rounded-full border border-sky-300/20 bg-sky-300/10 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-sky-200">
-      Join the Pilot Network
-    </span>
-
-    <h2 class="mt-6 text-4xl font-black tracking-tight text-white md:text-5xl">
-      Help shape the next HELEXIA+ pilot.
-    </h2>
-
-    <p class="mx-auto mt-5 max-w-3xl text-base leading-8 text-slate-300/75">
-      Healthcare facilities, community partners, program teams, and implementation collaborators can participate in active or upcoming pilot deployments.
-    </p>
-
-    <div class="mt-10 flex flex-wrap justify-center gap-4">
-      <a
-        href="/contact-us"
-        class="rounded-full bg-sky-300 px-8 py-4 text-sm font-black text-[#061427] shadow-[0_0_40px_rgba(125,211,252,0.4)] transition hover:scale-105 hover:bg-white"
-      >
-        Schedule a Demo
-      </a>
-
-      <a
-        href={~p"/pilots"}
-        class="rounded-full border border-white/10 bg-white/[0.06] px-8 py-4 text-sm font-black text-sky-100 backdrop-blur-xl transition hover:bg-white/[0.1] hover:text-white"
-      >
-        View All Pilots
-      </a>
+  <%!-- Final CTA --%>
+  <section class="relative isolate overflow-hidden bg-slate-950 text-white">
+    <%!-- Transition into the final dark section --%>
+    <div
+      aria-hidden="true"
+      class="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#dce7ed] via-[#62798a]/55 to-transparent"
+    >
     </div>
-  </div>
-</section>
+
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-0 overflow-hidden"
+    >
+      <div class="absolute inset-0 bg-gradient-to-b from-[#0b2237] via-slate-950 to-[#030b14]">
+      </div>
+
+      <div class="absolute -right-24 top-10 h-96 w-96 rounded-full bg-sky-500/20 blur-[110px]">
+      </div>
+
+      <div class="absolute -bottom-48 left-1/4 h-96 w-96 rounded-full bg-emerald-400/12 blur-[110px]">
+      </div>
+    </div>
+
+    <div class="relative mx-auto max-w-[1500px] px-6 pb-24 pt-36 lg:px-12 lg:pb-32 lg:pt-40">
+      <div class="flex flex-col gap-10 border-t border-white/10 pt-12 lg:flex-row lg:items-center lg:justify-between">
+        <div class="max-w-3xl">
+          <p class="text-xs font-black uppercase tracking-[0.22em] text-sky-300">
+            Join the pilot network
+          </p>
+
+          <h2 class="mt-4 text-3xl font-black tracking-[-0.035em] text-white sm:text-4xl">
+            Help shape the next stage of HELEXIA ➕.
+          </h2>
+
+          <p class="mt-5 max-w-2xl text-base leading-8 text-slate-300">
+            Healthcare facilities, community organizations, programme teams,
+            and implementation partners can contribute to active and upcoming
+            pilot deployments.
+          </p>
+        </div>
+
+        <div class="flex shrink-0 flex-col gap-3 sm:flex-row">
+          <a
+            href="/contact-us"
+            class="inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-white px-7 py-3 text-sm font-black text-slate-950 shadow-lg transition hover:-translate-y-0.5 hover:bg-sky-100 focus:outline-none focus-visible:ring-4 focus-visible:ring-sky-300"
+          >
+            Discuss this pilot
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              class="h-4 w-4"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M5 12h14m-6-6 6 6-6 6"
+              />
+            </svg>
+          </a>
+
+          <a
+            href={~p"/pilots"}
+            class="inline-flex min-h-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.07] px-7 py-3 text-sm font-black text-white backdrop-blur-xl transition hover:bg-white/[0.12] focus:outline-none focus-visible:ring-4 focus-visible:ring-white/30"
+          >
+            View all pilots
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<Layouts.footer /> ```
