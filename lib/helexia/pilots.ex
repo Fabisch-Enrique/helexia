@@ -1,8 +1,8 @@
 defmodule Helexia.Pilots do
   @pilots [
     %{
+      status: "active",
       slug: "likoni_mombasa",
-      status: "Active Pilot",
       name: "Likoni, Mombasa",
       title: "Launching HELEXIA+ from Likoni, Mombasa",
       subtitle:

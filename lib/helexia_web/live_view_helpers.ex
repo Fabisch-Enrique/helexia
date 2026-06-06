@@ -31,4 +31,40 @@ defmodule HelexiaWeb.LiveViewHelpers do
         |> String.upcase()
     end
   end
+
+
+  def pilot_status_classes(status) do
+
+  case status do
+    status when status in ["active", "live", "in progress", "ongoing"] ->
+      %{
+        badge: "border-emerald-200 bg-emerald-50 text-emerald-700",
+        dot: "bg-emerald-500"
+      }
+
+    status when status in ["completed", "complete", "delivered"] ->
+      %{
+        badge: "border-sky-200 bg-sky-50 text-sky-700",
+        dot: "bg-sky-500"
+      }
+
+    status when status in ["planned", "upcoming", "preparation"] ->
+      %{
+        badge: "border-amber-200 bg-amber-50 text-amber-700",
+        dot: "bg-amber-500"
+      }
+
+    status when status in ["paused", "on hold"] ->
+      %{
+        badge: "border-orange-200 bg-orange-50 text-orange-700",
+        dot: "bg-orange-500"
+      }
+
+    _ ->
+      %{
+        badge: "border-slate-200 bg-slate-50 text-slate-700",
+        dot: "bg-slate-500"
+      }
+  end
+end
 end
