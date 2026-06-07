@@ -4,9 +4,9 @@ defmodule Helexia.Pilots do
       status: "active",
       slug: "likoni_mombasa",
       name: "Likoni, Mombasa",
-      title: "Launching HELEXIA+ from Likoni, Mombasa",
+      title: "Launching HELEXIA ➕ from Likoni, Mombasa",
       subtitle:
-        "The HELEXIA+ pilot begins in Likoni as a practical healthcare intelligence deployment focused on connecting patients, healthcare workers, facilities, pharmacies, labs, and care programs into one coordinated digital health network.",
+        "The HELEXIA ➕ pilot begins in Likoni as a practical healthcare intelligence deployment focused on connecting patients, healthcare workers, facilities, pharmacies, labs, and care programs into one coordinated digital health network.",
       location: %{
         country: "Kenya",
         county: "Mombasa",

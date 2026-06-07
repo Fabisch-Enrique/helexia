@@ -57,7 +57,7 @@
 
         <h1
           id="pilot-title"
-          class="mt-8 max-w-4xl text-4xl font-black leading-[0.98] tracking-[-0.05em] text-slate-950 sm:text-4xl lg:text-[3.5rem]"
+          class="mt-8 max-w-4xl text-4xl font-black leading-[0.98] tracking-[-0.05em] text-slate-950 sm:text-2xl lg:text-[3rem]"
         >
           {@pilot.title}
         </h1>
@@ -70,12 +70,12 @@
         <div class="mt-8 flex items-start gap-4 rounded-2xl border border-white/90 bg-white/75 p-5 shadow-[0_16px_45px_rgba(15,23,42,0.07)] backdrop-blur-xl sm:max-w-xl">
           <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-sky-100 text-sky-700">
             <svg
-              aria-hidden="true"
-              viewBox="0 0 24 24"
               fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
               class="h-5 w-5"
+              aria-hidden="true"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
               <path
                 stroke-linecap="round"
@@ -109,12 +109,12 @@
           >
             Partner with this pilot
             <svg
+              fill="none"
+              class="h-4 w-4"
+              stroke-width="2"
               aria-hidden="true"
               viewBox="0 0 24 24"
-              fill="none"
               stroke="currentColor"
-              stroke-width="2"
-              class="h-4 w-4"
             >
               <path
                 stroke-linecap="round"
@@ -132,17 +132,17 @@
           >
             View location
             <svg
-              aria-hidden="true"
-              viewBox="0 0 24 24"
               fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
               class="h-4 w-4"
+              aria-hidden="true"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
               <path
+                d="M14 5h5v5m0-5-8 8"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                d="M14 5h5v5m0-5-8 8"
               />
               <path
                 stroke-linecap="round"
@@ -269,12 +269,12 @@
         <div class="hidden w-[280px] shrink-0 items-center gap-4 border-r border-white/10 pr-6 lg:flex xl:w-[340px]">
           <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-sky-300/20 bg-sky-300/10 text-sky-200 shadow-[0_0_30px_rgba(56,189,248,0.12)] backdrop-blur-xl">
             <svg
-              aria-hidden="true"
-              viewBox="0 0 24 24"
               fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
               class="h-5 w-5"
+              aria-hidden="true"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
               <path
                 stroke-linecap="round"
@@ -377,11 +377,11 @@
           >
             <span class="flex items-center gap-2">
               <svg
-                aria-hidden="true"
-                viewBox="0 0 24 24"
                 fill="none"
-                stroke="currentColor"
+                aria-hidden="true"
                 stroke-width="1.8"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
                 class="h-4 w-4 text-sky-300/70 transition group-hover:text-sky-300"
               >
                 <circle cx="12" cy="12" r="8" />
@@ -403,11 +403,11 @@
           >
             <span class="flex items-center gap-2">
               <svg
-                aria-hidden="true"
-                viewBox="0 0 24 24"
                 fill="none"
-                stroke="currentColor"
+                aria-hidden="true"
                 stroke-width="1.8"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
                 class="h-4 w-4 text-sky-300/70 transition group-hover:text-sky-300"
               >
                 <path
@@ -451,11 +451,11 @@
           >
             <span class="flex items-center gap-2">
               <svg
-                aria-hidden="true"
-                viewBox="0 0 24 24"
                 fill="none"
-                stroke="currentColor"
+                aria-hidden="true"
                 stroke-width="1.8"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
                 class="h-4 w-4 text-sky-300/70 transition group-hover:text-sky-300"
               >
                 <path
@@ -566,8 +566,15 @@
                 </span>
               </div>
 
-              <dd class="mt-7 text-4xl font-black tracking-[-0.04em] text-slate-950">
-                {metric.value}
+              <dd
+                class="mt-7 text-4xl font-black tracking-[-0.04em] text-slate-950"
+                id="workers"
+                data-suffix="+"
+                phx-hook="countup"
+                data-duration="20000"
+                data-to-value={metric.value}
+              >
+                0
               </dd>
 
               <dt class="mt-2 text-sm font-semibold leading-6 text-slate-600">

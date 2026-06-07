@@ -226,17 +226,17 @@
         <article class="flex gap-4 rounded-3xl border border-transparent p-4 transition hover:border-slate-200 hover:bg-white">
           <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-violet-100 text-violet-700">
             <svg
-              aria-hidden="true"
-              viewBox="0 0 24 24"
               fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
               class="h-6 w-6"
+              aria-hidden="true"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
               <path
                 stroke-linecap="round"
-                stroke-linejoin="round"
                 d="M7 17 17 7M9 7h8v8"
+                stroke-linejoin="round"
               />
               <path
                 stroke-linecap="round"
@@ -428,8 +428,15 @@
                           {metric.label}
                         </dt>
 
-                        <dd class="mt-1 text-lg font-black tracking-tight text-slate-950">
-                          {metric.value}
+                        <dd
+                          id="metrics"
+                          data-suffix="+"
+                          phx-hook="countup"
+                          data-duration="20000"
+                          data-to-value={metric.value}
+                          class="mt-1 text-lg font-black tracking-tight text-slate-950"
+                        >
+                          0
                         </dd>
                       </div>
                     <% end %>
