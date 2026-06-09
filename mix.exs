@@ -46,6 +46,7 @@ defmodule Helexia.MixProject do
       {:postgrex, ">= 0.0.0"},
       {:phoenix_ecto, "~> 4.5"},
       {:phoenix_html, "~> 4.1"},
+      {:ex_cldr_numbers, "~> 2.33"},
       {:phoenix_live_view, "~> 1.1.8"},
       {:lazy_html, ">= 0.1.0", only: :test},
       {:phoenix_live_dashboard, "~> 0.8.3"},

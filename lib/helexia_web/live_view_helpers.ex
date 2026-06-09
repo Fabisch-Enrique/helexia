@@ -1,4 +1,10 @@
 defmodule HelexiaWeb.LiveViewHelpers do
+  @default_options [
+    group: :auto,
+    separator: :auto,
+    format: :standard
+  ]
+
   def generate_qr_code(url) do
     url
     |> QRCodeEx.encode()
@@ -30,6 +36,14 @@ defmodule HelexiaWeb.LiveViewHelpers do
         |> Enum.join("")
         |> String.upcase()
     end
+  end
+
+  def format_number(number, opts \\ @default_options)
+  def format_number(nil, _opts), do: nil
+
+  def format_number(number, opts) when is_list(opts) do
+    num = if is_integer(number), do: number, else: number |> String.to_integer()
+    num |> Cldr.Number.to_string!(Keyword.merge(@default_options, opts))
   end
 
   def pilot_status_badge_class(status) do

@@ -182,10 +182,10 @@
               </video>
             <% else %>
               <img
+                decoding="async"
+                fetchpriority="high"
                 src={@pilot.media.src}
                 alt={"#{@pilot.title} pilot in #{@pilot.location.area}"}
-                fetchpriority="high"
-                decoding="async"
                 class="h-[420px] w-full object-cover sm:h-[520px] lg:h-[600px]"
               />
             <% end %>
@@ -218,17 +218,17 @@
                     class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-slate-950 transition hover:scale-105 hover:bg-sky-200 focus:outline-none focus-visible:ring-4 focus-visible:ring-sky-300"
                   >
                     <svg
-                      aria-hidden="true"
-                      viewBox="0 0 24 24"
                       fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.8"
                       class="h-5 w-5"
+                      aria-hidden="true"
+                      stroke-width="1.8"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
                     >
                       <path
+                        d="M14 5h5v5m0-5-8 8"
                         stroke-linecap="round"
                         stroke-linejoin="round"
-                        d="M14 5h5v5m0-5-8 8"
                       />
                       <path
                         stroke-linecap="round"
@@ -1180,7 +1180,7 @@
           </p>
 
           <h2 class="mt-4 text-3xl font-black tracking-[-0.035em] text-white sm:text-4xl">
-            Help shape the next stage of HELEXIA ➕.
+            Help shape the next stage of HELEXIA.
           </h2>
 
           <p class="mt-5 max-w-2xl text-base leading-8 text-slate-300">
@@ -1223,5 +1223,4 @@
     </div>
   </section>
 </main>
-
-<Layouts.footer /> ```
+<Layouts.footer />

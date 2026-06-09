@@ -27,7 +27,7 @@ defmodule Helexia.Pilots do
         },
         %{
           tone: "cyan",
-          value: "600+",
+          value: "600",
           icon: "hero-briefcase",
           label: "Healthcare Workers"
         },
