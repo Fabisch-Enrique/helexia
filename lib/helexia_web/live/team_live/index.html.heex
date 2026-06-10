@@ -324,8 +324,12 @@
                   src={founder.image_url}
                   class={[
                     "absolute inset-0 h-full w-full object-cover opacity-95 transition duration-700 group-hover:scale-105",
-                    founder.slug == "advisory_operations" && "object-[center_15%]",
-                    founder.slug != "advisory_operations" && "object-center"
+                    founder.slug in [
+                      "advisory_operations",
+                      "chief_commercial_officer"
+                    ] &&
+                      "object-[center_20%]",
+                    true && "object-center"
                   ]}
                 />
 
@@ -349,6 +353,8 @@
                   <% founder.slug == "advisory" -> %>
                     Leads the intelligent systems, product direction and healthcare technology
                     infrastructure powering the HELEXIA+ connected care experience.
+                  <% founder.slug == "chief_commercial_officer" -> %>
+                    Meets the Commercial section of the Organization both In Clinical, Government and Academic Partnerships and Relations by building Structured AI-enabled Solution Frameworks.
                   <% true -> %>
                     Helps advance the HELEXIA ➕ mission of building accessible, secure and
                     intelligent healthcare experiences for modern care systems.

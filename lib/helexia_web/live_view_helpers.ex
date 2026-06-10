@@ -5,6 +5,9 @@ defmodule HelexiaWeb.LiveViewHelpers do
     format: :standard
   ]
 
+  @time_zone "Africa/Nairobi"
+  @date_format "{YYYY}-{0M}-{0D}"
+
   def generate_qr_code(url) do
     url
     |> QRCodeEx.encode()
@@ -14,6 +17,40 @@ defmodule HelexiaWeb.LiveViewHelpers do
       width: 300,
       background_color: "#022a65"
     )
+  end
+
+  def format_date(date, format \\ @date_format, time_zone \\ @time_zone)
+  def format_date(nil, _, _), do: nil
+
+  def format_date(date, format, time_zone) when is_binary(date) do
+    case parse_date_string(date) do
+      nil ->
+        nil
+
+      parsed ->
+        format_date(parsed, format, time_zone)
+    end
+  end
+
+  # Handle DateTime (UTC or already with zone)
+  def format_date(date, format, time_zone) do
+    date
+    |> Timex.Timezone.convert(time_zone)
+    |> Timex.format!(format)
+  end
+
+  def format_date_string(
+        date_string,
+        date_string_format \\ "{ISO:Extended:Z}",
+        date_format \\ @date_format
+      ) do
+    case Timex.parse(date_string, date_string_format) do
+      {:ok, native_date_time} ->
+        format_date(native_date_time, date_format)
+
+      _ ->
+        nil
+    end
   end
 
   def abbreviate(name) when is_binary(name) do
@@ -82,5 +119,19 @@ defmodule HelexiaWeb.LiveViewHelpers do
       _ ->
         "bg-slate-500"
     end
+  end
+
+  # -------------- Private/Helper Functions ----------------- #
+
+  defp parse_date_string(date) do
+    Enum.find_value(
+      ["{ISO:Extended:Z}", "{YYYY}-{0M}-{0D}"],
+      fn pattern ->
+        case Timex.parse(date, pattern) do
+          {:ok, parsed} -> parsed
+          _ -> nil
+        end
+      end
+    )
   end
 end

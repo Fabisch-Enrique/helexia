@@ -86,21 +86,21 @@ defmodule Helexia.Pilots do
       ],
       events: [
         %{
-          date: "2025-01-15",
+          date: "2026-09-15",
           category: "Planning",
           title: "Pilot Planning & Local Mapping",
           description:
             "Initial mapping of care actors, patient access points, and priority workflows in Likoni."
         },
         %{
-          date: "2025-02-10",
+          date: "2026-10-15",
           category: "Engagement",
           title: "Healthcare Worker Engagement",
           description:
             "Engagement with healthcare workers and facility-level actors to validate workflow requirements."
         },
         %{
-          date: "2025-03-01",
+          date: "2026-11-15",
           category: "Implementation",
           title: "Digital Workflow Readiness",
           description:

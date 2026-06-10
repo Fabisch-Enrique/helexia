@@ -82,6 +82,8 @@
                     Guiding growth with clinical intelligence.
                   <% @member.slug == "advisory_operations" -> %>
                     Clinical, Compliance & Research Advisor.
+                  <% @member.slug == "chief_commercial_officer" -> %>
+                    Commercial Partnerships & AI-enabled solution frameworks
                   <% true -> %>
                     Building the foundation for smarter care.
                 <% end %>
@@ -99,6 +101,8 @@
                     Titus brings domain expertise and strategic guidance that helps HELEXIA ➕  grow with stronger governance, healthcare alignment and long-term credibility.
                   <% @member.slug == "advisory_operations" -> %>
                     Peter Pushparaj guides HELEXIA ➕ across governance, medical safety, AI ethics and healthcare systems alignment.
+                  <% @member.slug == "chief_commercial_officer" -> %>
+                    Christopher Southgate builds partnerships across the board (Clinical, Government & Academic) and Structural relations for AI-enabled solutions
                   <% true -> %>
                     Contributes to the HELEXIA ➕  mission of building connected, secure and intelligent healthcare experiences for modern health systems.
                 <% end %>
@@ -113,7 +117,7 @@
     <div class="mt-8 grid gap-5 md:grid-cols-3">
       <div class="rounded-[2.25rem] border border-white/70 bg-white/80 p-6 shadow-xl shadow-blue-900/5 backdrop-blur-xl transition hover:-translate-y-1">
         <p class="text-xs font-black uppercase tracking-[0.22em] text-blue-700">Primary Focus</p>
-        <h3 class="mt-3 text-2xl font-black text-slate-950">
+        <h3 class="mt-3 text-xl font-black text-slate-950">
           <%= cond do %>
             <% @member.slug == "president_co_founder" -> %>
               Strategic Healthcare Transformation
@@ -125,6 +129,8 @@
               Advisory Guidance
             <% @member.slug == "advisory_operations" -> %>
               Advisory and Operations
+            <% @member.slug == "chief_commercial_officer" -> %>
+              Partnerships and Structural AI-enabled Solutions
             <% true -> %>
               Mission Delivery
           <% end %>
@@ -136,7 +142,7 @@
 
       <div class="rounded-[2.25rem] border border-white/70 bg-white/80 p-6 shadow-xl shadow-blue-900/5 backdrop-blur-xl transition hover:-translate-y-1">
         <p class="text-xs font-black uppercase tracking-[0.22em] text-cyan-700">Strength</p>
-        <h3 class="mt-3 text-2xl font-black text-slate-950">
+        <h3 class="mt-3 text-xl font-black text-slate-950">
           <%= cond do %>
             <% @member.slug == "president_co_founder" -> %>
               Systems Thinking, Innovation and Scalability
@@ -148,6 +154,8 @@
               Organization Insight
             <% @member.slug == "advisory_operations" -> %>
               Operations and Advisory Insight
+            <% @member.slug == "chief_commercial_officer" -> %>
+              Partnerships, Relations and Structural AI-enabled solution Frameworks
             <% true -> %>
               Execution Support
           <% end %>
@@ -159,7 +167,7 @@
 
       <div class="rounded-[2.25rem] border border-white/70 bg-white/80 p-6 shadow-xl shadow-blue-900/5 backdrop-blur-xl transition hover:-translate-y-1">
         <p class="text-xs font-black uppercase tracking-[0.22em] text-violet-700">Impact</p>
-        <h3 class="mt-3 text-2xl font-black text-slate-950">
+        <h3 class="mt-3 text-xl font-black text-slate-950">
           <%= cond do %>
             <% @member.slug == "president_co_founder" -> %>
               Continental Health Access
@@ -171,6 +179,8 @@
               Responsible Growth
             <% @member.slug == "advisory_operations" -> %>
               Strategy, Planning Growth and Operations
+            <% @member.slug == "chief_commercial_officer" -> %>
+              Building Corporate, Clinical, Government and Academic Partnerships
             <% true -> %>
               Team Momentum
           <% end %>
@@ -309,6 +319,11 @@
                 <p>
                   As an Advisory Board Member for Operations, he provides guidance on organizational scaling, operational effectiveness, market deployment, strategic partnerships,
                   governance, and execution excellence, supporting HELEXIA AI's mission to deliver innovative AI-powered healthcare solutions across Africa.
+                </p>
+              <% @member.slug == "chief_commercial_officer" -> %>
+                <p>
+                  Christopher Southgate is the Chief Commercial Officer of AI Nexus Inc.
+                  HevLeverages 35 years of international business experience, he focuses on building corporate, clinical, government, and academic partnerships and structuring cross‑border commercial frameworks that support scalable adoption of AI‑enabled solutions across markets worldwide.
                 </p>
               <% true -> %>
                 <p>

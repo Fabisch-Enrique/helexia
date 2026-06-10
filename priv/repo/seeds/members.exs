@@ -61,6 +61,16 @@ defmodule Helexia.Seeds.Members do
       title: "Advisory & Operations",
       image_url: "/images/advisor.png",
       expertise: ["Advisory", "Operations"]
+    },
+        %{
+      level: 3,
+      status: "active",
+      display_order: 6,
+      name: "Christopher Southgate",
+      title: "Chief Commercial Officer",
+      image_url: "/images/christopher.png",
+      email: "christophersouthgate@ainexus.com",
+      expertise: [" Commercial Partnerships", "Structural Frameworks"]
     }
   ]
 
