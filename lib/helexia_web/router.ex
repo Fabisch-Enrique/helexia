@@ -59,6 +59,34 @@ defmodule HelexiaWeb.Router do
     end
   end
 
+  scope "/api", HelexiaWeb do
+    pipe_through :api
+
+    post "/chat/conversations",
+         ChatController,
+         :create_conversation
+
+    get "/chat/conversations/:id",
+        ChatController,
+        :show
+
+    post "/chat/messages",
+         ChatController,
+         :create_message
+  end
+
+  scope "/webhooks", HelexiaWeb do
+    pipe_through :api
+
+    get "/whatsapp",
+        Webhooks.WhatsappWebHook,
+        :verify
+
+    post "/whatsapp",
+         Webhooks.WhatsappWebHook,
+         :receive
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", HelexiaWeb do
   #   pipe_through :api

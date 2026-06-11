@@ -475,6 +475,306 @@ defmodule HelexiaWeb.CoreComponents do
     )
   end
 
+  attr :id, :string, default: "global-chat-widget"
+
+  def chat_widget(assigns) do
+    ~H"""
+    <div
+      id={@id}
+      phx-hook="whatsapp_chat_widget"
+      data-create-conversation-url="/api/chat/conversations"
+      data-conversation-base-url="/api/chat/conversations"
+      data-send-message-url="/api/chat/messages"
+      class="
+        fixed
+        bottom-[max(1rem,env(safe-area-inset-bottom))]
+        right-[max(1rem,env(safe-area-inset-right))]
+        z-[9999]
+        flex flex-col items-end
+        sm:bottom-6 sm:right-6
+      "
+    >
+      <section
+        data-chat-window
+        role="dialog"
+        aria-hidden="true"
+        aria-label="WhatsApp support chat"
+        class="
+          sm:mb-4
+          invisible
+          opacity-0
+          sm:static
+          bg-white
+          sm:h-[650px]
+          sm:w-[390px]
+          rounded-[28px]
+          pointer-events-none
+          flex-col overflow-hidden
+          transition duration-300
+          border border-slate-200
+          sm:max-h-[calc(100vh-7rem)]
+          fixed inset-x-3 bottom-24 top-3
+          flex translate-y-4 scale-[0.98]
+          shadow-[0_30px_90px_-25px_rgba(15,23,42,0.5)]
+        "
+      >
+        <header class="relative overflow-hidden bg-slate-950 px-5 py-5 text-white">
+          <div class="pointer-events-none absolute inset-0">
+            <div class="absolute -right-12 -top-16 h-40 w-40 rounded-full bg-emerald-500/20 blur-3xl">
+            </div>
+
+            <div class="absolute -bottom-20 -left-10 h-40 w-40 rounded-full bg-blue-500/15 blur-3xl">
+            </div>
+
+            <div class="absolute inset-0 opacity-[0.07] [background-image:linear-gradient(rgba(255,255,255,.5)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.5)_1px,transparent_1px)] [background-size:24px_24px]">
+            </div>
+          </div>
+
+          <div class="relative flex items-center justify-between gap-4">
+            <div class="flex min-w-0 items-center gap-3">
+              <div class="relative">
+                <div class="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/15 bg-white/10">
+                  <.icon
+                    name="hero-chat-bubble-left-right"
+                    class="h-6 w-6 text-emerald-300"
+                  />
+                </div>
+
+                <span class="absolute -bottom-0.5 -right-0.5 h-3.5 w-3.5 rounded-full border-[3px] border-slate-950 bg-emerald-400">
+                </span>
+              </div>
+
+              <div class="min-w-0">
+                <div class="flex items-center gap-2">
+                  <h2 class="truncate text-base font-bold">
+                    WhatsApp Support
+                  </h2>
+
+                  <span class="rounded-full bg-emerald-400/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-emerald-300 ring-1 ring-emerald-300/20">
+                    Online
+                  </span>
+                </div>
+
+                <p class="mt-1 truncate text-xs text-slate-300">
+                  Replies are delivered through WhatsApp
+                </p>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              data-close-chat
+              aria-label="Close chat"
+              class="flex h-9 w-9 items-center justify-center rounded-xl text-slate-300 transition hover:bg-white/10 hover:text-white"
+            >
+              <.icon
+                name="hero-x-mark"
+                class="h-5 w-5"
+              />
+            </button>
+          </div>
+
+          <div class="relative mt-4 flex items-center gap-2 rounded-2xl border border-white/10 bg-white/[0.06] px-3 py-2">
+            <span class="relative flex h-2 w-2">
+              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60">
+              </span>
+
+              <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
+            </span>
+
+            <span
+              data-connection-status
+              class="text-[11px] font-medium text-slate-300"
+            >
+              Secure website conversation
+            </span>
+          </div>
+        </header>
+
+        <div
+          data-error-banner
+          class="hidden border-b border-rose-200 bg-rose-50 px-4 py-3 text-xs font-medium text-rose-700"
+        >
+        </div>
+
+        <div
+          data-start-panel
+          class="flex flex-1 flex-col justify-center bg-slate-50 px-5 py-6"
+        >
+          <div class="rounded-[24px] border border-slate-200 bg-white p-5 shadow-sm">
+            <h3 class="text-lg font-bold text-slate-900">
+              Start a conversation
+            </h3>
+
+            <p class="mt-2 text-sm leading-6 text-slate-500">
+              Send us a message without leaving the website.
+              Our reply will return here.
+            </p>
+
+            <form
+              data-start-form
+              class="mt-5 space-y-4"
+            >
+              <label class="block">
+                <span class="mb-1.5 block text-xs font-semibold text-slate-700">
+                  Name
+                </span>
+
+                <input
+                  name="name"
+                  maxlength="120"
+                  autocomplete="name"
+                  placeholder="Your name"
+                  class="h-11 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 text-sm outline-none transition focus:border-emerald-500 focus:bg-white focus:ring-4 focus:ring-emerald-500/10"
+                />
+              </label>
+
+              <label class="block">
+                <span class="mb-1.5 block text-xs font-semibold text-slate-700">
+                  Email
+                </span>
+
+                <input
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  placeholder="you@example.com"
+                  class="h-11 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 text-sm outline-none transition focus:border-emerald-500 focus:bg-white focus:ring-4 focus:ring-emerald-500/10"
+                />
+              </label>
+
+              <button
+                type="submit"
+                class="flex h-12 w-full items-center justify-center gap-2 rounded-2xl bg-emerald-600 text-sm font-bold text-white shadow-lg shadow-emerald-600/20 transition hover:-translate-y-0.5 hover:bg-emerald-700 disabled:cursor-wait disabled:opacity-60"
+              >
+                <.icon
+                  name="hero-chat-bubble-left-right"
+                  class="h-5 w-5"
+                /> Start chat
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div
+          data-conversation-panel
+          class="hidden min-h-0 flex-1 flex-col"
+        >
+          <div
+            data-message-list
+            role="log"
+            aria-live="polite"
+            class="flex-1 space-y-5 overflow-y-auto bg-slate-50/80 px-4 py-5"
+          >
+          </div>
+
+          <div
+            data-new-message-notice
+            class="mx-auto mb-2 hidden rounded-full bg-slate-950 px-3 py-1.5 text-[11px] font-semibold text-white shadow-lg"
+          >
+            New message
+          </div>
+
+          <footer class="border-t border-slate-200 bg-white p-4">
+            <form
+              data-message-form
+              class="flex items-end gap-2"
+            >
+              <div class="flex min-h-12 flex-1 items-end rounded-[20px] border border-slate-200 bg-slate-50 px-3 py-2 transition focus-within:border-emerald-400 focus-within:bg-white focus-within:ring-4 focus-within:ring-emerald-500/10">
+                <textarea
+                  data-message-input
+                  name="body"
+                  rows="1"
+                  maxlength="2000"
+                  placeholder="Write a message..."
+                  aria-label="Message"
+                  class="max-h-28 min-h-7 flex-1 resize-none border-0 bg-transparent px-1 py-1 text-[13px] leading-5 text-slate-800 outline-none placeholder:text-slate-400 focus:ring-0"
+                ></textarea>
+              </div>
+
+              <button
+                data-send-button
+                type="submit"
+                aria-label="Send message"
+                class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-emerald-600 text-white shadow-lg shadow-emerald-600/20 transition hover:-translate-y-0.5 hover:bg-emerald-700 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:shadow-none"
+              >
+                <.icon
+                  name="hero-paper-airplane"
+                  class="h-5 w-5"
+                />
+              </button>
+            </form>
+
+            <div class="mt-2 flex justify-between px-1">
+              <p class="text-[9px] text-slate-400">
+                Enter to send · Shift + Enter for a new line
+              </p>
+
+              <span
+                data-character-count
+                class="text-[9px] text-slate-400"
+              >
+                0 / 2,000
+              </span>
+            </div>
+          </footer>
+        </div>
+      </section>
+
+      <button
+        data-chat-launcher
+        type="button"
+        aria-label="Open support chat"
+        aria-expanded="false"
+        class="
+          group relative
+          flex h-16 w-16
+          items-center justify-center
+          rounded-[22px]
+          bg-emerald-600
+          text-white
+          shadow-[0_22px_50px_-14px_rgba(5,150,105,0.75)]
+          transition duration-300
+          hover:-translate-y-1
+          hover:rotate-2
+          hover:bg-emerald-700
+          focus:outline-none
+          focus:ring-4
+          focus:ring-emerald-500/25
+        "
+      >
+        <span data-open-icon>
+          <.icon
+            name="hero-chat-bubble-left-right"
+            class="h-7 w-7"
+          />
+        </span>
+
+        <span
+          data-close-icon
+          class="hidden"
+        >
+          <.icon
+            name="hero-x-mark"
+            class="h-7 w-7"
+          />
+        </span>
+
+        <span
+          data-unread-badge
+          class="absolute -right-1 -top-1 hidden h-6 min-w-6 items-center justify-center rounded-full border-[3px] border-white bg-rose-500 px-1 text-[10px] font-bold text-white"
+        >
+          0
+        </span>
+
+        <span class="pointer-events-none absolute right-[76px] whitespace-nowrap rounded-xl bg-slate-950 px-3 py-2 text-xs font-semibold text-white opacity-0 shadow-xl transition group-hover:opacity-100">
+          Chat with us
+        </span>
+      </button>
+    </div>
+    """
+  end
+
   @doc """
   Translates an error message using gettext.
   """

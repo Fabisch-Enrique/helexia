@@ -39,8 +39,11 @@ defmodule Helexia.MixProject do
   # Specifies your project dependencies.
   #
   # Type `mix help deps` for examples and options.
+
   defp deps do
     [
+      {:oban, "~> 2.20"},
+      {:jason, "~> 1.4"},
       {:phoenix, "~> 1.8.7"},
       {:ecto_sql, "~> 3.13"},
       {:postgrex, ">= 0.0.0"},
@@ -61,7 +64,6 @@ defmodule Helexia.MixProject do
        compile: false,
        depth: 1},
       {:req, "~> 0.5"},
-      {:jason, "~> 1.2"},
       {:bandit, "~> 1.5"},
       {:swoosh, "~> 1.16"},
       {:slugify, "~> 1.3"},

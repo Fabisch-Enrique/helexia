@@ -36,6 +36,14 @@ config :helexia, HelexiaWeb.Endpoint,
 # at the `config/runtime.exs`.
 config :helexia, Helexia.Mailer, adapter: Swoosh.Adapters.Local
 
+config :helexia, Oban,
+  repo: Helexia.Repo,
+  queues: [
+    default: 10,
+    whatsapp: 5,
+    whatsapp_webhooks: 10
+  ]
+
 # Configure esbuild (the version is required)
 config :esbuild,
   version: "0.25.4",

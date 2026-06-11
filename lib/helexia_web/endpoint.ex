@@ -15,6 +15,10 @@ defmodule HelexiaWeb.Endpoint do
     websocket: [connect_info: [session: @session_options]],
     longpoll: [connect_info: [session: @session_options]]
 
+  socket "/socket", HelexiaWeb.UserSocket,
+    websocket: true,
+    longpoll: false
+
   # Serve at "/" the static files from "priv/static" directory.
   #
   # When code reloading is disabled (e.g., in production),
@@ -26,6 +30,16 @@ defmodule HelexiaWeb.Endpoint do
     gzip: not code_reloading?,
     only: HelexiaWeb.static_paths(),
     raise_on_missing_only: code_reloading?
+
+  plug Plug.Parsers,
+    parsers: [:urlencoded, :multipart, :json],
+    pass: ["*/*"],
+    body_reader: {
+      HelexiaWeb.Plugs.RawBodyReader,
+      :read_body,
+      []
+    },
+    json_decoder: Phoenix.json_library()
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.

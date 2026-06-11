@@ -10,11 +10,19 @@ defmodule Helexia.Application do
     children = [
       HelexiaWeb.Telemetry,
       Helexia.Repo,
-      {DNSCluster, query: Application.get_env(:helexia, :dns_cluster_query) || :ignore},
+      {DNSCluster,
+       query:
+         Application.get_env(
+           :helexia,
+           :dns_cluster_query
+         ) || :ignore},
       {Phoenix.PubSub, name: Helexia.PubSub},
-      # Start a worker by calling: Helexia.Worker.start_link(arg)
-      # {Helexia.Worker, arg},
-      # Start to serve requests, typically the last entry
+      {Finch, name: Helexia.Finch},
+      {Oban,
+       Application.fetch_env!(
+         :helexia,
+         Oban
+       )},
       HelexiaWeb.Endpoint
     ]
 
