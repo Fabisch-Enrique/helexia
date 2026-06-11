@@ -39,8 +39,9 @@ defmodule Helexia.Seeds.Members do
       name: "Titus Njihigu",
       email: "titusnjihigu@gmil.com",
       image_url: "/images/uat_cs.png",
-      expertise: ["Health", "Clinics"],
-      title: "UAT & Clinical Systems QA"
+
+      title: "UAT's, Clinical Systems QA & Governance",
+      expertise: ["Health", "Clinics", "Fintech", "Innovation"]
     },
     %{
       level: 2,

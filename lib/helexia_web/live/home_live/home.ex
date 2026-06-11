@@ -7,6 +7,8 @@ defmodule HelexiaWeb.HomeLive.Home do
 
   def mount(_params, _session, socket) do
     assigns = [
+      messages: [],
+      chat_open: false,
       locations: [
         %{
           lat: -4.1006,
@@ -95,5 +97,9 @@ defmodule HelexiaWeb.HomeLive.Home do
         "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop"
       }
     ]
+  end
+
+  def handle_event("toggle_chat", _, socket) do
+    {:noreply, assign(socket, :chat_open, !socket.assigns.chat_open)}
   end
 end
