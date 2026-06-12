@@ -5,9 +5,10 @@ defmodule Helexia.Chat.WhatsApp do
 
   alias Helexia.Chat.Message
 
-  def send_visitor_message(%Message{} = message) do
-    config = config!()
+  def config, do: Application.fetch_env!(:helexia, Helexia.Chat.Whatsapp)
+  def config(key), do: config() |> Keyword.fetch!(key)
 
+  def send_visitor_message(%Message{} = message) do
     body = """
     [WEB-#{message.conversation.conversation_code}]
     #{visitor_label(message.conversation)}
@@ -23,17 +24,17 @@ defmodule Helexia.Chat.WhatsApp do
         body: body,
         preview_url: false
       },
-      to: config.agent_phone,
+      to: config(:agent_phone),
       recipient_type: "individual",
       messaging_product: "whatsapp"
     }
 
     url =
-      "#{config.graph_url}/#{config.api_version}/" <>
-        "#{config.phone_number_id}/messages"
+      "#{config(:graph_url)}/#{config(:api_version)}/" <>
+        "#{config(:phone_number_id)}/messages"
 
     headers = [
-      {"authorization", "Bearer #{config.access_token}"},
+      {"authorization", "Bearer #{config(:access_token)}"},
       {"content-type", "application/json"}
     ]
 
@@ -72,33 +73,11 @@ defmodule Helexia.Chat.WhatsApp do
     end
   end
 
-  defp visitor_label(conversation),
-    do:
-      conversation.visitor_name ||
-        "Anonymous website visitor"
+  defp visitor_label(conversation), do: conversation.visitor_name || "Anonymous website visitor"
 
-  defp config! do
-    config =
-      Application.fetch_env!(
-        :my_app,
-        __MODULE__
-      )
-
-    %{
-      graph_url:
-        Keyword.get(
-          config,
-          :graph_url,
-          "https://graph.facebook.com"
-        ),
-      api_version: Keyword.fetch!(config, :api_version),
-      phone_number_id: Keyword.fetch!(config, :phone_number_id),
-      access_token: Keyword.fetch!(config, :access_token),
-      agent_phone: normalize_phone(Keyword.fetch!(config, :agent_phone))
-    }
-  end
-
-  def normalize_phone(phone) do
-    String.replace(phone, ~r/[^\d]/, "")
+  def normalize_phone(phone) when is_binary(phone) do
+    phone
+    |> String.trim()
+    |> String.replace(~r/[^\d]/, "")
   end
 end

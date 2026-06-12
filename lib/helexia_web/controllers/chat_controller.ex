@@ -5,22 +5,26 @@ defmodule HelexiaWeb.ChatController do
 
   # action_fallback HelexiaWeb.FallbackController
 
+  def config, do: Application.fetch_env!(:helexia, Helexia.Chat.Whatsapp)
+  def config(key), do: config() |> Keyword.fetch!(key)
+
   def create_conversation(conn, params) do
-    agent_phone = "+254701161418"
-    # System.fetch_env!("WHATSAPP_AGENT_PHONE")
+    agent_phone = config(:whatsapp_agent_hone)
 
     attrs = %{
+      agent_phone: agent_phone,
       visitor_name: blank_to_nil(params["name"]),
-      visitor_email: blank_to_nil(params["email"]),
-      agent_phone: agent_phone
+      visitor_email: blank_to_nil(params["email"])
     }
 
-    case Chat.create_conversation(attrs) do
+    attrs
+    |> Chat.create_conversation()
+    |> case do
       {:ok, conversation, visitor_token} ->
         json(conn, %{
           data: %{
-            conversation_id: conversation.public_id,
             visitor_token: visitor_token,
+            conversation_id: conversation.public_id,
             conversation_code: conversation.conversation_code
           }
         })

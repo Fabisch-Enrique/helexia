@@ -12,7 +12,7 @@ defmodule HelexiaWeb.ChatChannel do
     if socket.assigns.conversation_id ==
          conversation_id do
       Phoenix.PubSub.subscribe(
-        MyApp.PubSub,
+        Helexia.PubSub,
         Chat.topic(conversation_id)
       )
 
@@ -23,17 +23,14 @@ defmodule HelexiaWeb.ChatChannel do
   end
 
   @impl true
-  def handle_info(
-        {:chat_message_updated, message},
-        socket
-      ) do
+  def handle_info({:chat_message_updated, message}, socket) do
     push(socket, "message_updated", %{
-      id: message.public_id,
-      client_message_id: message.client_message_id,
       body: message.body,
-      sender_type: message.sender_type,
+      id: message.public_id,
       status: message.status,
-      inserted_at: message.inserted_at
+      sender_type: message.sender_type,
+      inserted_at: message.inserted_at,
+      client_message_id: message.client_message_id
     })
 
     {:noreply, socket}

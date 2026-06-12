@@ -43,11 +43,11 @@ npm-debug.log
 .DS_Store
 *.DS_Store
 **/.DS_Store
-
-config/*.local.exs
 *.session.sql
 
+config/*.local.exs
 config/*.secret.exs
 config/*.secret.exs.example
+
 .tool-versions
 

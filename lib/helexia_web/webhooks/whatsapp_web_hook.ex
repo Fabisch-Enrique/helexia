@@ -1,7 +1,10 @@
 defmodule HelexiaWeb.Webhooks.WhatsappWebHook do
   use HelexiaWeb, :controller
 
-  alias Helexia.Workers.WhatsAppWebhookWorker
+  alias Helexia.Workers.WhatsappWorker
+
+  def config, do: Application.fetch_env!(:helexia, Helexia.Chat.Whatsapp)
+  def config(key), do: config() |> Keyword.fetch!(key)
 
   def verify(conn, params) do
     expected_token =
@@ -30,7 +33,7 @@ defmodule HelexiaWeb.Webhooks.WhatsappWebHook do
          {:ok, _job} <-
            payload
            |> then(&%{"payload" => &1})
-           |> WhatsAppWebhookWorker.new()
+           |> WhatsappWorker.new()
            |> Oban.insert() do
       send_resp(conn, 200, "EVENT_RECEIVED")
     else

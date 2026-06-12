@@ -522,11 +522,7 @@ defmodule HelexiaWeb.CoreComponents do
           <div class="pointer-events-none absolute inset-0">
             <div class="absolute -right-12 -top-16 h-40 w-40 rounded-full bg-emerald-500/20 blur-3xl">
             </div>
-
             <div class="absolute -bottom-20 -left-10 h-40 w-40 rounded-full bg-blue-500/15 blur-3xl">
-            </div>
-
-            <div class="absolute inset-0 opacity-[0.07] [background-image:linear-gradient(rgba(255,255,255,.5)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.5)_1px,transparent_1px)] [background-size:24px_24px]">
             </div>
           </div>
 

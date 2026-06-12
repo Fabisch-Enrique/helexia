@@ -1,4 +1,4 @@
-defmodule HelexiaWeb.Workers.WhatsappMessageWorker do
+defmodule Helexia.Workers.WhatsappMessageWorker do
   use Oban.Worker,
     queue: :whatsapp,
     max_attempts: 8,

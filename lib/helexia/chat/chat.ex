@@ -4,9 +4,9 @@ defmodule Helexia.Chat do
   alias Ecto.Multi
   alias Helexia.Repo
   alias Helexia.Chat.{Conversation, Message}
-  alias Helexia.Workers.WhatsappMessageWorker
+  alias Helexia.Workers.WhatsappMessageWorker, as: MESSAGE_WORKER
 
-  @pubsub MyApp.PubSub
+  @pubsub Helexia.PubSub
 
   def create_conversation(attrs) do
     visitor_token =
@@ -16,12 +16,13 @@ defmodule Helexia.Chat do
     token_hash = hash_token(visitor_token)
 
     conversation_attrs =
-      attrs
-      |> Map.put(:public_id, Ecto.UUID.generate())
-      |> Map.put(:visitor_token_hash, token_hash)
-      |> Map.put(:conversation_code, generate_code())
-      |> Map.put(:status, "open")
-      |> Map.put(:last_message_at, DateTime.utc_now())
+      Map.merge(attrs, %{
+        status: "open",
+        public_id: generate_id(),
+        visitor_token_hash: token_hash,
+        conversation_code: generate_code(),
+        last_message_at: DateTime.utc_now()
+      })
 
     case %Conversation{}
          |> Conversation.create_changeset(conversation_attrs)
@@ -69,13 +70,13 @@ defmodule Helexia.Chat do
     now = DateTime.utc_now()
 
     message_attrs = %{
-      public_id: Ecto.UUID.generate(),
-      conversation_id: conversation.id,
-      client_message_id: Map.fetch!(attrs, :client_message_id),
-      body: Map.fetch!(attrs, :body),
+      status: "pending",
       sender_type: "visitor",
       direction: "visitor_to_agent",
-      status: "pending"
+      body: Map.fetch!(attrs, :body),
+      public_id: Ecto.UUID.generate(),
+      conversation_id: conversation.id,
+      client_message_id: Map.fetch!(attrs, :client_message_id)
     }
 
     Multi.new()
@@ -100,7 +101,7 @@ defmodule Helexia.Chat do
     |> Multi.run(:job, fn _repo, %{message: message} ->
       message.id
       |> then(&%{"message_id" => &1})
-      |> WhatsAppMessageWorker.new()
+      |> MESSAGE_WORKER.new()
       |> Oban.insert()
     end)
     |> Repo.transaction()
@@ -164,16 +165,16 @@ defmodule Helexia.Chat do
         Message.agent_changeset(
           %Message{},
           %{
-            public_id: Ecto.UUID.generate(),
-            conversation_id: conversation.id,
-            body: attrs.body,
-            provider_message_id: attrs.provider_message_id,
-            provider_context_message_id: attrs.context_message_id,
-            provider_payload: attrs.raw_payload,
-            sender_type: "agent",
-            direction: "agent_to_visitor",
+            sent_at: now,
             status: "sent",
-            sent_at: now
+            body: attrs.body,
+            sender_type: "agent",
+            public_id: generate_id(),
+            direction: "agent_to_visitor",
+            conversation_id: conversation.id,
+            provider_payload: attrs.raw_payload,
+            provider_message_id: attrs.provider_message_id,
+            provider_context_message_id: attrs.context_message_id
           }
         )
 
@@ -298,14 +299,12 @@ defmodule Helexia.Chat do
   def topic(public_id),
     do: "website_chat:#{public_id}"
 
-  def hash_token(token) do
-    :crypto.hash(:sha256, token)
-  end
+  def hash_token(token), do: :crypto.hash(:sha256, token)
 
-  defp generate_code do
-    :crypto.strong_rand_bytes(5)
-    |> Base.encode32(case: :upper, padding: false)
-  end
+  def generate_id(), do: Ecto.UUID.generate()
+
+  def generate_code(),
+    do: Base.encode32(:crypto.strong_rand_bytes(5), case: :upper, padding: false)
 
   defp recover_duplicate_message(changeset) do
     if duplicate_client_message?(changeset) do

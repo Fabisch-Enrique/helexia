@@ -3,10 +3,10 @@ defmodule Helexia.Repo.Migrations.CreateChatSystem do
 
   def change do
     create table(:chat_conversations) do
-      add :public_id, :uuid, null: false
-      add :visitor_token_hash, :binary, null: false
       add :visitor_name, :string
       add :visitor_email, :string
+      add :public_id, :uuid, null: false
+      add :visitor_token_hash, :binary, null: false
 
       add :status, :string,
         null: false,

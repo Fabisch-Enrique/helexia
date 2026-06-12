@@ -1,4 +1,4 @@
-defmodule HelexiaWeb.Workers.WhatsappWorker do
+defmodule Helexia.Workers.WhatsappWorker do
   use Oban.Worker,
     queue: :whatsapp_webhooks,
     max_attempts: 10
@@ -7,9 +7,7 @@ defmodule HelexiaWeb.Workers.WhatsappWorker do
   alias Helexia.PayloadParser
 
   @impl Oban.Worker
-  def perform(%Oban.Job{
-        args: %{"payload" => payload}
-      }) do
+  def perform(%Oban.Job{args: %{"payload" => payload}}) do
     payload
     |> PayloadParser.events()
     |> Enum.each(&process_event/1)
@@ -17,12 +15,10 @@ defmodule HelexiaWeb.Workers.WhatsappWorker do
     :ok
   end
 
-  defp process_event(
-         %{
-           type: :incoming_text
-         } = event
-       ) do
-    case Chat.create_agent_reply(event) do
+  defp process_event(%{type: :incoming_text} = event) do
+    event
+    |> Chat.create_agent_reply()
+    |> case do
       {:ok, _message} ->
         :ok
 
