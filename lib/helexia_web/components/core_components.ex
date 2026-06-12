@@ -564,8 +564,8 @@ defmodule HelexiaWeb.CoreComponents do
               class="flex h-9 w-9 items-center justify-center rounded-xl text-slate-300 transition hover:bg-white/10 hover:text-white"
             >
               <.icon
-                name="hero-x-mark"
                 class="h-5 w-5"
+                name="hero-x-mark"
               />
             </button>
           </div>
@@ -634,7 +634,7 @@ defmodule HelexiaWeb.CoreComponents do
                   name="email"
                   type="email"
                   autocomplete="email"
-                  placeholder="you@example.com"
+                  placeholder="you@gmail.com"
                   class="h-11 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 text-sm outline-none transition focus:border-emerald-500 focus:bg-white focus:ring-4 focus:ring-emerald-500/10"
                 />
               </label>
@@ -644,8 +644,8 @@ defmodule HelexiaWeb.CoreComponents do
                 class="flex h-12 w-full items-center justify-center gap-2 rounded-2xl bg-emerald-600 text-sm font-bold text-white shadow-lg shadow-emerald-600/20 transition hover:-translate-y-0.5 hover:bg-emerald-700 disabled:cursor-wait disabled:opacity-60"
               >
                 <.icon
-                  name="hero-chat-bubble-left-right"
                   class="h-5 w-5"
+                  name="hero-chat-bubble-left-right"
                 /> Start chat
               </button>
             </form>
@@ -695,8 +695,8 @@ defmodule HelexiaWeb.CoreComponents do
                 class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-emerald-600 text-white shadow-lg shadow-emerald-600/20 transition hover:-translate-y-0.5 hover:bg-emerald-700 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:shadow-none"
               >
                 <.icon
-                  name="hero-paper-airplane"
                   class="h-5 w-5"
+                  name="hero-paper-airplane"
                 />
               </button>
             </form>

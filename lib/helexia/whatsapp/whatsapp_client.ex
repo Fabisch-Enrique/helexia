@@ -1,6 +1,4 @@
 defmodule Helexia.Chat.WhatsApp do
-  use VCUtils.HTTPClient
-
   require Logger
 
   alias Helexia.Chat.Message
