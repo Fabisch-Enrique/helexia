@@ -4,21 +4,18 @@ defmodule HelexiaWeb.ChatChannel do
   alias Helexia.Chat
 
   @impl true
-  def join(
-        "website_chat:" <> conversation_id,
-        _params,
-        socket
-      ) do
-    if socket.assigns.conversation_id ==
-         conversation_id do
-      Phoenix.PubSub.subscribe(
-        Helexia.PubSub,
-        Chat.topic(conversation_id)
-      )
+  def join("website_chat:" <> conversation_id, _params, socket) do
+    socket_id = socket.assigns.conversation_id
 
-      {:ok, socket}
-    else
-      {:error, %{reason: "unauthorized"}}
+    socket_id
+    |> id_is_same?(conversation_id)
+    |> case do
+      true ->
+        Phoenix.PubSub.subscribe(Helexia.PubSub, Chat.topic(conversation_id))
+        {:ok, socket}
+
+      false ->
+        {:error, %{reason: "unauthorized"}}
     end
   end
 
@@ -35,4 +32,6 @@ defmodule HelexiaWeb.ChatChannel do
 
     {:noreply, socket}
   end
+
+  def id_is_same?(socket_id, conversation_id), do: match?(^socket_id, conversation_id)
 end

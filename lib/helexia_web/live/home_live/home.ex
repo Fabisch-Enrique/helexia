@@ -7,6 +7,8 @@ defmodule HelexiaWeb.HomeLive.Home do
 
   def mount(_params, _session, socket) do
     assigns = [
+      founders: [],
+      show_video_modal: false,
       locations: [
         %{
           lat: -4.1006,
@@ -40,9 +42,10 @@ defmodule HelexiaWeb.HomeLive.Home do
     {:noreply, apply_action(socket, socket.assigns.live_action, params)}
   end
 
-  def apply_action(socket, :landing_page, _params) do
-    assign(socket, founders: Members.list_team_by_level(1))
-  end
+  def apply_action(socket, :landing_page, _params),
+    do: assign(socket, founders: Members.list_team_by_level(1))
+
+  def apply_action(socket, :view_advert, _params), do: assign(socket, show_video_modal: true)
 
   def patient_modules() do
     [

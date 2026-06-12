@@ -29,6 +29,7 @@ defmodule HelexiaWeb.Router do
     ) do
       scope "/", HomeLive do
         live "/", Home, :landing_page
+        live "/view-pilot-advert", Home, :view_advert
       end
     end
   end
@@ -62,29 +63,16 @@ defmodule HelexiaWeb.Router do
   scope "/api", HelexiaWeb do
     pipe_through :api
 
-    post "/chat/conversations",
-         ChatController,
-         :create_conversation
-
-    get "/chat/conversations/:id",
-        ChatController,
-        :show
-
-    post "/chat/messages",
-         ChatController,
-         :create_message
+    get "/chat/conversations/:id", ChatController, :show
+    post "/chat/messages", ChatController, :create_message
+    post "/chat/conversations", ChatController, :create_conversation
   end
 
   scope "/webhooks", HelexiaWeb do
     pipe_through :api
 
-    get "/whatsapp",
-        Webhooks.WhatsappWebHook,
-        :verify
-
-    post "/whatsapp",
-         Webhooks.WhatsappWebHook,
-         :receive
+    get "/whatsapp", Webhooks.WhatsappWebHook, :verify
+    post "/whatsapp", Webhooks.WhatsappWebHook, :receive
   end
 
   # Other scopes may use custom stacks.

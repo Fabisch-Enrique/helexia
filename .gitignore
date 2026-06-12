@@ -23,7 +23,7 @@ erl_crash.dump
 /tmp/
 
 # Ignore package tarball (built via "mix hex.build").
-riqqy_rocket_carwash-*.tar
+helexia-*.tar
 
 # Ignore assets that are produced by build tools.
 /priv/static/assets/
@@ -48,6 +48,4 @@ npm-debug.log
 config/*.local.exs
 config/*.secret.exs
 config/*.secret.exs.example
-
-.tool-versions
 

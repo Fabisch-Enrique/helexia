@@ -475,6 +475,86 @@ defmodule HelexiaWeb.CoreComponents do
     )
   end
 
+  @doc """
+  Renders a modal.
+
+  ## Examples
+
+      <.modal id="confirm-modal">
+        This is a modal.
+      </.modal>
+
+  JS commands may be passed to the `:on_cancel` to configure
+  the closing/cancel event, for example:
+
+      <.modal id="confirm" on_cancel={JS.navigate(~p"/posts")}>
+        This is another modal.
+      </.modal>
+
+  """
+  attr(:id, :string, required: true)
+  slot(:inner_block, required: true)
+  attr(:class, :string, default: nil)
+  attr(:on_cancel, JS, default: %JS{})
+  attr(:show, :boolean, default: false)
+  attr(:close_svg_icon, :string, default: "")
+  attr(:inner_class, :string, default: "p-4 sm:p-6")
+
+  def modal(assigns) do
+    ~H"""
+    <div
+      id={@id}
+      phx-mounted={@show && show_modal(@id)}
+      phx-remove={hide_modal(@id)}
+      data-cancel={JS.exec(@on_cancel, "phx-remove")}
+      class="relative z-50 hidden"
+    >
+      <div
+        id={"#{@id}-bg"}
+        aria-hidden="true"
+        class="fixed inset-0 transition-opacity bg-gray-700/75 backdrop-filter backdrop-blur-sm"
+      />
+      <div
+        tabindex="0"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={"#{@id}-title"}
+        aria-describedby={"#{@id}-description"}
+        class="fixed inset-0 overflow-y-auto flex items-center justify-center h-full w-full max-h-dvh"
+      >
+        <div class="flex flex-col items-center justify-center w-full min-h-full">
+          <div class={["w-full max-w-3xl p-4 sm:p-6", @class]}>
+            <.focus_wrap
+              phx-key="escape"
+              id={"#{@id}-container"}
+              phx-click-away={false && JS.exec("data-cancel", to: "##{@id}")}
+              phx-window-keydown={false && JS.exec("data-cancel", to: "##{@id}")}
+              class={[
+                "relative hidden transition bg-lociblack-500 shadow-lg rounded-2xl shadow-zinc-700/10 ring-1 ring-zinc-700/10",
+                @inner_class
+              ]}
+            >
+              <div class={["absolute top-4 right-5", @close_svg_icon]}>
+                <button
+                  type="button"
+                  aria-label={gettext("close")}
+                  phx-click={JS.exec("data-cancel", to: "##{@id}")}
+                  class="flex-none p-2 -m-3 opacity-20 hover:opacity-40"
+                >
+                  <.icon name="hero-x-mark-solid" class="w-5 h-5" />
+                </button>
+              </div>
+              <div id={"#{@id}-content"}>
+                {render_slot(@inner_block)}
+              </div>
+            </.focus_wrap>
+          </div>
+        </div>
+      </div>
+    </div>
+    """
+  end
+
   attr :id, :string, default: "global-chat-widget"
 
   def chat_widget(assigns) do
@@ -797,5 +877,15 @@ defmodule HelexiaWeb.CoreComponents do
   """
   def translate_errors(errors, field) when is_list(errors) do
     for {^field, {msg, opts}} <- errors, do: translate_error({msg, opts})
+  end
+
+  defp show_modal(id) do
+    JS.show(to: "##{id}")
+    |> JS.show(to: "##{id}-container")
+  end
+
+  defp hide_modal(id) do
+    JS.hide(to: "##{id}-container")
+    |> JS.hide(to: "##{id}")
   end
 end
