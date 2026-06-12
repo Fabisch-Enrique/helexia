@@ -44,6 +44,7 @@ npm-debug.log
 *.DS_Store
 **/.DS_Store
 *.session.sql
+.tool-versions
 
 config/*.local.exs
 config/*.secret.exs

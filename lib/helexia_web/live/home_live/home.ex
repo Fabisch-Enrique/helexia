@@ -42,6 +42,10 @@ defmodule HelexiaWeb.HomeLive.Home do
     {:noreply, apply_action(socket, socket.assigns.live_action, params)}
   end
 
+  def handle_event("close_video_modal", _params, socket) do
+    {:noreply, assign(socket, :show_video_modal, false)}
+  end
+
   def apply_action(socket, :landing_page, _params),
     do: assign(socket, founders: Members.list_team_by_level(1))
 

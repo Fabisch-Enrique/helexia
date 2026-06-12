@@ -38,6 +38,36 @@ const liveSocket = new LiveSocket("/live", Socket, {
 topbar.config({barColors: {0: "#29d"}, shadowColor: "rgba(0, 0, 0, .3)"})
 window.addEventListener("phx:page-loading-start", _info => topbar.show(300))
 window.addEventListener("phx:page-loading-stop", _info => topbar.hide())
+window.addEventListener("video_modal_opened", () => {
+  const audio = new Audio("/sounds/open-soft.mp3")
+  audio.volume = 0.15
+  audio.play().catch(() => {})
+})
+
+document.addEventListener("click", (e) => {
+  const backdrop = document.getElementById("video-backdrop")
+  const rippleLayer = document.getElementById("ripple-layer")
+
+  if (!backdrop || !rippleLayer) return
+
+  if (e.target === backdrop) {
+    const ripple = document.createElement("div")
+
+    ripple.className =
+      "absolute rounded-full bg-white/20 blur-xl animate-ping"
+
+    ripple.style.width = "200px"
+    ripple.style.height = "200px"
+    ripple.style.left = e.clientX - 100 + "px"
+    ripple.style.top = e.clientY - 100 + "px"
+
+    rippleLayer.appendChild(ripple)
+
+    setTimeout(() => ripple.remove(), 400)
+  }
+})
+
+
 
 // connect if there are any LiveViews on the page
 liveSocket.connect()

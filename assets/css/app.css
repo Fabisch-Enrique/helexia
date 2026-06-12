@@ -931,3 +931,21 @@ button:focus-visible {
 .animate-scroll-down {
   animation: scroll-down 10s linear infinite;
 }
+
+@keyframes modalIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.96) translateY(12px);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes backdropFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
