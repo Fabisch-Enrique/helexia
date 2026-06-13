@@ -18,6 +18,7 @@ defmodule HelexiaWeb.Router do
     pipe_through :browser
 
     get "/landing-page", PageController, :home
+    get "/about-us", PageController, :about_us
     get "/contact-us", PageController, :contact
   end
 
@@ -56,6 +57,7 @@ defmodule HelexiaWeb.Router do
       scope "/", PilotLive do
         live "/pilots", Index, :pilot
         live "/pilots/:slug", Show, :view_pilot
+        live "/view-pilot-advert-show/:slug", Show, :view_advert_show
       end
     end
   end

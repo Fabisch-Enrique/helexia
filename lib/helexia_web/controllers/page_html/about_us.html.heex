@@ -1,0 +1,1036 @@
+<Layouts.header />
+<div
+  id="helexia-about-page"
+  phx-hook="about_us_page"
+  class="overflow-hidden bg-[#f7fbfc] text-slate-950"
+>
+  <!-- HERO -->
+  <section class="relative isolate overflow-hidden bg-[#edf8fa] px-6 pb-24 pt-20 sm:pb-28 sm:pt-28">
+    <!-- Background decoration -->
+    <div class="pointer-events-none absolute inset-0 -z-10">
+      <div class="about-glow-one absolute -left-40 top-10 h-[430px] w-[430px] rounded-full bg-cyan-300/30 blur-[120px]">
+      </div>
+
+      <div class="about-glow-two absolute -right-40 top-0 h-[520px] w-[520px] rounded-full bg-blue-300/25 blur-[140px]">
+      </div>
+
+      <div class="absolute left-1/2 top-0 h-px w-[70%] -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent">
+      </div>
+    </div>
+
+    <div class="mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-[1.05fr_0.95fr]">
+      <!-- Hero content -->
+      <div>
+        <div class="about-hero-badge inline-flex items-center gap-2 rounded-full border border-cyan-700/15 bg-white/80 px-4 py-2 shadow-sm backdrop-blur">
+          <span class="relative flex h-2.5 w-2.5">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-500 opacity-50">
+            </span>
+            <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-cyan-600"></span>
+          </span>
+
+          <span class="text-xs font-black uppercase tracking-[0.22em] text-cyan-800">
+            About HELEXIA ➕
+          </span>
+        </div>
+
+        <h1 class="about-hero-title mt-7 max-w-4xl text-4xl font-black leading-[1.04] tracking-[-0.045em] text-slate-950 sm:text-6xl lg:text-6xl">
+          Building a more connected future
+          <span class="relative inline-block text-cyan-700">
+            for African healthcare.
+            <svg
+              viewBox="0 0 340 20"
+              aria-hidden="true"
+              class="absolute -bottom-3 left-0 w-full text-cyan-500/40"
+            >
+              <path
+                d="M4 14C86 2 210 4 336 11"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="7"
+                stroke-linecap="round"
+              />
+            </svg>
+          </span>
+        </h1>
+
+        <p class="about-hero-copy mt-8 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
+          HELEXIA ➕ is creating the digital infrastructure that brings patients,
+          healthcare professionals, facilities, pharmacies, laboratories,
+          insurers, and public health institutions into one secure and
+          intelligent ecosystem.
+        </p>
+
+        <div class="about-hero-actions mt-10 flex flex-col gap-4 sm:flex-row">
+          <a
+            href="#our-story"
+            class="group inline-flex items-center justify-center gap-2 rounded-full bg-slate-950 px-7 py-3.5 text-sm font-bold text-white shadow-xl shadow-slate-950/15 transition duration-300 hover:-translate-y-1 hover:bg-cyan-700 hover:shadow-cyan-900/20"
+          >
+            Discover our story
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M17 8l4 4m0 0-4 4m4-4H3"
+              />
+            </svg>
+          </a>
+
+          <a
+            href="#ecosystem"
+            class="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white/70 px-7 py-3.5 text-sm font-bold text-slate-800 shadow-sm backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-cyan-500 hover:bg-white hover:text-cyan-700"
+          >
+            Explore our ecosystem
+          </a>
+        </div>
+
+        <div class="about-hero-copy mt-12 flex flex-wrap items-center gap-x-8 gap-y-5 border-t border-slate-300/70 pt-8">
+          <div>
+            <p class="text-2xl font-black text-slate-950">Connected</p>
+            <p class="mt-1 text-xs font-bold uppercase tracking-[0.16em] text-slate-500">
+              Care delivery
+            </p>
+          </div>
+
+          <div class="hidden h-10 w-px bg-slate-300 sm:block"></div>
+
+          <div>
+            <p class="text-2xl font-black text-slate-950">Intelligent</p>
+            <p class="mt-1 text-xs font-bold uppercase tracking-[0.16em] text-slate-500">
+              Health insights
+            </p>
+          </div>
+
+          <div class="hidden h-10 w-px bg-slate-300 sm:block"></div>
+
+          <div>
+            <p class="text-2xl font-black text-slate-950">Continuous</p>
+            <p class="mt-1 text-xs font-bold uppercase tracking-[0.16em] text-slate-500">
+              Patient journey
+            </p>
+          </div>
+        </div>
+      </div>
+      
+<!-- Animated ecosystem visual -->
+      <div class="relative mx-auto w-full max-w-xl">
+        <div class="absolute inset-8 rounded-[3rem] bg-cyan-500/20 blur-3xl"></div>
+
+        <div class="about-ecosystem-card relative overflow-hidden rounded-[2.25rem] border border-white bg-white/85 p-5 shadow-[0_35px_100px_-40px_rgba(15,23,42,0.35)] backdrop-blur-xl sm:p-7">
+          <div class="flex items-center justify-between border-b border-slate-200 pb-5">
+            <div>
+              <p class="text-xs font-black uppercase tracking-[0.2em] text-cyan-700">
+                Connected care
+              </p>
+
+              <h2 class="mt-1 text-xl font-black text-slate-950">
+                One healthcare ecosystem
+              </h2>
+            </div>
+
+            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-50 text-cyan-700">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1.8"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 6v12m6-6H6"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <div class="relative mt-7 min-h-[390px]">
+            <svg
+              viewBox="0 0 500 390"
+              class="pointer-events-none absolute inset-0 h-full w-full"
+              aria-hidden="true"
+            >
+              <defs>
+                <linearGradient id="about-line-gradient" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#0891b2" stop-opacity="0.18" />
+                  <stop offset="50%" stop-color="#0891b2" stop-opacity="0.6" />
+                  <stop offset="100%" stop-color="#2563eb" stop-opacity="0.2" />
+                </linearGradient>
+              </defs>
+
+              <path
+                class="about-connector-line"
+                d="M250 195L115 88M250 195L385 88M250 195L105 300M250 195L395 300"
+                stroke="url(#about-line-gradient)"
+                stroke-width="2"
+                fill="none"
+              />
+            </svg>
+            
+<!-- Center node -->
+            <div class="about-center-node absolute left-1/2 top-1/2 z-10 flex h-36 w-36 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full border-[10px] border-cyan-50 bg-gradient-to-br from-cyan-600 to-blue-700 text-center text-white">
+              <span class="text-2xl font-black">HELEXIA ➕ </span>
+
+              <span class="mt-1 text-[10px] font-bold uppercase tracking-[0.18em] text-cyan-100">
+                Care network
+              </span>
+            </div>
+            
+<!-- Patient node -->
+            <div
+              class="about-network-node absolute left-0 top-3 w-36 rounded-2xl border border-slate-200 bg-white p-4 shadow-lg shadow-slate-900/5"
+              style="--float-delay: 0ms;"
+            >
+              <div class="mb-3 flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-50 text-cyan-700">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8"
+                  />
+                </svg>
+              </div>
+
+              <p class="text-sm font-black text-slate-950">Patients</p>
+
+              <p class="mt-1 text-xs leading-5 text-slate-500">
+                Access and continuity
+              </p>
+            </div>
+            
+<!-- Clinician node -->
+            <div
+              class="about-network-node absolute right-0 top-3 w-36 rounded-2xl border border-slate-200 bg-white p-4 shadow-lg shadow-slate-900/5"
+              style="--float-delay: 700ms;"
+            >
+              <div class="mb-3 flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-blue-700">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 6v12m6-6H6"
+                  />
+                </svg>
+              </div>
+
+              <p class="text-sm font-black text-slate-950">Clinicians</p>
+
+              <p class="mt-1 text-xs leading-5 text-slate-500">
+                Informed decisions
+              </p>
+            </div>
+            
+<!-- Pharmacy node -->
+            <div
+              class="about-network-node absolute bottom-3 left-0 w-36 rounded-2xl border border-slate-200 bg-white p-4 shadow-lg shadow-slate-900/5"
+              style="--float-delay: 1400ms;"
+            >
+              <div class="mb-3 flex h-9 w-9 items-center justify-center rounded-xl bg-amber-50 text-amber-700">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M10.5 20.5l-7-7a4.95 4.95 0 017-7l7 7a4.95 4.95 0 01-7 7zM7 10l7 7"
+                  />
+                </svg>
+              </div>
+
+              <p class="text-sm font-black text-slate-950">Pharmacies</p>
+
+              <p class="mt-1 text-xs leading-5 text-slate-500">
+                Digital fulfillment
+              </p>
+            </div>
+            
+<!-- Laboratory node -->
+            <div
+              class="about-network-node absolute bottom-3 right-0 w-36 rounded-2xl border border-slate-200 bg-white p-4 shadow-lg shadow-slate-900/5"
+              style="--float-delay: 2100ms;"
+            >
+              <div class="mb-3 flex h-9 w-9 items-center justify-center rounded-xl bg-violet-50 text-violet-700">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 3h6m-5 0v7l-5 9a1.5 1.5 0 001.3 2.2h11.4A1.5 1.5 0 0019 19l-5-9V3M8 15h8"
+                  />
+                </svg>
+              </div>
+
+              <p class="text-sm font-black text-slate-950">Laboratories</p>
+
+              <p class="mt-1 text-xs leading-5 text-slate-500">
+                Connected results
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-network-node absolute -bottom-6 -left-5 hidden rounded-2xl border border-white/80 bg-white/90 px-5 py-4 shadow-xl backdrop-blur sm:block">
+          <p class="text-xs font-bold uppercase tracking-[0.16em] text-slate-400">
+            Our approach
+          </p>
+
+          <p class="mt-1 text-sm font-black text-slate-900">
+            Connected. Intelligent. Human.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+<!-- STORY -->
+  <section
+    id="our-story"
+    class="scroll-mt-24 bg-white px-6 py-24 sm:py-32"
+  >
+    <div class="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+      <div
+        data-reveal="left"
+        class="lg:sticky lg:top-28 lg:self-start"
+      >
+        <p class="text-sm font-black uppercase tracking-[0.22em] text-cyan-700">
+          Why we exist
+        </p>
+
+        <h2 class="mt-5 text-3xl font-black leading-tight tracking-[-0.03em] text-slate-950 sm:text-4xl">
+          Healthcare is fragmented.
+          <span class="text-cyan-700">
+            We are connecting it.
+          </span>
+        </h2>
+
+        <div class="mt-4 h-1 w-24 rounded-full bg-gradient-to-r from-cyan-600 to-blue-600"></div>
+      </div>
+
+      <div
+        data-reveal="right"
+        class="space-y-6 text-lg leading-8 text-slate-600"
+      >
+        <p>
+          Across Africa, healthcare information is often distributed across
+          disconnected facilities, paper records, isolated applications, and
+          institutions that cannot communicate effectively with one another.
+        </p>
+
+        <p>
+          This fragmentation creates delays, duplicated procedures, incomplete
+          patient histories, administrative inefficiencies, and limited access
+          to quality care—especially for people living outside major urban centres.
+        </p>
+
+        <div class="rounded-[1.75rem] border border-cyan-100 bg-cyan-50/60 p-7">
+          <p class="font-semibold leading-8 text-slate-900">
+            HELEXIA ➕ was created to close these gaps by making healthcare data,
+            services, and institutions work together around the needs of the patient.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mx-auto mt-20 grid max-w-7xl overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-50 sm:grid-cols-2 lg:grid-cols-4">
+      <article
+        data-reveal="scale"
+        style="--reveal-delay: 0ms;"
+        class="group border-b border-slate-200 p-7 transition duration-300 hover:bg-white sm:border-r lg:border-b-0"
+      >
+        <span class="text-3xl font-black text-cyan-700 transition duration-300 group-hover:scale-110">
+          01
+        </span>
+
+        <h3 class="mt-5 font-black text-slate-950">
+          Fragmented records
+        </h3>
+
+        <p class="mt-2 text-sm leading-6 text-slate-500">
+          Patient information is often isolated across multiple healthcare providers.
+        </p>
+      </article>
+
+      <article
+        data-reveal="scale"
+        style="--reveal-delay: 100ms;"
+        class="group border-b border-slate-200 p-7 transition duration-300 hover:bg-white lg:border-b-0 lg:border-r"
+      >
+        <span class="text-3xl font-black text-cyan-700">
+          02
+        </span>
+
+        <h3 class="mt-5 font-black text-slate-950">
+          Limited access
+        </h3>
+
+        <p class="mt-2 text-sm leading-6 text-slate-500">
+          Geography and infrastructure continue to restrict healthcare delivery.
+        </p>
+      </article>
+
+      <article
+        data-reveal="scale"
+        style="--reveal-delay: 200ms;"
+        class="group border-b border-slate-200 p-7 transition duration-300 hover:bg-white sm:border-b-0 sm:border-r"
+      >
+        <span class="text-3xl font-black text-cyan-700">
+          03
+        </span>
+
+        <h3 class="mt-5 font-black text-slate-950">
+          Slow coordination
+        </h3>
+
+        <p class="mt-2 text-sm leading-6 text-slate-500">
+          Providers, laboratories, and pharmacies frequently operate separately.
+        </p>
+      </article>
+
+      <article
+        data-reveal="scale"
+        style="--reveal-delay: 300ms;"
+        class="group p-7 transition duration-300 hover:bg-white"
+      >
+        <span class="text-3xl font-black text-cyan-700">
+          04
+        </span>
+
+        <h3 class="mt-5 font-black text-slate-950">
+          Invisible insights
+        </h3>
+
+        <p class="mt-2 text-sm leading-6 text-slate-500">
+          Valuable health data is rarely transformed into useful intelligence.
+        </p>
+      </article>
+    </div>
+  </section>
+  
+<!-- MISSION AND VISION -->
+  <section
+    id="mission"
+    class="scroll-mt-24 bg-[#eef7f8] px-6 py-24 sm:py-32"
+  >
+    <div class="mx-auto max-w-7xl">
+      <div
+        data-reveal
+        class="mx-auto mb-14 max-w-3xl text-center"
+      >
+        <p class="text-sm font-black uppercase tracking-[0.22em] text-cyan-700">
+          What drives us
+        </p>
+
+        <h2 class="mt-5 text-3xl font-black tracking-[-0.03em] text-slate-950 sm:text-5xl">
+          Purpose designed around better healthcare outcomes.
+        </h2>
+      </div>
+
+      <div class="grid gap-8 lg:grid-cols-2">
+        <article
+          data-reveal="left"
+          class="group relative overflow-hidden rounded-[2.25rem] bg-slate-950 p-8 text-white shadow-2xl shadow-slate-950/10 sm:p-12"
+        >
+          <div class="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-cyan-500/25 blur-[90px] transition duration-700 group-hover:scale-125">
+          </div>
+
+          <div class="relative">
+            <span class="flex h-14 w-14 items-center justify-center rounded-2xl bg-cyan-400/15 text-cyan-300 ring-1 ring-cyan-300/20">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-7 w-7"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1.8"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 21a9 9 0 100-18 9 9 0 000 18zm0-13v8m-4-4h8"
+                />
+              </svg>
+            </span>
+
+            <p class="mt-9 text-xs font-black uppercase tracking-[0.22em] text-cyan-300">
+              Our mission
+            </p>
+
+            <h3 class="mt-4 text-3xl font-black leading-tight sm:text-4xl">
+              Make quality healthcare accessible, intelligent, and continuous.
+            </h3>
+
+            <p class="mt-6 max-w-xl leading-7 text-slate-300">
+              We build technology that helps healthcare institutions deliver
+              coordinated, informed, and patient-centred care regardless of
+              geography, infrastructure, or income level.
+            </p>
+          </div>
+        </article>
+
+        <article
+          data-reveal="right"
+          style="--reveal-delay: 120ms;"
+          class="group relative overflow-hidden rounded-[2.25rem] border border-cyan-900/10 bg-white p-8 shadow-xl shadow-cyan-950/5 sm:p-12"
+        >
+          <div class="absolute -bottom-28 -right-24 h-72 w-72 rounded-full bg-cyan-300/30 blur-[100px] transition duration-700 group-hover:scale-125">
+          </div>
+
+          <div class="relative">
+            <span class="flex h-14 w-14 items-center justify-center rounded-2xl bg-cyan-50 text-cyan-700 ring-1 ring-cyan-700/10">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-7 w-7"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1.8"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z"
+                />
+                <circle cx="12" cy="12" r="2.5" />
+              </svg>
+            </span>
+
+            <p class="mt-9 text-xs font-black uppercase tracking-[0.22em] text-cyan-700">
+              Our vision
+            </p>
+
+            <h3 class="mt-4 text-3xl font-black leading-tight text-slate-950 sm:text-4xl">
+              Africa’s most connected and trusted healthcare ecosystem.
+            </h3>
+
+            <p class="mt-6 max-w-xl leading-7 text-slate-600">
+              We envision a future where every patient can receive informed,
+              seamless, and secure care across facilities, regions, and national
+              healthcare systems.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+  
+<!-- ECOSYSTEM -->
+  <section
+    id="ecosystem"
+    class="scroll-mt-24 bg-white px-6 py-24 sm:py-32"
+  >
+    <div class="mx-auto max-w-7xl">
+      <div
+        data-reveal
+        class="mx-auto max-w-3xl text-center"
+      >
+        <p class="text-sm font-black uppercase tracking-[0.22em] text-cyan-700">
+          The connected ecosystem
+        </p>
+
+        <h2 class="mt-5 text-3xl font-black tracking-[-0.03em] text-slate-950 sm:text-5xl">
+          One platform for the complete healthcare journey.
+        </h2>
+
+        <p class="mt-6 text-lg leading-8 text-slate-600">
+          HELEXIA ➕ connects healthcare participants without removing the tools,
+          responsibilities, and professional workflows unique to each one.
+        </p>
+      </div>
+
+      <div class="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <article
+          data-reveal="scale"
+          data-pointer-glow
+          style="--reveal-delay: 0ms;"
+          class="about-interactive-card group rounded-[2rem] border border-slate-200 bg-[#f8fbfc] p-8 transition duration-500 hover:-translate-y-2 hover:border-cyan-300 hover:bg-white hover:shadow-2xl hover:shadow-cyan-950/10"
+        >
+          <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-cyan-100 text-cyan-700 transition duration-500 group-hover:rotate-3 group-hover:scale-110">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-7 w-7"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zm7-4h6m-3-3v6"
+              />
+            </svg>
+          </div>
+
+          <h3 class="mt-7 text-xl font-black text-slate-950">
+            Patients
+          </h3>
+
+          <p class="mt-3 leading-7 text-slate-600">
+            Secure access to medical records, appointments, consultations,
+            prescriptions, laboratory results, and personalized care services.
+          </p>
+        </article>
+
+        <article
+          data-reveal="scale"
+          data-pointer-glow
+          style="--reveal-delay: 80ms;"
+          class="about-interactive-card group rounded-[2rem] border border-slate-200 bg-[#f8fbfc] p-8 transition duration-500 hover:-translate-y-2 hover:border-blue-300 hover:bg-white hover:shadow-2xl hover:shadow-blue-950/10"
+        >
+          <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-100 text-blue-700 transition duration-500 group-hover:-rotate-3 group-hover:scale-110">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-7 w-7"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 4v16m8-8H4M8 4h8a4 4 0 014 4v8a4 4 0 01-4 4H8a4 4 0 01-4-4V8a4 4 0 014-4z"
+              />
+            </svg>
+          </div>
+
+          <h3 class="mt-7 text-xl font-black text-slate-950">
+            Clinicians
+          </h3>
+
+          <p class="mt-3 leading-7 text-slate-600">
+            Unified patient histories, digital workflows, clinical collaboration,
+            and intelligent support for safer, faster decision-making.
+          </p>
+        </article>
+
+        <article
+          data-reveal="scale"
+          data-pointer-glow
+          style="--reveal-delay: 160ms;"
+          class="about-interactive-card group rounded-[2rem] border border-slate-200 bg-[#f8fbfc] p-8 transition duration-500 hover:-translate-y-2 hover:border-emerald-300 hover:bg-white hover:shadow-2xl hover:shadow-emerald-950/10"
+        >
+          <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-700 transition duration-500 group-hover:rotate-3 group-hover:scale-110">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-7 w-7"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3 21h18M5 21V5h14v16M9 9h6m-3-3v6M8 16h2m4 0h2"
+              />
+            </svg>
+          </div>
+
+          <h3 class="mt-7 text-xl font-black text-slate-950">
+            Healthcare facilities
+          </h3>
+
+          <p class="mt-3 leading-7 text-slate-600">
+            Coordinated administrative, clinical, operational, and reporting
+            workflows across departments and service locations.
+          </p>
+        </article>
+
+        <article
+          data-reveal="scale"
+          data-pointer-glow
+          style="--reveal-delay: 240ms;"
+          class="about-interactive-card group rounded-[2rem] border border-slate-200 bg-[#f8fbfc] p-8 transition duration-500 hover:-translate-y-2 hover:border-violet-300 hover:bg-white hover:shadow-2xl hover:shadow-violet-950/10"
+        >
+          <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-violet-100 text-violet-700 transition duration-500 group-hover:-rotate-3 group-hover:scale-110">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-7 w-7"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9 3h6m-5 0v7l-5 9a1.5 1.5 0 001.3 2.2h11.4A1.5 1.5 0 0019 19l-5-9V3M8 15h8"
+              />
+            </svg>
+          </div>
+
+          <h3 class="mt-7 text-xl font-black text-slate-950">
+            Laboratories
+          </h3>
+
+          <p class="mt-3 leading-7 text-slate-600">
+            Digital test ordering, sample tracking, quality controls, and secure
+            delivery of verified diagnostic results.
+          </p>
+        </article>
+
+        <article
+          data-reveal="scale"
+          data-pointer-glow
+          style="--reveal-delay: 320ms;"
+          class="about-interactive-card group rounded-[2rem] border border-slate-200 bg-[#f8fbfc] p-8 transition duration-500 hover:-translate-y-2 hover:border-amber-300 hover:bg-white hover:shadow-2xl hover:shadow-amber-950/10"
+        >
+          <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-100 text-amber-700 transition duration-500 group-hover:rotate-3 group-hover:scale-110">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-7 w-7"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M10.5 20.5l-7-7a4.95 4.95 0 017-7l7 7a4.95 4.95 0 01-7 7zM7 10l7 7"
+              />
+            </svg>
+          </div>
+
+          <h3 class="mt-7 text-xl font-black text-slate-950">
+            Pharmacies
+          </h3>
+
+          <p class="mt-3 leading-7 text-slate-600">
+            Verified digital prescriptions, inventory visibility, fulfillment
+            workflows, and safer medication access.
+          </p>
+        </article>
+
+        <article
+          data-reveal="scale"
+          data-pointer-glow
+          style="--reveal-delay: 400ms;"
+          class="about-interactive-card group rounded-[2rem] border border-slate-200 bg-[#f8fbfc] p-8 transition duration-500 hover:-translate-y-2 hover:border-rose-300 hover:bg-white hover:shadow-2xl hover:shadow-rose-950/10"
+        >
+          <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-rose-100 text-rose-700 transition duration-500 group-hover:-rotate-3 group-hover:scale-110">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-7 w-7"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4zm-3 9l2 2 4-4"
+              />
+            </svg>
+          </div>
+
+          <h3 class="mt-7 text-xl font-black text-slate-950">
+            Insurers and institutions
+          </h3>
+
+          <p class="mt-3 leading-7 text-slate-600">
+            Digital eligibility verification, transparent claims workflows,
+            reporting, and population-level health insights.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+  
+<!-- VALUES -->
+  <section class="relative overflow-hidden bg-slate-950 px-6 py-24 text-white sm:py-32">
+    <div class="pointer-events-none absolute inset-0">
+      <div class="absolute left-0 top-0 h-[420px] w-[420px] rounded-full bg-cyan-500/10 blur-[130px]">
+      </div>
+
+      <div class="absolute bottom-0 right-0 h-[420px] w-[420px] rounded-full bg-blue-600/10 blur-[130px]">
+      </div>
+    </div>
+
+    <div class="relative mx-auto max-w-7xl">
+      <div class="grid gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+        <div data-reveal="left">
+          <p class="text-sm font-black uppercase tracking-[0.22em] text-cyan-300">
+            What guides us
+          </p>
+
+          <h2 class="mt-5 text-3xl font-black tracking-[-0.03em] sm:text-5xl">
+            Technology built around trust and human dignity.
+          </h2>
+
+          <p class="mt-6 max-w-xl text-lg leading-8 text-slate-300">
+            Healthcare technology must do more than operate efficiently. It must
+            protect people, strengthen institutions, and remain accessible to
+            the communities it is designed to serve.
+          </p>
+        </div>
+
+        <div class="grid gap-5 sm:grid-cols-2">
+          <article
+            data-reveal="scale"
+            data-pointer-glow
+            style="--reveal-delay: 0ms;"
+            class="about-interactive-card rounded-[1.75rem] border border-white/10 bg-white/[0.05] p-7 backdrop-blur transition duration-500 hover:-translate-y-1 hover:border-cyan-300/30 hover:bg-white/[0.08]"
+          >
+            <span class="text-sm font-black text-cyan-300">01</span>
+
+            <h3 class="mt-5 text-xl font-black">
+              Patient first
+            </h3>
+
+            <p class="mt-3 text-sm leading-7 text-slate-300">
+              Every workflow and feature begins with the safety, dignity, and
+              wellbeing of the patient.
+            </p>
+          </article>
+
+          <article
+            data-reveal="scale"
+            data-pointer-glow
+            style="--reveal-delay: 100ms;"
+            class="about-interactive-card rounded-[1.75rem] border border-white/10 bg-white/[0.05] p-7 backdrop-blur transition duration-500 hover:-translate-y-1 hover:border-cyan-300/30 hover:bg-white/[0.08]"
+          >
+            <span class="text-sm font-black text-cyan-300">02</span>
+
+            <h3 class="mt-5 text-xl font-black">
+              Privacy by design
+            </h3>
+
+            <p class="mt-3 text-sm leading-7 text-slate-300">
+              Security, consent, confidentiality, and responsible data access
+              are embedded throughout the platform.
+            </p>
+          </article>
+
+          <article
+            data-reveal="scale"
+            data-pointer-glow
+            style="--reveal-delay: 200ms;"
+            class="about-interactive-card rounded-[1.75rem] border border-white/10 bg-white/[0.05] p-7 backdrop-blur transition duration-500 hover:-translate-y-1 hover:border-cyan-300/30 hover:bg-white/[0.08]"
+          >
+            <span class="text-sm font-black text-cyan-300">03</span>
+
+            <h3 class="mt-5 text-xl font-black">
+              Inclusive innovation
+            </h3>
+
+            <p class="mt-3 text-sm leading-7 text-slate-300">
+              Our solutions are designed for different levels of connectivity,
+              infrastructure, and digital literacy.
+            </p>
+          </article>
+
+          <article
+            data-reveal="scale"
+            data-pointer-glow
+            style="--reveal-delay: 300ms;"
+            class="about-interactive-card rounded-[1.75rem] border border-white/10 bg-white/[0.05] p-7 backdrop-blur transition duration-500 hover:-translate-y-1 hover:border-cyan-300/30 hover:bg-white/[0.08]"
+          >
+            <span class="text-sm font-black text-cyan-300">04</span>
+
+            <h3 class="mt-5 text-xl font-black">
+              Connected progress
+            </h3>
+
+            <p class="mt-3 text-sm leading-7 text-slate-300">
+              We create systems that strengthen collaboration instead of
+              introducing new digital silos.
+            </p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+<!-- APPROACH -->
+  <section class="bg-[#f6fafb] px-6 py-24 sm:py-32">
+    <div class="mx-auto max-w-7xl">
+      <div
+        data-reveal
+        class="mx-auto max-w-3xl text-center"
+      >
+        <p class="text-sm font-black uppercase tracking-[0.22em] text-cyan-700">
+          How we build
+        </p>
+
+        <h2 class="mt-5 text-3xl font-black tracking-[-0.03em] text-slate-950 sm:text-5xl">
+          Designed for healthcare today—and what comes next.
+        </h2>
+
+        <p class="mt-6 text-lg leading-8 text-slate-600">
+          Our approach combines interoperability, simple user experiences, and
+          responsible intelligence into one scalable foundation.
+        </p>
+      </div>
+
+      <div class="relative mt-16 grid gap-10 lg:grid-cols-3">
+        <div
+          data-process-line
+          class="about-process-line absolute left-[16.66%] right-[16.66%] top-8 hidden border-t-2 border-dashed border-cyan-300 lg:block"
+        >
+        </div>
+
+        <article
+          data-reveal
+          style="--reveal-delay: 0ms;"
+          class="relative text-center"
+        >
+          <div class="relative z-10 mx-auto flex h-16 w-16 items-center justify-center rounded-full border-8 border-[#f6fafb] bg-cyan-700 text-lg font-black text-white shadow-lg shadow-cyan-800/20">
+            1
+          </div>
+
+          <h3 class="mt-6 text-xl font-black text-slate-950">
+            Connect the ecosystem
+          </h3>
+
+          <p class="mx-auto mt-3 max-w-sm leading-7 text-slate-600">
+            Link healthcare participants, services, and patient information
+            through secure and interoperable infrastructure.
+          </p>
+        </article>
+
+        <article
+          data-reveal
+          style="--reveal-delay: 180ms;"
+          class="relative text-center"
+        >
+          <div class="relative z-10 mx-auto flex h-16 w-16 items-center justify-center rounded-full border-8 border-[#f6fafb] bg-cyan-700 text-lg font-black text-white shadow-lg shadow-cyan-800/20">
+            2
+          </div>
+
+          <h3 class="mt-6 text-xl font-black text-slate-950">
+            Simplify the journey
+          </h3>
+
+          <p class="mx-auto mt-3 max-w-sm leading-7 text-slate-600">
+            Reduce administrative friction and make care easier to navigate for
+            patients and healthcare professionals.
+          </p>
+        </article>
+
+        <article
+          data-reveal
+          style="--reveal-delay: 360ms;"
+          class="relative text-center"
+        >
+          <div class="relative z-10 mx-auto flex h-16 w-16 items-center justify-center rounded-full border-8 border-[#f6fafb] bg-cyan-700 text-lg font-black text-white shadow-lg shadow-cyan-800/20">
+            3
+          </div>
+
+          <h3 class="mt-6 text-xl font-black text-slate-950">
+            Turn data into insight
+          </h3>
+
+          <p class="mx-auto mt-3 max-w-sm leading-7 text-slate-600">
+            Use responsible intelligence to support clinical decisions,
+            operational planning, and better public health outcomes.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+  
+<!-- FINAL CTA -->
+  <section class="bg-white px-6 py-24 sm:py-32">
+    <div class="mx-auto max-w-7xl">
+      <div
+        data-reveal="scale"
+        class="about-cta-shimmer relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-cyan-700 via-[#087890] to-blue-800 px-7 py-16 text-center text-white shadow-2xl shadow-cyan-900/20 sm:px-12 sm:py-20"
+      >
+        <div class="pointer-events-none absolute inset-0">
+          <div class="absolute -left-24 -top-32 h-80 w-80 rounded-full border-[60px] border-white/5">
+          </div>
+
+          <div class="absolute -bottom-40 -right-24 h-96 w-96 rounded-full border-[70px] border-white/5">
+          </div>
+
+          <div class="absolute inset-0 opacity-[0.08]
+                      [background-image:radial-gradient(circle_at_center,white_1px,transparent_1px)]
+                      [background-size:24px_24px]">
+          </div>
+        </div>
+
+        <div class="relative mx-auto max-w-4xl">
+          <p class="text-xs font-black uppercase tracking-[0.24em] text-cyan-100">
+            The future of connected care
+          </p>
+
+          <h2 class="mt-6 text-3xl font-black leading-tight tracking-[-0.03em] sm:text-5xl">
+            Healthcare should not depend on geography. It should move with the patient.
+          </h2>
+
+          <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-cyan-50/90">
+            HELEXIA+ is building the connection layer that helps make continuous,
+            intelligent, and equitable healthcare possible.
+          </p>
+
+          <div class="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
+            <a
+              href="/contact-us"
+              class="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-black text-cyan-800 shadow-xl transition duration-300 hover:-translate-y-1 hover:bg-cyan-50 hover:shadow-2xl"
+            >
+              Partner with HELEXIA ➕
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M17 8l4 4m0 0-4 4m4-4H3"
+                />
+              </svg>
+            </a>
+
+            <a
+              href="/"
+              class="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 px-7 py-3.5 text-sm font-black text-white backdrop-blur transition duration-300 hover:-translate-y-1 hover:bg-white/20"
+            >
+              Explore the platform
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<Layouts.footer />

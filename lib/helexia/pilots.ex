@@ -16,7 +16,7 @@ defmodule Helexia.Pilots do
       media: %{
         type: :video,
         src: "/videos/globe.mp4",
-        fallback: "/images/globe.jpeg"
+        fallback: "/images/globe.mp4"
       },
       metrics: [
         %{

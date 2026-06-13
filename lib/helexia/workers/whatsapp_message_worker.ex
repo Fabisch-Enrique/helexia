@@ -20,9 +20,7 @@ defmodule Helexia.Workers.WhatsappMessageWorker do
   alias Helexia.Chat.WhatsApp
 
   @impl Oban.Worker
-  def perform(%Oban.Job{
-        args: %{"message_id" => message_id}
-      }) do
+  def perform(%Oban.Job{args: %{"message_id" => message_id}}) do
     message =
       Chat.get_message_for_delivery!(message_id)
 
@@ -37,17 +35,11 @@ defmodule Helexia.Workers.WhatsappMessageWorker do
   end
 
   defp deliver(message) do
-    case WhatsApp.send_visitor_message(message) do
-      {:ok, result} ->
-        case Chat.mark_message_sent(
-               message,
-               result.provider_message_id,
-               result.provider_payload
-             ) do
-          {:ok, _message} -> :ok
-          {:error, reason} -> {:error, reason}
-        end
-
+    with {:ok, result} <- WhatsApp.send_visitor_message(message),
+         {:ok, _message} <-
+           Chat.mark_message_sent(message, result.provider_message_id, result.provider_payload) do
+      :ok
+    else
       {:error, reason} ->
         Chat.mark_message_failed(message, reason)
         {:error, reason}

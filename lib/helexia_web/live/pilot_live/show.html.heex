@@ -1,5 +1,161 @@
 <Layouts.header />
 
+<.modal
+  :if={@show_video_modal}
+  show
+  inner_class="p-0"
+  id="helexia-video"
+  class="w-[94vw] max-w-[1100px]"
+  on_cancel={JS.patch(~p"/pilots/#{@pilot.slug}")}
+>
+  
+<!-- BACKDROP + RIPPLE CLICK AREA -->
+  <div
+    id="video-backdrop"
+    phx-click="close_video_modal"
+    class="
+      fixed inset-0 bg-black/70 backdrop-blur-md
+      flex items-center justify-center
+      overflow-hidden
+      animate-[backdropFade_200ms_ease-out]
+    "
+  >
+    
+<!-- RIPPLE EFFECT LAYER -->
+    <div
+      id="ripple-layer"
+      class="absolute inset-0 pointer-events-none"
+    >
+    </div>
+    
+<!-- MODAL CARD -->
+    <div
+      id="video-modal-card"
+      class="
+        relative max-h-[85vh] w-[94vw] max-w-[1100px]
+        overflow-hidden rounded-[1.75rem]
+        border border-white/10
+        bg-gradient-to-br from-slate-950 via-[#081a2e] to-cyan-950
+        shadow-[0_30px_100px_rgba(0,0,0,0.65)]
+
+        animate-[modalIn_260ms_ease-out]
+      "
+      phx-hook="modal_hook"
+    >
+      
+<!-- FLOATING GLASS HEADER (Apple TV style) -->
+      <div class="
+        absolute top-0 left-0 right-0 z-20
+        flex items-center justify-between
+        px-6 py-4
+        bg-white/10 backdrop-blur-xl
+        border-b border-white/10
+      ">
+        <div>
+          <h3 class="text-sm font-bold text-white tracking-wide">
+            HELEXIA ➕ Platform Overview
+          </h3>
+          <p class="text-xs text-slate-300">
+            Transforming healthcare through connected innovation
+          </p>
+        </div>
+        
+<!-- CLOSE BUTTON -->
+        <a
+          type="button"
+          href={~p"/pilots/#{@pilot.slug}"}
+          class="
+            h-9 w-9 flex items-center justify-center
+            rounded-full bg-white/10 text-white
+            hover:bg-white/20 transition
+          "
+        >
+          ✕
+        </a>
+      </div>
+      
+<!-- BODY -->
+      <div class="grid lg:grid-cols-[1.3fr_1fr] pt-16">
+        
+<!-- VIDEO -->
+        <div class="flex items-center justify-center bg-black/80 p-4
+                    min-h-[320px] sm:min-h-[420px] lg:min-h-[520px]">
+          <div class="w-full max-w-[760px] aspect-video rounded-xl overflow-hidden
+                      border border-white/10 shadow-2xl">
+            <video
+              id="helexia-video-player"
+              controls
+              playsinline
+              preload="metadata"
+              class="h-full w-full object-contain bg-black"
+            >
+              <source src={~p"/videos/demo-helexia.mp4"} type="video/mp4" />
+            </video>
+          </div>
+        </div>
+        
+<!-- DESCRIPTION -->
+        <div class="max-h-[75vh] overflow-y-auto px-7 py-8 text-white">
+          <div class="inline-flex rounded-full border border-cyan-400/20
+                      bg-cyan-500/10 px-3.5 py-1.5 text-[11px]
+                      font-bold uppercase tracking-[0.18em] text-cyan-300">
+            HELEXIA ➕
+          </div>
+
+          <h2 class="mt-5 text-2xl font-black leading-tight sm:text-3xl">
+            Transforming Healthcare Through Connected Innovation
+          </h2>
+
+          <p class="mt-5 text-sm text-slate-300 leading-6">
+            HELEXIA ➕ is an integrated digital healthcare ecosystem connecting
+            patients, professionals, pharmacies, labs, insurers, and public health systems.
+          </p>
+
+          <p class="mt-3 text-sm text-slate-300 leading-6">
+            AI-powered clinical support, EMRs, telemedicine, payments, and offline-first
+            systems for universal access.
+          </p>
+          
+<!-- FEATURES -->
+          <div class="mt-6 space-y-3 text-sm text-slate-200">
+            <div class="flex gap-3">
+              <div class="mt-1.5 h-2.5 w-2.5 rounded-full bg-emerald-400"></div>
+              <span>AI-assisted clinical decision support</span>
+            </div>
+
+            <div class="flex gap-3">
+              <div class="mt-1.5 h-2.5 w-2.5 rounded-full bg-cyan-400"></div>
+              <span>Unified patient records & interoperability</span>
+            </div>
+
+            <div class="flex gap-3">
+              <div class="mt-1.5 h-2.5 w-2.5 rounded-full bg-blue-400"></div>
+              <span>Offline-first architecture for rural care</span>
+            </div>
+
+            <div class="flex gap-3">
+              <div class="mt-1.5 h-2.5 w-2.5 rounded-full bg-sky-300"></div>
+              <span>Secure payments & telemedicine</span>
+            </div>
+          </div>
+          
+<!-- VISION -->
+          <div class="mt-7 rounded-2xl border border-cyan-400/15
+                      bg-white/5 p-4 backdrop-blur-md">
+            <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-cyan-300">
+              Vision
+            </p>
+
+            <p class="mt-2 text-sm text-slate-300 leading-6">
+              Building Africa's most connected healthcare ecosystem.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</.modal>
+
 <main class="relative min-h-screen overflow-hidden bg-[#f8fafc] text-slate-950">
   <%!-- Global hero atmosphere --%>
   <div
@@ -125,9 +281,9 @@
           </a>
 
           <a
-            href={@pilot.location.map_url}
             target="_blank"
             rel="noopener noreferrer"
+            href={~p"/view-pilot-advert"}
             class="inline-flex min-h-12 items-center justify-center gap-3 rounded-full border border-slate-300 bg-white/80 px-7 py-3 text-sm font-black text-slate-700 shadow-sm backdrop-blur-xl transition hover:border-sky-300 hover:bg-white hover:text-sky-700 focus:outline-none focus-visible:ring-4 focus-visible:ring-slate-200"
           >
             View location
@@ -211,9 +367,8 @@
                   </div>
 
                   <a
-                    href={@pilot.location.map_url}
-                    target="_blank"
                     rel="noopener noreferrer"
+                    href={"/view-pilot-advert-show/#{@pilot.slug}"}
                     aria-label={"Open map for #{@pilot.location.area}"}
                     class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-slate-950 transition hover:scale-105 hover:bg-sky-200 focus:outline-none focus-visible:ring-4 focus-visible:ring-sky-300"
                   >
